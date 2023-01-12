@@ -14,8 +14,8 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "start:dev":"tsc-watch --onSuccess app.js",
-    "start:prod": "node ./dist/app.js"
+    "start:dev":"tsc-watch --onSuccess",
+    "start:prod": "node ./dist/server.js"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
