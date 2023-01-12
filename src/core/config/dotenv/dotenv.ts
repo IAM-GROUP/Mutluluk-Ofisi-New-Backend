@@ -1,8 +1,5 @@
 import { config } from 'dotenv'
 
-export const dotenvDevConfig = () => {
-    config({path:"../../.env.dev"})
-}
-export const dotenvProdConfig = () => {
-    config({path:"../../.env.prod"})
+export const dotenvConfig = () => {
+    config({path:process.cwd() + `/src/.env.${process.env.NODE_ENV}`})
 }
