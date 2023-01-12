@@ -2,7 +2,7 @@
   "name": "mutluluk_backend",
   "version": "1.0.0",
   "description": "mutluluk backend project",
-  "main": "app.js",
+  "main": "server.js",
   "author": "Radeonares32",
   "license": "MIT",
   "devDependencies": {
