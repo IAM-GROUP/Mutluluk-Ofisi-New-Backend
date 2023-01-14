@@ -33,7 +33,18 @@ export class AboutService {
         }
     }
     aboutDelete(id: string) {
-
+        const isValidId = validation.isIdValidation(id)
+        if (isValidId.isValid === true) {
+            return {
+                message: isValidId.message,
+                about: this.aboutDataAcess.delete(id)
+            }
+        }
+        else {
+            return {
+                message: isValidId.message
+            }
+        }
     }
 
 }
