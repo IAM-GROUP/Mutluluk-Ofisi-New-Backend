@@ -1,6 +1,9 @@
 //! Dal
 import { AboutDal } from '../dal/about.dal'
 
+
+//? Validation
+import { validation } from '../validations/validations'
 export class AboutService {
     private aboutDataAcess: AboutDal
     constructor(private id?: string, private image?: string, private title?: string, private text?: string, private description?: string, private html?: [{ title: string, context: string }], private icon?: [{ src: string, context: string }]) {
@@ -16,21 +19,21 @@ export class AboutService {
         return this.aboutDataAcess.findAll()
     }
     aboutFind(id: string) {
-        if (typeof id === 'string') {
-            if (id !== "") {
-                return this.aboutDataAcess.find(id)
-            }
-            else {
-                return {
-                    message: "id empty"
-                }
+        const isValidId = validation.isIdValidation(id)
+        if (isValidId.isValid === true) {
+            return {
+                about: this.aboutDataAcess.find(id),
+                message: isValidId.message
             }
         }
         else {
             return {
-                message: "id not string"
+                message: isValidId.message
             }
         }
+    }
+    aboutDelete(id: string) {
+
     }
 
 }
