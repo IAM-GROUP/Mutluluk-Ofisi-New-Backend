@@ -1,6 +1,5 @@
 //! Dal
 import { AboutDal } from '../dal/about.dal'
-import { IAbout } from '../entity/IAbout'
 
 export class AboutService {
     private aboutDataAcess: AboutDal
@@ -13,8 +12,11 @@ export class AboutService {
         this.html = html
         this.icon = icon
     }
-    get aboutFindAll(): Promise<IAbout[]> {
+    aboutFindAll() {
         return this.aboutDataAcess.findAll()
+    }
+    aboutFind(id: string) {
+        return this.aboutDataAcess.find(id)
     }
 
 }
