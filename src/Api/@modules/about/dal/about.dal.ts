@@ -19,10 +19,15 @@ export class AboutDal implements AboutRepository {
             }
         })
     }
-    async create(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
+    async create(image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
         const about = await About.create({ image, title, text, description, $push: { html, icon } })
         return new Promise((resolve, reject) => {
-
+            try {
+                about.save()
+                resolve({ message: "Success created" })
+            } catch (err) {
+                reject({ message: "Error " + err })
+            }
         })
     }
     async find(id: string): Promise<IAbout> {
@@ -51,6 +56,7 @@ export class AboutDal implements AboutRepository {
         const about = await About.findByIdAndUpdate(id, { image, title, text, description, $push: { html, icon } })
         return new Promise((resolve, reject) => {
             try {
+                about?.save()
                 resolve({ message: "Success update" })
             }
             catch (err) {
