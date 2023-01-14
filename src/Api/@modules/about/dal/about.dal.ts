@@ -33,11 +33,11 @@ export class AboutDal implements AboutRepository {
             }
         })
     }
-    async findAll(): Promise<IAbout> {
+    async findAll(): Promise<IAbout[]> {
         const about = await About.find()
         return new Promise((resolve, reject) => {
             try {
-                resolve(about as Array<IAbout>)
+                resolve(about as IAbout[])
             }
             catch (err) {
                 reject(err)

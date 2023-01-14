@@ -2,7 +2,7 @@ import { IAbout } from '../entity/IAbout'
 export interface  AboutRepository  {
      create(): Promise<IAbout>
      find(id: string): Promise<IAbout>
-     findAll(): Promise<IAbout>
+     findAll(): Promise<IAbout[]>
      update(image?: string, title?: string, text?: string, description?: string,html?:[{ title: string; context: string; }], icon?: [{ src: string; context: string; }]): Promise<IAbout>
      delete(id: string): Promise<{ message: string }>
 }
