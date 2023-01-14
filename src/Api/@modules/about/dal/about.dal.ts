@@ -21,8 +21,16 @@ export class AboutDal implements AboutRepository {
     create():Promise<IAbout> {
         return new Promise((resolve,reject)=>{})
     }
-    find():Promise<IAbout> {
-        return new Promise((resolve,reject)=>{})
+    async find(id:string):Promise<IAbout> {
+        const about = await About.findById(id)
+        return new Promise((resolve,reject)=>{
+            try {
+                resolve(about as IAbout)
+            }
+            catch(err) {
+                reject(err)
+            }
+        })
     }
     findAll():Promise<IAbout> {
         return new Promise((resolve,reject)=>{})
