@@ -1,8 +1,8 @@
 import { IAbout } from '../entity/IAbout'
-export abstract class AboutRepository {
-    abstract create():Promise<IAbout>
-    abstract find(title:string):Promise<IAbout>
-    abstract findAll():Promise<IAbout>
-    abstract update(image?:string,title?:string,text?:string,description?:string):Promise<IAbout>
-    abstract delete(title?:string):Promise<IAbout>
+export interface AboutRepository {
+    create(): Promise<IAbout>
+    find(title: string): Promise<IAbout>
+    findAll(): Promise<IAbout>
+    update(image?: string, title?: string, text?: string, description?: string): Promise<IAbout>
+    delete(title?: string): Promise<IAbout>
 }
