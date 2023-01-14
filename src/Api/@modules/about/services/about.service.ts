@@ -16,7 +16,21 @@ export class AboutService {
         return this.aboutDataAcess.findAll()
     }
     aboutFind(id: string) {
-        return this.aboutDataAcess.find(id)
+        if (typeof id === 'string') {
+            if (id !== "") {
+                return this.aboutDataAcess.find(id)
+            }
+            else {
+                return {
+                    message: "id empty"
+                }
+            }
+        }
+        else {
+            return {
+                message: "id not string"
+            }
+        }
     }
 
 }
