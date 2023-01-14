@@ -19,8 +19,11 @@ export class AboutDal implements AboutRepository {
             }
         })
     }
-    create(): Promise<IAbout> {
-        return new Promise((resolve, reject) => { })
+    async create(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
+        const about = await About.create({ image, title, text, description, $push: { html, icon } })
+        return new Promise((resolve, reject) => {
+
+        })
     }
     async find(id: string): Promise<IAbout> {
         const about = await About.findById(id)
@@ -29,7 +32,7 @@ export class AboutDal implements AboutRepository {
                 resolve(about as IAbout)
             }
             catch (err) {
-                reject({message:"Error " + err})
+                reject({ message: "Error " + err })
             }
         })
     }
@@ -40,18 +43,18 @@ export class AboutDal implements AboutRepository {
                 resolve(about as IAbout[])
             }
             catch (err) {
-                reject({message:"Error " + err})
+                reject({ message: "Error " + err })
             }
         })
     }
-    async update(id:string,image: string, title: string, text: string, description: string,html:[{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{message:string}> {
-        const about = await About.findByIdAndUpdate(id,{image,title,text,description,$push:{html,icon}})
-        return new Promise((resolve, reject) => { 
+    async update(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
+        const about = await About.findByIdAndUpdate(id, { image, title, text, description, $push: { html, icon } })
+        return new Promise((resolve, reject) => {
             try {
-                resolve({message:"Success update"})
+                resolve({ message: "Success update" })
             }
-            catch(err) {
-                reject({message:"Error " + err})
+            catch (err) {
+                reject({ message: "Error " + err })
             }
         })
     }
