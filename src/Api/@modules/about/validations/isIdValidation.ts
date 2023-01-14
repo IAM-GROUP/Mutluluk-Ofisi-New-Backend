@@ -1,21 +1,21 @@
-export const isIdValidation = (id: string, message: string): { isValid: boolean, message: string } => {
+export const isIdValidation = (id: string): { isValid: boolean, message: string } => {
     if (typeof id === 'string') {
         if (id !== "") {
             return {
-                message,
+                message:"valid id",
                 isValid: true
             }
         }
         else {
             return {
-                message,
+                message:"id empty",
                 isValid: false
             }
         }
     }
     else {
         return {
-            message,
+            message: "id not string",
             isValid: false
         }
     }
