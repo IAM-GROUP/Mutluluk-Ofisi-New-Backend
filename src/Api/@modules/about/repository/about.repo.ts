@@ -3,6 +3,6 @@ export interface  AboutRepository  {
      create(): Promise<IAbout>
      find(id: string): Promise<IAbout>
      findAll(): Promise<IAbout[]>
-     update(image?: string, title?: string, text?: string, description?: string,html?:[{ title: string; context: string; }], icon?: [{ src: string; context: string; }]): Promise<IAbout>
+     update(id:string,image: string, title: string, text: string, description: string,html:[{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }>
      delete(id: string): Promise<{ message: string }>
 }
