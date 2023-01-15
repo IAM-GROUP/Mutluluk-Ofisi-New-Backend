@@ -1,10 +1,48 @@
 {
-    "openapi": "3.0.3",
-    "info": {
-      "title": "Happy Backend",
-      "description": "Happy Backend project",
-      "version": "1.0.0"
-    },
-    "paths": {}
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Happy Backend",
+    "description": "Happy Backend project",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "About",
+      "description": "About API"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/api/about-us/": {
+      "get": {
+        "tags": ["About"],
+        "summary": "Get All About",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/about"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "about": {
+      "properties": {},
+      "responses": {
+        "NotFound": {
+          "description": "Entity not found."
+        },
+        "IllegalInput": {
+          "description": "Illegal input for operation."
+        }
+      }
+    }
   }
-  
+}
