@@ -6,7 +6,7 @@ const iv = randomBytes(16);
 
 export const encrypt = (text: any | any[]) => {
     let cipher = createCipheriv(algorithm, Buffer.from(key), iv);
-    let encrypted = cipher.update(text);
+    let encrypted = cipher.update(JSON.stringify(text));
     encrypted = Buffer.concat([encrypted, cipher.final()]);
     return {
         iv: iv.toString('hex'),
@@ -23,5 +23,5 @@ export const decrypt = (text: any | any[]) => {
     let decrypted = decipher.update(encryptedText);
     decrypted = Buffer.concat([decrypted, decipher.final()]);
 
-    return decrypted.toString();
+    return JSON.parse(decrypted.toString());
 }
