@@ -9,4 +9,6 @@ const storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
-export const upload = multer({ storage })
+const upload = multer({ storage })
+
+export const multiuploads = upload.fields([{name:"file",maxCount:4}])
