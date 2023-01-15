@@ -4,4 +4,5 @@ const app = express.Router()
 //! Controller
 import { about  } from '../controllers/controllers'
 
+
 export const getAbout = app.get('/about-us',about.getAbout)

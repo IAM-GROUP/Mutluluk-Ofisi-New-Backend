@@ -13,10 +13,10 @@ import { mongoConnection } from './core/data-source/mongo/connection'
 import { aboutMainRoutes } from './Api/@modules/about/routes'
 
 //! Swagger
-import { swagger } from './core/config/swagger/swagger'
+import swaggerJson from './swagger.json'
 
 app.use('/', aboutMainRoutes)
-app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swagger))
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerJson))
 
 
 server.listen(3000, () => {

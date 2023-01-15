@@ -17,7 +17,8 @@
         "declaration": true,
         "declarationDir": "./dist/types",
         "allowSyntheticDefaultImports": true,
-        "strictPropertyInitialization": false
+        "strictPropertyInitialization": false,
+        "resolveJsonModule": true
         
     },
     "exclude": [
