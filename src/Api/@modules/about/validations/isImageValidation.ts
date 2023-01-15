@@ -1,7 +1,7 @@
 export const isImageValidation = (images: any[]) => {
 
-    const isValidimage = images.map(data => {
-        const ext = data.src.split('.')
+    const isValidimage = images.map(image => {
+        const ext = image.src.split('.')
             .filter(Boolean)
             .slice(1)
             .join('.')
