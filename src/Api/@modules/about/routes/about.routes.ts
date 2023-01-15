@@ -5,4 +5,4 @@ const app = express.Router()
 import { about  } from '../controllers/controllers'
 
 
-export const getAbout = app.get('/about-us',about.getAbout)
+export const getAbout = app.get('/about-us',about.AboutController.getAbout)
