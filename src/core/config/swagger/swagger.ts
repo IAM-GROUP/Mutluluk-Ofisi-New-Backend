@@ -14,6 +14,6 @@ const options = {
             }
         ]
     },
-    apis: [process.cwd() + 'src/Api/@modules/about/controllers/about.controller.ts']
+    apis: [process.cwd() + 'src/Api/swagger/about/*.ts']
 }
 export const swagger = swaggerjsdoc(options)
