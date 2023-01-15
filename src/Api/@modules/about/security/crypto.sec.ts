@@ -4,7 +4,7 @@ const key = randomBytes(32);
 const algorithm = 'aes-256-cbc';
 const iv = randomBytes(16);
 
-const encrypt = (text: any | any[]) => {
+export const encrypt = (text: any | any[]) => {
     let cipher = createCipheriv(algorithm, Buffer.from(key), iv);
     let encrypted = cipher.update(text);
     encrypted = Buffer.concat([encrypted, cipher.final()]);
@@ -14,7 +14,7 @@ const encrypt = (text: any | any[]) => {
     };
 }
 
-const decrypt = (text: any | any[]) => {
+export const decrypt = (text: any | any[]) => {
     let iv = Buffer.from(text.iv, 'hex');
     let encryptedText = Buffer.from(text.encryptedData, 'hex');
 
