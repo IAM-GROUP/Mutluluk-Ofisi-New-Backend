@@ -6,9 +6,21 @@ const storage = multer.diskStorage({
         cb(null, process.cwd() + `/src/Api/public`)
     },
     filename: (req, file, cb) => {
+
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
-const upload = multer({ storage })
+const upload = multer({
+    storage,
+    fileFilter(req, file, cb) {
+        if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
+            cb(null, true)
+        }
+        else {
+            cb(null, false);
+            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'))
+        }
+    },
+})
 
-export const multiuploads = upload.fields([{name:"file",maxCount:4}])
+export const multiuploads = upload.fields([{ name: "file", maxCount: 4 }])
