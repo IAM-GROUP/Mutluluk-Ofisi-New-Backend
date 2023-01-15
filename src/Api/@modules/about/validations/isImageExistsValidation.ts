@@ -5,10 +5,6 @@ export const isImageExists = (image: string) => {
         fs.rmSync(image)
     }
     else {
-        fs.mkdir(process.cwd() + 'src/Api/public/about', (err) => {
-            return {
-                message: err
-            }
-        })
+        fs.mkdirSync(process.cwd() + 'src/Api/public/about')
     }
 }
