@@ -1,9 +1,11 @@
 //! Dal
 import { AboutDal } from '../dal/about.dal'
 
-
 //? Validation
 import { validation } from '../validations/validations'
+
+//* Security
+import { security } from '../security/security'
 export class AboutService {
     private aboutDataAcess: AboutDal
     constructor(private id?: string, private image?: string, private title?: string, private text?: string, private description?: string, private html?: [{ title: string, context: string }], private icon?: [{ src: string, context: string }]) {
@@ -46,10 +48,34 @@ export class AboutService {
             }
         }
     }
-    aboutUpdate(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]){
-
+    aboutUpdate(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]) {
+        const isValidId = validation.isIdValidation(id)
+        if (isValidId.isValid === true) {
+            return {
+                message: isValidId.message,
+                update: this.aboutDataAcess.update(id, image, title, text, description, html, icon)
+            }
+        }
+        else {
+            return {
+                message: isValidId.message
+            }
+        }
     }
-    aboutCreate(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]) {
-        
+    aboutCreate(image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]) {
+        const decryptHtml = security.decrypt(html)
+        const decryptIcon = security.decrypt(icon)
+        validation.isImageExists(image)
+        if (decryptHtml & decryptIcon) {
+            return {
+                create: this.aboutDataAcess.create(image, title, text, description, decryptHtml, decryptIcon),
+            }
+        }
+        else {
+            return {
+                message: "html or icon prop empty"
+            }
+        }
+
     }
 }
