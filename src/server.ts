@@ -9,7 +9,12 @@ const server = http.createServer(app)
 //! Database
 import { mongoConnection } from './core/data-source/mongo/connection'
 
- 
-server.listen(3000,()=>{
+//! Routes
+import { aboutMainRoutes } from './Api/@modules/about/routes'
+
+app.use('/', aboutMainRoutes)
+
+
+server.listen(3000, () => {
     mongoConnection()
 })
