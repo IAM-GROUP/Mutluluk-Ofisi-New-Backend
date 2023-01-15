@@ -46,5 +46,10 @@ export class AboutService {
             }
         }
     }
+    aboutUpdate(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]){
 
+    }
+    aboutCreate(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]) {
+        
+    }
 }
