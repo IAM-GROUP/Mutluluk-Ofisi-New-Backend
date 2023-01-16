@@ -18,6 +18,7 @@ import swaggerJson from './swagger.json'
 app.use('/', aboutMainRoutes)
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerJson))
 
+app.use(express.json())
 
 server.listen(3000, () => {
     mongoConnection()

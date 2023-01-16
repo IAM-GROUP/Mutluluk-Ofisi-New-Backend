@@ -10,7 +10,8 @@ export class AboutController {
         res.json({ about })
     }
     static createAbout:Handler = async (req,res) => {
+        const icon = []
         console.log(req.body)
-        console.log(req.files)
+        
     }
 }

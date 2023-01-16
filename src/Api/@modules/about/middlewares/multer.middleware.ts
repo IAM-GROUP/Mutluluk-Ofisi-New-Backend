@@ -3,7 +3,7 @@ import { extname } from 'path'
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, process.cwd() + `/src/Api/public`)
+        cb(null, process.cwd() + `/src/Api/public/about`)
     },
     filename: (req, file, cb) => {
 
