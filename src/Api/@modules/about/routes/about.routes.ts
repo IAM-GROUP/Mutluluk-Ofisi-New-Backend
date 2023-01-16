@@ -1,11 +1,14 @@
-import  express from 'express'
+import express from 'express'
 const app = express.Router()
 
+//! Middleware
+import { middleware } from '../middlewares/middlewares'
+
 //! Controller
-import { about  } from '../controllers/controllers'
+import { about } from '../controllers/controllers'
 
 //? Get
-export const getAbout = app.get('/about-us',about.AboutController.getAbout)
+export const getAbout = app.get('/about-us', about.AboutController.getAbout)
 
 //* Post
-export const postAbout = app.post('/about-us',about.AboutController.createAbout)
+export const postAbout = app.post('/about-us', middleware.multiuploads, about.AboutController.createAbout)
