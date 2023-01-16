@@ -23,4 +23,4 @@ const upload = multer({
     },
 })
 
-export const multiuploads = upload.fields([{ name: "file", maxCount: 4 }])
+export const multiuploads = upload.fields([{ name: "image", maxCount: 4 }, { name: "icon", maxCount: 4 }])
