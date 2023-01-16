@@ -9,4 +9,8 @@ export class AboutController {
         const about = await new AboutService().aboutFindAll()
         res.json({ about })
     }
+    static createAbout:Handler = async (req,res) => {
+        console.log(req.body)
+        console.log(req.files)
+    }
 }
