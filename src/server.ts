@@ -1,6 +1,7 @@
 import express from 'express'
 import http from 'http'
 import swaggerUI from 'swagger-ui-express'
+import bodyParser from 'body-parser'
 
 const app = express()
 const server = http.createServer(app)
@@ -12,13 +13,18 @@ import { mongoConnection } from './core/data-source/mongo/connection'
 //! Routes
 import { aboutMainRoutes } from './Api/@modules/about/routes'
 
+
+
+
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 //! Swagger
 import swaggerJson from './swagger.json'
 
 app.use('/', aboutMainRoutes)
-app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerJson))
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
-app.use(express.json())
 
 server.listen(3000, () => {
     mongoConnection()
