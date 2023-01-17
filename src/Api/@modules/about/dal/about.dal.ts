@@ -20,10 +20,11 @@ export class AboutDal implements AboutRepository {
         })
     }
     async create(image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
-        const about = await About.create({ image, title, text, description, $push: { html, icon } })
+        const about = await About.create({ image, title, text, description,html,icon})
+
         return new Promise((resolve, reject) => {
             try {
-                about.save()
+                
                 resolve({ message: "Success created" })
             } catch (err) {
                 reject({ message: "Error " + err })

@@ -19,9 +19,12 @@ export class AboutController {
         icons.push({ src: icon[0].path, context })
         icons.push({ src: icon[0].path, context })
         icons.shift()
-        console.log(icons)
-        /* const about =  aboutService.aboutCreate(image[0].path,title,text,description,html,icons)
-        console.log(about) */
+        //test 
+        const encIcon = security.encrypt(icons)
+        const encHtml = security.encrypt(html)
+        
+        const about =  aboutService.aboutCreate(image[0].path,title,text,description,encHtml,encIcon)
+        console.log(about)
 
 
 
