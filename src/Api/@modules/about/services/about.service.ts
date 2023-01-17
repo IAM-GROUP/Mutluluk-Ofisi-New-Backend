@@ -62,7 +62,7 @@ export class AboutService {
             }
         }
     }
-    aboutCreate(image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]) {
+    aboutCreate(image: string, title: string, text: string, description: string, html: { iv: string; encryptedData: string; }, icon: { iv: string; encryptedData: string; }) {
         const decryptHtml = security.decrypt(html)
         const decryptIcon = security.decrypt(icon)
         validation.isImageExists(image)
