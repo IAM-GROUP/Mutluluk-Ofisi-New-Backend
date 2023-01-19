@@ -1,100 +1,214 @@
 {
-  "openapi": "3.0.3",
-  "info": {
-    "title": "Mutluluk BackEnd",
-    "version": "3.0.2",
-    "x-logo": { "url": "" },
-    "description": "Mutluluk BackEnd Project"
-  },
-  "paths": {
-    "/api/about-us": {
-      "summary": "",
-      "description": "Get All About Us Context",
-      "get": { 
-        "description":"Get All About Us Context"
-       },
-      "x-last-modified": 1674161875171,
-      "post": {
-        "description": "Create About Us",
-        "operationId": "1",
-        "parameters": [
-          {
-            "name": "image",
-            "in": "path",
-            "required": true,
-            "deprecated": false,
-            "schema": { "type": "object", "enum": [], "required": [] },
-            "x-last-modified": 1674162028962
-          },
-          {
-            "name": "Icon",
-            "in": "path",
-            "required": true,
-            "deprecated": false,
-            "schema": { "type": "object" },
-            "x-last-modified": 1674162088628
-          },
-          {
-            "name": "html",
-            "in": "path",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "type": "object",
-              "description": "html object must be encrypted and sent in JSON format",
-              "required": ["title", "context"]
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ],
+    "info": {
+        "description": "Happy Backend Project",
+        "version": "1.0.0",
+        "title": "Happy Backend",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "paths": {
+        "/api/about-us": {
+            "get": {
+                "summary": "",
+                "description": "Get All About Us Context",
+                "parameters": [],
+                "operationId": "/api/about-us",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
             },
-            "x-last-modified": 1674162221719
-          },
-          {
-            "name": "title",
-            "in": "path",
-            "required": true,
-            "deprecated": false,
-            "schema": { "type": "string" },
-            "x-last-modified": 1674162284399
-          },
-          {
-            "name": "description",
-            "required": true,
-            "deprecated": false,
-            "schema": { "type": "string" },
-            "x-last-modified": 1674162273081
-          },
-          {
-            "name": "text",
-            "in": "path",
-            "required": true,
-            "deprecated": false,
-            "schema": { "type": "string" },
-            "x-last-modified": 1674162318115
-          },
-          {
-            "name": "context",
-            "required": true,
-            "deprecated": false,
-            "schema": { "type": "string" },
-            "x-last-modified": 1674162338670
-          }
-        ]
-      }
-    }
-  },
-  "components": {
-    "securitySchemes": {},
-    "schemas": {},
-    "headers": {},
-    "responses": {},
-    "parameters": {}
-  },
-  "tags": [],
-  "servers": [
-    {
-      "url": "https://localhost:300/",
-      "description": "",
-      "variables": {},
-      "x-last-modified": 1674161831273
-    }
-  ],
-  "security": []
+            "post": {
+                "summary": "",
+                "description": "Create About Us",
+                "parameters": [
+                    {
+                        "name": "Image",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Image File"
+                    },
+                    {
+                        "name": "Icon",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": []
+                        },
+                        "description": "Image File"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "pattern": ""
+                    },
+                    {
+                        "name": "html",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "example : { \"title\":\"string\",\"html\":\"<p>test</p>\"}\nhtml object must be encrypted and sent in JSON format"
+                    },
+                    {
+                        "name": "text",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "context",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "operationId": "/api/about-us",
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "put": {
+                "summary": "",
+                "description": "Update About Us",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Image",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Image Fİle"
+                    },
+                    {
+                        "name": "Icon",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Image File"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "html",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "example : { \"title\":\"string\",\"html\":\"<p>test</p>\"}\nhtml object must be encrypted and sent in JSON format"
+                    },
+                    {
+                        "name": "text",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "context",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "operationId": "/api/about-us",
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "",
+                "description": "Delete About Us",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "operationId": "/api/about-us",
+                "responses": {
+                    "default": {
+                        "description": "Default response"
+                    }
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "See AsyncAPI example",
+        "url": "https://mermade.github.io/shins/asyncapi.html"
+    },
+   
+    "security": []
 }
