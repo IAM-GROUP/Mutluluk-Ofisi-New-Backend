@@ -55,7 +55,7 @@ export class AboutDal implements AboutRepository {
     async update(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const about = await About.findByIdAndUpdate(id, { image, title, text, description, $push: { html, icon } })
+                const about = await About.findByIdAndUpdate(id, { image, title, text, description,  html, icon  })
                 about?.save()
                 resolve({ message: "Success update" })
             }
