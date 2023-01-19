@@ -38,7 +38,7 @@ export class AboutService {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             return {
-                message: isValidId.message,
+           
                 about: this.aboutDataAcess.delete(id)
             }
         }
@@ -52,7 +52,7 @@ export class AboutService {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             return {
-                message: isValidId.message,
+                
                 update: this.aboutDataAcess.update(id, image, title, text, description, html, icon)
             }
         }
