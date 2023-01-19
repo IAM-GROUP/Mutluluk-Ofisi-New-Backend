@@ -20,8 +20,6 @@ export class AboutDal implements AboutRepository {
         })
     }
     async create(image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
-
-
         return new Promise(async (resolve, reject) => {
             try {
                 const about = await About.create({ image, title, text, description, html, icon })
@@ -44,7 +42,6 @@ export class AboutDal implements AboutRepository {
         })
     }
     async findAll(): Promise<IAbout[]> {
-
         return new Promise(async (resolve, reject) => {
             try {
                 const about = await About.find()
