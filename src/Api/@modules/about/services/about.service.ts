@@ -39,7 +39,7 @@ export class AboutService {
         if (isValidId.isValid === true) {
             return {
            
-                about: this.aboutDataAcess.delete(id)
+                delete: this.aboutDataAcess.delete(id)
             }
         }
         else {

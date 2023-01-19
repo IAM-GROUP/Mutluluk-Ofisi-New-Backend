@@ -41,14 +41,14 @@ export class AboutController {
             }
         }
     }
-    static updateAbout:Handler =  async (req,res) => {
+    static updateAbout: Handler = async (req, res) => {
         const aboutService = new AboutService()
-        const {id,html, title, description, text, context} = req.body
+        const { id, html, title, description, text, context } = req.body
         const icons: [{ src: string, context: string }] = [{ src: "", context: "" }]
         const { image, icon } = req.files as any | any[]
         icons.push({ src: icon[0].path, context })
         icons.shift()
-        
+
         //test 
         const encIcon: any = security.encrypt(icons)
         const encHtml: any = security.encrypt(html)
@@ -58,7 +58,7 @@ export class AboutController {
             })
         }
         else {
-            const about =  aboutService.aboutUpdate(id,image[0].path, title, text, description, encHtml, encIcon)
+            const about = aboutService.aboutUpdate(id, image[0].path, title, text, description, encHtml, encIcon)
             if (about.message) {
                 res.json({
                     error: about.message
@@ -70,5 +70,22 @@ export class AboutController {
                 })
             }
         }
+    }
+    static deleteAbout: Handler = async (req, res) => {
+        const aboutService = new AboutService()
+        const { id } = req.body
+
+        const about = await aboutService.aboutDelete(id)
+        if (about.message) {
+            res.json({
+                error: about.message
+            })
+        }
+        else {
+            res.json({
+                message: (await about.delete)?.message
+            })
+        }
+
     }
 }
