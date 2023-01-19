@@ -41,11 +41,5 @@ export class AboutController {
                 })
             }
         }
-
-
-
-
-
-
     }
 }
