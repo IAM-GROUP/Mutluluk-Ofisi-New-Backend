@@ -12,3 +12,6 @@ export const getAbout = app.get('/about-us', about.AboutController.getAbout)
 
 //* Post
 export const postAbout = app.post('/about-us', middleware.multiuploads, about.AboutController.createAbout)
+
+//? Update
+export const putAbout = app.put('/about-us',middleware.multiuploads,about.AboutController.updateAbout)
