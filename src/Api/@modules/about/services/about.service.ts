@@ -49,11 +49,21 @@ export class AboutService {
         }
     }
     aboutUpdate(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]) {
+
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
-            return {
+            const decryptHtml = security.decrypt(html)
+            const decryptIcon = security.decrypt(icon)
+            if (decryptHtml || decryptIcon) {
+                return {
                 
-                update: this.aboutDataAcess.update(id, image, title, text, description, html, icon)
+                    update: this.aboutDataAcess.update(id, image, title, text, description, JSON.parse(decryptHtml), decryptIcon)
+                }
+            }
+            else {
+                return {
+                    message: "html or icon prop empty"
+                }
             }
         }
         else {

@@ -48,6 +48,7 @@ export class AboutController {
         const { image, icon } = req.files as any | any[]
         icons.push({ src: icon[0].path, context })
         icons.shift()
+        
         //test 
         const encIcon: any = security.encrypt(icons)
         const encHtml: any = security.encrypt(html)
@@ -57,7 +58,7 @@ export class AboutController {
             })
         }
         else {
-            const about = await aboutService.aboutUpdate(id,image[0].path, title, text, description, encHtml, encIcon)
+            const about =  aboutService.aboutUpdate(id,image[0].path, title, text, description, encHtml, encIcon)
             if (about.message) {
                 res.json({
                     error: about.message
