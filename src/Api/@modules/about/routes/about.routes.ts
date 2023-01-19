@@ -15,3 +15,6 @@ export const postAbout = app.post('/about-us', middleware.multiuploads, about.Ab
 
 //? Update
 export const putAbout = app.put('/about-us',middleware.multiuploads,about.AboutController.updateAbout)
+
+//! Delete
+export const deleteAbout = app.delete('/about-us',about.AboutController.deleteAbout)
