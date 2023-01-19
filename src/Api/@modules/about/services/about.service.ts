@@ -62,11 +62,10 @@ export class AboutService {
             }
         }
     }
-    aboutCreate(image: string, title: string, text: string, description: string, html: { iv: string; encryptedData: string; }, icon: { iv: string; encryptedData: string; }) {
+    async aboutCreate(image: string, title: string, text: string, description: string, html: { iv: string; encryptedData: string; }, icon: { iv: string; encryptedData: string; }) {
         const decryptHtml = security.decrypt(html)
         const decryptIcon = security.decrypt(icon)
-        //validation.isImageExists(image)
-            console.log(JSON.parse(decryptHtml))
+       
         if (decryptHtml || decryptIcon) {
             return {
                 create: this.aboutDataAcess.create(image, title, text, description, JSON.parse(decryptHtml), decryptIcon),
