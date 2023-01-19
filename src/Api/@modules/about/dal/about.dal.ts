@@ -20,11 +20,11 @@ export class AboutDal implements AboutRepository {
         })
     }
     async create(image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
-        const about = await About.create({ image, title, text, description,html,icon})
 
-        return new Promise((resolve, reject) => {
+
+        return new Promise(async (resolve, reject) => {
             try {
-                
+                const about = await About.create({ image, title, text, description, html, icon })
                 resolve({ message: "Success created" })
             } catch (err) {
                 reject({ message: "Error " + err })
@@ -32,9 +32,10 @@ export class AboutDal implements AboutRepository {
         })
     }
     async find(id: string): Promise<IAbout> {
-        const about = await About.findById(id)
-        return new Promise((resolve, reject) => {
+
+        return new Promise(async (resolve, reject) => {
             try {
+                const about = await About.findById(id)
                 resolve(about as IAbout)
             }
             catch (err) {
@@ -43,9 +44,10 @@ export class AboutDal implements AboutRepository {
         })
     }
     async findAll(): Promise<IAbout[]> {
-        const about = await About.find()
-        return new Promise((resolve, reject) => {
+
+        return new Promise(async (resolve, reject) => {
             try {
+                const about = await About.find()
                 resolve(about as IAbout[])
             }
             catch (err) {
@@ -54,9 +56,9 @@ export class AboutDal implements AboutRepository {
         })
     }
     async update(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]): Promise<{ message: string }> {
-        const about = await About.findByIdAndUpdate(id, { image, title, text, description, $push: { html, icon } })
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             try {
+                const about = await About.findByIdAndUpdate(id, { image, title, text, description, $push: { html, icon } })
                 about?.save()
                 resolve({ message: "Success update" })
             }
