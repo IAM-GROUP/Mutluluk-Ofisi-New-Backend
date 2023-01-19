@@ -74,8 +74,10 @@ export class AboutController {
     static deleteAbout: Handler = async (req, res) => {
         const aboutService = new AboutService()
         const { id } = req.body
+        console.log( id)
+        console.log(req.body)
 
-        const about = await aboutService.aboutDelete(id)
+        const about = aboutService.aboutDelete(id)
         if (about.message) {
             res.json({
                 error: about.message
