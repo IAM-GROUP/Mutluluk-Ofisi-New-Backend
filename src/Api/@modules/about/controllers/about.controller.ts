@@ -11,6 +11,7 @@ export class AboutController {
         res.json({ about })
     }
     static createAbout: Handler = async (req, res) => {
+        
         const aboutService = new AboutService()
         const icons:[{src:string,context:string}] = [{src:"",context:""}] 
         const { html, title, description, text, context } = req.body
@@ -20,11 +21,19 @@ export class AboutController {
         icons.push({ src: icon[0].path, context })
         icons.shift()
         //test 
-        const encIcon = security.encrypt(icons)
-        const encHtml = security.encrypt(html)
+        const encIcon:any = security.encrypt(icons)
+        const encHtml:any = security.encrypt(html)
+        if(encIcon.Error || encHtml.Error) {
+            res.json({
+                error:encIcon.Error || encHtml.Error
+            })
+        }
+        else {
+            const about =  await aboutService.aboutCreate(image[0].path,title,text,description,encHtml,encIcon)
+            console.log(about)
+        }
         
-        const about =  aboutService.aboutCreate(image[0].path,title,text,description,encHtml,encIcon)
-        console.log(about)
+        
 
 
 
