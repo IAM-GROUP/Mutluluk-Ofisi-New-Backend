@@ -50,15 +50,15 @@ export class AboutController {
         icons.shift()
 
         //test 
-        const encIcon: any = security.encrypt(icons)
-        const encHtml: any = security.encrypt(html)
-        if (encIcon.Error || encHtml.Error) {
+         const encIcon: any = security.encrypt(icons)
+        /* const encHtml: any = security.encrypt(html)  */
+        if (encIcon.Error || html.Error) {
             res.json({
-                error: encIcon.Error || encHtml.Error
+                error: encIcon.Error || html.Error
             })
         }
         else {
-            const about = aboutService.aboutUpdate(id, image[0].path, title, text, description, encHtml, encIcon)
+            const about = aboutService.aboutUpdate(id, image[0].path, title, text, description, html, encIcon)
             if (about.message) {
                 res.json({
                     error: about.message

@@ -22,7 +22,7 @@
     "dev": "tsc-watch --onSuccess",
     "start:prod": "NODE_ENV=production node ./dist/server.js",
     "start:dev": "NODE_ENV=development node ./dist/server.js",
-    "start:test": "NODE_ENV=test jest"
+    "start:test": "NODE_ENV=test jest --forceExit"
   },
   "type": "commonjs",
   "dependencies": {

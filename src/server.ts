@@ -25,7 +25,10 @@ import swaggerJson from './swagger.json'
 app.use('/', aboutMainRoutes)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
+mongoConnection()
+if (process.env.NODE_ENV !== 'test') {
+    server.listen(3000, () => {
 
-server.listen(3000, () => {
-    mongoConnection()
-})
+        
+    })
+}
