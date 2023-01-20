@@ -78,7 +78,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "description": "example : { \"title\":\"string\",\"html\":\"<p>test</p>\"}\nhtml object must be encrypted and sent in JSON format"
+                        "description": "example : { \"title\":\"string\",\"html\":\"test\"}\nhtml object must be encrypted and sent in JSON format"
                     },
                     {
                         "name": "text",
@@ -157,7 +157,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "description": "example : { \"title\":\"string\",\"html\":\"<p>test</p>\"}\nhtml object must be encrypted and sent in JSON format"
+                        "description": "example : { \"title\":\"string\",\"html\":\"test\"}\nhtml object must be encrypted and sent in JSON format"
                     },
                     {
                         "name": "text",

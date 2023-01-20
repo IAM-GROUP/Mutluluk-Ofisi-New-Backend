@@ -5,6 +5,8 @@ import { AboutService } from '../services/about.service'
 //! Security 
 import { security } from '../../../security/security'
 
+
+
 export class AboutController {
     static getAbout: Handler = async (req, res) => {
         const about = await new AboutService().aboutFindAll()
@@ -15,13 +17,15 @@ export class AboutController {
         const aboutService = new AboutService()
         const icons: [{ src: string, context: string }] = [{ src: "", context: "" }]
         const { html, title, description, text, context } = req.body
-
+        
         const { image, icon } = req.files as any | any[]
         icons.push({ src: icon[0].path, context })
         icons.shift()
         //test 
         const encIcon: any = security.encrypt(icons)
-        /* const encHtml: any = security.encrypt(html) */
+      
+        
+    
         if (encIcon.Error || html.Error) {
             res.json({
                 error: encIcon.Error || html.Error
@@ -50,7 +54,7 @@ export class AboutController {
         icons.shift()
 
         //test 
-         const encIcon: any = security.encrypt(icons)
+        const encIcon: any = security.encrypt(icons)
         /* const encHtml: any = security.encrypt(html)  */
         if (encIcon.Error || html.Error) {
             res.json({

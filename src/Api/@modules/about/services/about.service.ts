@@ -1,3 +1,4 @@
+import _eval from 'eval'
 //! Dal
 import { AboutDal } from '../dal/about.dal'
 
@@ -49,15 +50,17 @@ export class AboutService {
         }
     }
     aboutUpdate(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]) {
-
+        const result: any = _eval(`const obj=${html};exports.obj=obj`)
+        const _html = result.obj
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
-            const decryptHtml = security.decrypt(html)
+            const decryptHtml = security.decrypt(_html)
             const decryptIcon = security.decrypt(icon)
             if (decryptHtml || decryptIcon) {
-                return {
                 
-                    update: this.aboutDataAcess.update(id, image, title, text, description, JSON.parse(decryptHtml), decryptIcon)
+                return {
+                   
+                    update: this.aboutDataAcess.update(id, image, title, text, description, decryptHtml, decryptIcon)
                 }
             }
             else {
@@ -73,12 +76,13 @@ export class AboutService {
         }
     }
     async aboutCreate(image: string, title: string, text: string, description: string, html: { iv: string; encryptedData: string; }, icon: { iv: string; encryptedData: string; }) {
-        const decryptHtml = security.decrypt(html)
+        const result: any = _eval(`const obj=${html};exports.obj=obj`)
+        const _html = result.obj
+        const decryptHtml = security.decrypt(_html)
         const decryptIcon = security.decrypt(icon)
-       
         if (decryptHtml || decryptIcon) {
             return {
-                create: this.aboutDataAcess.create(image, title, text, description, JSON.parse(decryptHtml), decryptIcon),
+                create: this.aboutDataAcess.create(image, title, text, description, decryptHtml, decryptIcon),
             }
         }
         else {
