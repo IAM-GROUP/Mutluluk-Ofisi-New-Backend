@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeEach } from '@jest/globals'
+import { describe, it, beforeEach } from '@jest/globals'
 import request from 'supertest'
 
 
@@ -22,7 +22,7 @@ describe('About Us Api Testing...', () => {
             .get('/api/about-us')
             .expect('Content-Type', /json/)
             .expect(200)
-            .end((err, res) => {
+            .end((err) => {
                 if (err) throw err
 
             })
