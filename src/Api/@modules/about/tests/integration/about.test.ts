@@ -2,8 +2,8 @@ import { describe, it, beforeEach } from '@jest/globals'
 import request from 'supertest'
 
 
-import { server } from '../../../../server'
-import { Dotenv } from '../../../../core/config/config'
+import { server } from '../../../../../server'
+import { Dotenv } from '../../../../../core/config/config'
 
 
 Dotenv.dotenvConfig()
