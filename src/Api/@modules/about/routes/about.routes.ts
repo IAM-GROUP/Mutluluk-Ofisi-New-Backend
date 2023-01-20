@@ -2,7 +2,7 @@ import express from 'express'
 const app = express.Router()
 
 //! Middleware
-import { middleware } from '../middlewares/middlewares'
+import { middleware } from '../../../middlewares/middlewares'
 
 //! Controller
 import { about } from '../controllers/controllers'

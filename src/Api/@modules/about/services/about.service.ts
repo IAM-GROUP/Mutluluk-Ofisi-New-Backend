@@ -2,10 +2,10 @@
 import { AboutDal } from '../dal/about.dal'
 
 //? Validation
-import { validation } from '../validations/validations'
+import { validation } from '../../../validations/validations'
 
 //* Security
-import { security } from '../security/security'
+import { security } from '../../../security/security'
 export class AboutService {
     private aboutDataAcess: AboutDal = new AboutDal()
     constructor(private id?: string, private image?: string, private title?: string, private text?: string, private description?: string, private html?: [{ title: string, context: string }], private icon?: [{ src: string, context: string }]) {

@@ -3,7 +3,7 @@ import { Handler } from 'express'
 import { AboutService } from '../services/about.service'
 
 //! Security 
-import { security } from '../security/security'
+import { security } from '../../../security/security'
 
 export class AboutController {
     static getAbout: Handler = async (req, res) => {
