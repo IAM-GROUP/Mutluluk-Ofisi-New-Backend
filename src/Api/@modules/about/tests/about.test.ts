@@ -1,4 +1,4 @@
-import { describe, test, expect, it, beforeEach, afterEach } from '@jest/globals'
+import { describe, expect, it, beforeEach } from '@jest/globals'
 import request from 'supertest'
 
 
@@ -26,6 +26,8 @@ describe('About Us Api Testing...', () => {
                 if (err) throw err
 
             })
+            .expect('Content-Type', /json/)
+            .expect(200)
     })
     it('Post About Us', () => {
         request(server)
@@ -40,6 +42,9 @@ describe('About Us Api Testing...', () => {
             .on('error', (err) => {
                 throw err
             })
+            .expect('Content-Type', /json/)
+            .expect(200)
+
     })
     it('Put About Us', () => {
         request(server)
@@ -55,6 +60,8 @@ describe('About Us Api Testing...', () => {
             .on('error', (err) => {
                 throw err
             })
+            .expect('Content-Type', /json/)
+            .expect(200)
     })
     it('Delete About Us', () => {
         request(server)
@@ -63,6 +70,8 @@ describe('About Us Api Testing...', () => {
             .on('error', (err) => {
                 throw err
             })
+            .expect('Content-Type', /json/)
+            .expect(200)
     })
 
 })
