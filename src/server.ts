@@ -4,7 +4,7 @@ import swaggerUI from 'swagger-ui-express'
 import bodyParser from 'body-parser'
 
 const app = express()
-const server = http.createServer(app)
+export const server = http.createServer(app)
 
 
 //! Database
