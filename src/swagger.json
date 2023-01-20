@@ -193,7 +193,8 @@
                         "required": false,
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "description":"id must be JSON sent" 
                     }
                 ],
                 "operationId": "/api/about-us",
