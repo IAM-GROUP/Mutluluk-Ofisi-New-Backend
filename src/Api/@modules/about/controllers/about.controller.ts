@@ -2,15 +2,15 @@ import { Handler } from 'express'
 //! Service
 import { AboutService } from '../services/about.service'
 
-//! Security 
-import { security } from '../../../security/security'
-
-
-
 export class AboutController {
     static getAbout: Handler = async (req, res) => {
         const about = await new AboutService().aboutFindAll()
         res.json({ about })
+    }
+    static getAboutId: Handler = async (req, res) => {
+        const { id } = req.body
+        const about = new AboutService().aboutFind(id)
+        res.json({ about: about.about })
     }
     static createAbout: Handler = async (req, res) => {
 
@@ -21,7 +21,7 @@ export class AboutController {
         const { image, icon } = req.files as any | any[]
         icons.push({ src: icon[0].path, context })
         icons.shift()
-        
+
         if (html.Error) {
             res.json({
                 error: html.Error
@@ -50,7 +50,7 @@ export class AboutController {
         icons.shift()
         if (html.Error) {
             res.json({
-                error:  html.Error
+                error: html.Error
             })
         }
         else {
