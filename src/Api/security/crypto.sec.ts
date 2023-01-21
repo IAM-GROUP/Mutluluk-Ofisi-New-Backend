@@ -8,7 +8,7 @@ Dotenv.dotenvConfig()
 export const encrypt = (text: any | any[]) => {
     const cryptr = new Crypto(process.env.SECRET_KEY as string)
     try {
-        return cryptr.encrypt(text)
+        return cryptr.encrypt(JSON.stringify(text))
     }
     catch (err) {
         return {
@@ -21,7 +21,7 @@ export const encrypt = (text: any | any[]) => {
 export const decrypt = (text: any | any[]) => {
     try {
         const cryptr = new Crypto(process.env.SECRET_KEY as string)
-        return cryptr.decrypt(text)
+        return JSON.parse(cryptr.decrypt(text))
         
     } catch (err) {
         return {
