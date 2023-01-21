@@ -39,7 +39,7 @@ export class AboutService {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             return {
-           
+
                 delete: this.aboutDataAcess.delete(id)
             }
         }
@@ -49,18 +49,13 @@ export class AboutService {
             }
         }
     }
-    aboutUpdate(id: string, image: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }]) {
-        const result: any = _eval(`const obj=${html};exports.obj=obj`)
-        const _html = result.obj
+    aboutUpdate(id: string, image: string, title: string, text: string, description: string, html: string, icon: [{ src: string; context: string; }]) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
-            const decryptHtml = security.decrypt(_html)
-            const decryptIcon = security.decrypt(icon)
-            if (decryptHtml || decryptIcon) {
-                
+            const decryptHtml = security.decrypt(html)
+            if (decryptHtml) {
                 return {
-                   
-                    update: this.aboutDataAcess.update(id, image, title, text, description, decryptHtml, decryptIcon)
+                    update: this.aboutDataAcess.update(id, image, title, text, description, decryptHtml, icon)
                 }
             }
             else {
@@ -75,14 +70,11 @@ export class AboutService {
             }
         }
     }
-    async aboutCreate(image: string, title: string, text: string, description: string, html: { iv: string; encryptedData: string; }, icon: { iv: string; encryptedData: string; }) {
-        const result: any = _eval(`const obj=${html};exports.obj=obj`)
-        const _html = result.obj
-        const decryptHtml = security.decrypt(_html)
-        const decryptIcon = security.decrypt(icon)
-        if (decryptHtml || decryptIcon) {
+    async aboutCreate(image: string, title: string, text: string, description: string, html: string, icon: [{ src: string, context: string }]) {
+        const decryptHtml = security.decrypt(html)
+        if (decryptHtml) {
             return {
-                create: this.aboutDataAcess.create(image, title, text, description, decryptHtml, decryptIcon),
+                create: this.aboutDataAcess.create(image, title, text, description, decryptHtml, icon),
             }
         }
         else {

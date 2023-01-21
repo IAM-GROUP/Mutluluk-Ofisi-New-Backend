@@ -17,22 +17,18 @@ export class AboutController {
         const aboutService = new AboutService()
         const icons: [{ src: string, context: string }] = [{ src: "", context: "" }]
         const { html, title, description, text, context } = req.body
-        
+
         const { image, icon } = req.files as any | any[]
         icons.push({ src: icon[0].path, context })
         icons.shift()
-        //test 
-        const encIcon: any = security.encrypt(icons)
-      
         
-    
-        if (encIcon.Error || html.Error) {
+        if (html.Error) {
             res.json({
-                error: encIcon.Error || html.Error
+                error: html.Error
             })
         }
         else {
-            const about = await aboutService.aboutCreate(image[0].path, title, text, description, html, encIcon)
+            const about = await aboutService.aboutCreate(image[0].path, title, text, description, html, icons)
             if (about.message) {
                 res.json({
                     error: about.message
@@ -52,17 +48,13 @@ export class AboutController {
         const { image, icon } = req.files as any | any[]
         icons.push({ src: icon[0].path, context })
         icons.shift()
-
-        //test 
-        const encIcon: any = security.encrypt(icons)
-        /* const encHtml: any = security.encrypt(html)  */
-        if (encIcon.Error || html.Error) {
+        if (html.Error) {
             res.json({
-                error: encIcon.Error || html.Error
+                error:  html.Error
             })
         }
         else {
-            const about = aboutService.aboutUpdate(id, image[0].path, title, text, description, html, encIcon)
+            const about = aboutService.aboutUpdate(id, image[0].path, title, text, description, html, icons)
             if (about.message) {
                 res.json({
                     error: about.message

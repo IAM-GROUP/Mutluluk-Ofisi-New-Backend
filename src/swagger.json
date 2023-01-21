@@ -78,7 +78,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "description": "example : { \"title\":\"string\",\"html\":\"test\"}\nhtml object must be encrypted and sent in JSON format"
+                        "description": "example : a667d593f9e148d5667d0731747d3644c2e2391021b86bdb9d84b1706480403dae3b41de32db13f9e245311d0e458f59325be4eb5d5da72e229857469e043d836ef4cded9e561ff3d798029e15d1290480852ae867be30d4c557c02f00e871e38e276a23bac80647c8ed0288b642ff351371fad83e31f2e63f1be6724ee1039639437da6376fceb9a244be367ce7b5 \nhtml object must be encrypted"
                     },
                     {
                         "name": "text",
@@ -157,7 +157,7 @@
                         "schema": {
                             "type": "string"
                         },
-                        "description": "example : { \"title\":\"string\",\"html\":\"test\"}\nhtml object must be encrypted and sent in JSON format"
+                        "description": "example : a667d593f9e148d5667d0731747d3644c2e2391021b86bdb9d84b1706480403dae3b41de32db13f9e245311d0e458f59325be4eb5d5da72e229857469e043d836ef4cded9e561ff3d798029e15d1290480852ae867be30d4c557c02f00e871e38e276a23bac80647c8ed0288b642ff351371fad83e31f2e63f1be6724ee1039639437da6376fceb9a244be367ce7b5\nhtml object must be encrypted and sent in JSON format"
                     },
                     {
                         "name": "text",
