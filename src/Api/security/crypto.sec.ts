@@ -1,42 +1,32 @@
-import { createCipheriv, createDecipheriv, randomBytes } from 'crypto'
+import Crypto from 'cryptr'
 
-const key = randomBytes(32);
-const algorithm = 'aes-256-cbc';
-const iv = randomBytes(16);
+//! Config
+import { Dotenv } from '../../core/config/config'
+
+Dotenv.dotenvConfig()
 
 export const encrypt = (text: any | any[]) => {
+    const cryptr = new Crypto(process.env.SECRET_KEY as string)
     try {
-        let cipher = createCipheriv(algorithm, Buffer.from(key), iv);
-        let encrypted = cipher.update(JSON.stringify(text));
-        encrypted = Buffer.concat([encrypted, cipher.final()]);
-        return {
-            iv: iv.toString('hex'),
-            encryptedData: encrypted.toString('hex')
-        };
+        return cryptr.encrypt(text)
     }
-    catch(err) {
+    catch (err) {
         return {
-            Error:err
+            Error: err
         }
     }
-    
+
 }
 
 export const decrypt = (text: any | any[]) => {
     try {
-        let iv = Buffer.from(text.iv, 'hex');
-        let encryptedText = Buffer.from(text.encryptedData, 'hex');
-    
-        let decipher = createDecipheriv(algorithm, Buffer.from(key), iv);
-    
-        let decrypted = decipher.update(encryptedText);
-        decrypted = Buffer.concat([decrypted, decipher.final()]);
-    
-        return JSON.parse(decrypted.toString());
+        const cryptr = new Crypto(process.env.SECRET_KEY as string)
+        return cryptr.decrypt(text)
+        
     } catch (err) {
         return {
-            Error:err
+            Error: err
         }
     }
-   
+
 }
