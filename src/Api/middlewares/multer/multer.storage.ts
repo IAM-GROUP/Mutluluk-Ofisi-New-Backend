@@ -2,19 +2,19 @@ import multer from 'multer'
 import { extname } from 'path'
 
 export const aboutStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
+    destination: (_, _file, cb) => {
         cb(null, process.cwd() + `/src/Api/public/about`)
     },
-    filename: (req, file, cb) => {
+    filename: (_, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
 
 export const aboutMainStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
+    destination: (_, _file, cb) => {
         cb(null, process.cwd() + '/src/Api/public/aboutMain')
     },
-    filename: (req, file, cb) => {
+    filename: (_, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
