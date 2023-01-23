@@ -11,7 +11,8 @@ export const server = http.createServer(app)
 import { mongoConnection } from './core/data-source/mongo/connection'
 
 //! Routes
-import { aboutMainRoutes } from './Api/@modules/about/routes'
+import { aboutRoutes } from './Api/@modules/about/routes'
+import { aboutMainRoutes } from './Api/@modules/aboutMain/routes'
 
 
 
@@ -22,13 +23,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //! Swagger
 import swaggerJson from './swagger.json'
 
-app.use('/', aboutMainRoutes)
+app.use('/', aboutRoutes, aboutMainRoutes)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
 mongoConnection()
 if (process.env.NODE_ENV !== 'test') {
     server.listen(3000, () => {
 
-        
+
     })
 }
