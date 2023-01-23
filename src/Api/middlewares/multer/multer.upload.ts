@@ -13,13 +13,5 @@ export const aboutUpload = multer({
 
 export const aboutMainUpload = multer({
     storage: aboutMainStorage,
-    fileFilter(req, file, cb) {
-        if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
-            cb(null, true)
-        }
-        else {
-            cb(null, false);
-            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'))
-        }
-    }
+    fileFilter:(_,file,cb) => aboutMainUploadFilter({_,file,cb})
 })
