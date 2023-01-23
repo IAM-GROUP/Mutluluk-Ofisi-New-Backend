@@ -8,7 +8,7 @@ import { aboutMainUploadFilter, aboutUploadFilter } from './multer.filter'
 
 export const aboutUpload = multer({
     storage: aboutStorage,
-    fileFilter: () => aboutUploadFilter
+    fileFilter: (_,file,cb) => aboutUploadFilter({_,file,cb})
 })
 
 export const aboutMainUpload = multer({
