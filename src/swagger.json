@@ -29,7 +29,10 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "tags":[
+                    "About"
+                ]
             },
             "post": {
                 "summary": "",
@@ -102,7 +105,10 @@
                     "default": {
                         "description": "Default response"
                     }
-                }
+                },
+                "tags":[
+                    "About"
+                ]
             },
             "put": {
                 "summary": "",
@@ -181,7 +187,10 @@
                     "default": {
                         "description": "Default response"
                     }
-                }
+                },
+                "tags":[
+                    "About"
+                ]
             },
             "delete": {
                 "summary": "",
@@ -203,7 +212,10 @@
                         "description": "Default response"
                     }
                 }
-            }
+            },
+            "tags":[
+                "About"
+            ]
         },
         "/api/about-us/id": {
             "get": {
@@ -226,7 +238,10 @@
                         "description": "OK"
                     }
                 }
-            }
+            },
+            "tags":[
+                "About"
+            ]
         }
     },
     "security": []
