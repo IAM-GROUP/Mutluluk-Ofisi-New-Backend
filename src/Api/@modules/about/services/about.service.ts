@@ -1,4 +1,3 @@
-import _eval from 'eval'
 //! Dal
 import { AboutDal } from '../dal/about.dal'
 
