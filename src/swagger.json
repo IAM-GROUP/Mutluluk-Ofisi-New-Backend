@@ -41,7 +41,7 @@
                     }
                 },
                 "tags":[
-                    "About"
+                    "About Main"
                 ]
             }
         },
@@ -57,7 +57,7 @@
                     }
                 },
                 "tags":[
-                    "About"
+                    "About Main"
                 ]
             },
             "post": {
@@ -133,7 +133,7 @@
                     }
                 },
                 "tags":[
-                    "About"
+                    "About Main"
                 ]
             },
             "put": {
@@ -215,7 +215,7 @@
                     }
                 },
                 "tags":[
-                    "About"
+                    "About Main"
                 ]
             },
             "delete": {
@@ -239,7 +239,7 @@
                     }
                 },
                 "tags":[
-                    "About"
+                    "About Main"
                 ]
             }
         }
