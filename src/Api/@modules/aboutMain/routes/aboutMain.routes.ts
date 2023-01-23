@@ -8,14 +8,14 @@ import { middleware } from '../../../middlewares/middlewares'
 import { aboutMain } from '../controllers/controllers'
 
 //? Get
-export const getAbout = app.get('/about-us', aboutMain.AboutMainController.getAboutMain)
-export const getAboutId = app.get('/about-us/id',aboutMain.AboutMainController.getAboutMainId)
+export const getAbout = app.get('/about', aboutMain.AboutMainController.getAboutMain)
+export const getAboutId = app.get('/about/id',aboutMain.AboutMainController.getAboutMainId)
 
 //* Post
-export const postAbout = app.post('/about-us', middleware.aboutMainMultiUploads, aboutMain.AboutMainController.createAboutMain)
+export const postAbout = app.post('/about', middleware.aboutMainMultiUploads, aboutMain.AboutMainController.createAboutMain)
 
 //? Update
-export const putAbout = app.put('/about-us',middleware.aboutMainMultiUploads,aboutMain.AboutMainController.updateAboutMain)
+export const putAbout = app.put('/about',middleware.aboutMainMultiUploads,aboutMain.AboutMainController.updateAboutMain)
 
 //! Delete
-export const deleteAbout = app.delete('/about-us',aboutMain.AboutMainController.deleteAboutMain)
+export const deleteAbout = app.delete('/about',aboutMain.AboutMainController.deleteAboutMain)
