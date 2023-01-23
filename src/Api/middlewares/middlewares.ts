@@ -1,1 +1,1 @@
-export * as middleware from './multer.middleware'
+export * as middleware from './multer/multer.middleware'
