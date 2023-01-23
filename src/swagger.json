@@ -229,10 +229,5 @@
             }
         }
     },
-    "externalDocs": {
-        "description": "See AsyncAPI example",
-        "url": "https://mermade.github.io/shins/asyncapi.html"
-    },
-   
     "security": []
 }
