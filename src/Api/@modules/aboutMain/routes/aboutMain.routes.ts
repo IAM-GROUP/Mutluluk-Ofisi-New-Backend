@@ -12,10 +12,10 @@ export const getAbout = app.get('/about-us', aboutMain.AboutMainController.getAb
 export const getAboutId = app.get('/about-us/id',aboutMain.AboutMainController.getAboutMainId)
 
 //* Post
-export const postAbout = app.post('/about-us', middleware.aboutMultiUploads, aboutMain.AboutMainController.createAboutMain)
+export const postAbout = app.post('/about-us', middleware.aboutMainMultiUploads, aboutMain.AboutMainController.createAboutMain)
 
 //? Update
-export const putAbout = app.put('/about-us',middleware.aboutMultiUploads,aboutMain.AboutMainController.updateAboutMain)
+export const putAbout = app.put('/about-us',middleware.aboutMainMultiUploads,aboutMain.AboutMainController.updateAboutMain)
 
 //! Delete
 export const deleteAbout = app.delete('/about-us',aboutMain.AboutMainController.deleteAboutMain)
