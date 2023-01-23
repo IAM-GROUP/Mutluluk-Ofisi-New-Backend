@@ -79,7 +79,7 @@ export class AboutService {
         }
         else {
             return {
-                message: "html or icon prop empty"
+                message: "html prop empty"
             }
         }
 
