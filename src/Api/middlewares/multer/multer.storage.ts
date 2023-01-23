@@ -6,7 +6,15 @@ export const aboutStorage = multer.diskStorage({
         cb(null, process.cwd() + `/src/Api/public/about`)
     },
     filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
+    }
+})
 
+export const aboutMainStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, process.cwd() + '/src/Api/public/aboutMain')
+    },
+    filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
