@@ -29,6 +29,9 @@ describe('About Us Api Testing...', () => {
             .expect('Content-Type', /json/)
             .expect(200)
     })
+    it("Get Find About Context",()=>{
+        request(server)
+    })
     it('Post About Us', () => {
         request(server)
             .post('/api/about-us')
