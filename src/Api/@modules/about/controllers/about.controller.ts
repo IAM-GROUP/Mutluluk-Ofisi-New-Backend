@@ -10,7 +10,7 @@ export class AboutController {
     static getAboutId: Handler = async (req, res) => {
         const { id } = req.body
         const about = new AboutService().aboutFind(id)
-        res.json({ about: about.about })
+        res.json({ about: await about.about })
     }
     static createAbout: Handler = async (req, res) => {
 
