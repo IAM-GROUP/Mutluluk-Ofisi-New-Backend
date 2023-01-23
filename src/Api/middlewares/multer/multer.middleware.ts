@@ -1,4 +1,4 @@
-import { aboutUpload, aboutMainUpload } from './multer.upload'
+import { aboutUpload, aboutMainUpload } from './config/multer.upload'
 
 
 

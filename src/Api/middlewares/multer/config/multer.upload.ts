@@ -1,7 +1,7 @@
 import multer from 'multer'
 
 //! Storage
-import { aboutStorage, aboutMainStorage } from '../multer/multer.storage'
+import { aboutStorage, aboutMainStorage } from '../config/multer.storage'
 
 //! Filter
 import { aboutMainUploadFilter, aboutUploadFilter } from './multer.filter'
