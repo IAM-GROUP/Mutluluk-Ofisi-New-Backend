@@ -1,248 +1,388 @@
 {
-    "openapi": "3.0.0",
-    "servers": [
-        {
-            "url": "http://localhost:3000"
-        }
-    ],
-    "info": {
-        "description": "Happy Backend Project",
-        "version": "1.0.0",
-        "title": "Happy Backend",
-        "termsOfService": "http://swagger.io/terms/",
-        "contact": {
-            "email": "apiteam@swagger.io"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        }
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "info": {
+    "description": "Happy Backend Project",
+    "version": "1.0.0",
+    "title": "Happy Backend",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
     },
-    "paths": {
-        "/api/about-us/id": {
-            "get": {
-                "summary": "",
-                "description": "Get Find ID About Us Context",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "id must be JSON sent"
-                    }
-                ],
-                "operationId": "/api/about-us/id",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "tags":[
-                    "About Main"
-                ]
-            }
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "paths": {
+    "/api/about-us/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Find ID About Us Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/about-us/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
         },
-        "/api/about-us": {
-            "get": {
-                "summary": "",
-                "description": "Get All About Us Context",
-                "parameters": [],
-                "operationId": "/api/about-us",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "tags":[
-                    "About Main"
-                ]
-            },
-            "post": {
-                "summary": "",
-                "description": "Create About Us",
-                "parameters": [
-                    {
-                        "name": "Image",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "Image File"
-                    },
-                    {
-                        "name": "Icon",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "enum": []
-                        },
-                        "description": "Image File"
-                    },
-                    {
-                        "name": "title",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "description",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "pattern": ""
-                    },
-                    {
-                        "name": "html",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "example : a667d593f9e148d5667d0731747d3644c2e2391021b86bdb9d84b1706480403dae3b41de32db13f9e245311d0e458f59325be4eb5d5da72e229857469e043d836ef4cded9e561ff3d798029e15d1290480852ae867be30d4c557c02f00e871e38e276a23bac80647c8ed0288b642ff351371fad83e31f2e63f1be6724ee1039639437da6376fceb9a244be367ce7b5 \nhtml object must be encrypted"
-                    },
-                    {
-                        "name": "text",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "context",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "operationId": "/api/about-us",
-                "responses": {
-                    "default": {
-                        "description": "Default response"
-                    }
-                },
-                "tags":[
-                    "About Main"
-                ]
-            },
-            "put": {
-                "summary": "",
-                "description": "Update About Us",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "Image",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "Image Fİle"
-                    },
-                    {
-                        "name": "Icon",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "Image File"
-                    },
-                    {
-                        "name": "title",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "description",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "html",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "example : a667d593f9e148d5667d0731747d3644c2e2391021b86bdb9d84b1706480403dae3b41de32db13f9e245311d0e458f59325be4eb5d5da72e229857469e043d836ef4cded9e561ff3d798029e15d1290480852ae867be30d4c557c02f00e871e38e276a23bac80647c8ed0288b642ff351371fad83e31f2e63f1be6724ee1039639437da6376fceb9a244be367ce7b5\nhtml object must be encrypted and sent in JSON format"
-                    },
-                    {
-                        "name": "text",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "context",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "operationId": "/api/about-us",
-                "responses": {
-                    "default": {
-                        "description": "Default response"
-                    }
-                },
-                "tags":[
-                    "About Main"
-                ]
-            },
-            "delete": {
-                "summary": "",
-                "description": "Delete About Us",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description":"id must be JSON sent" 
-                    }
-                ],
-                "operationId": "/api/about-us",
-                "responses": {
-                    "default": {
-                        "description": "Default response"
-                    }
-                },
-                "tags":[
-                    "About Main"
-                ]
-            }
-        }
+        "tags": ["About Main"]
+      }
     },
-    "security": []
+    "/api/about-us": {
+      "get": {
+        "summary": "",
+        "description": "Get All About Us Context",
+        "parameters": [],
+        "operationId": "/api/about-us",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["About Main"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create About Us",
+        "parameters": [
+          {
+            "name": "Image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Image File"
+          },
+          {
+            "name": "Icon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": []
+            },
+            "description": "Image File"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "pattern": ""
+          },
+          {
+            "name": "html",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "example : a667d593f9e148d5667d0731747d3644c2e2391021b86bdb9d84b1706480403dae3b41de32db13f9e245311d0e458f59325be4eb5d5da72e229857469e043d836ef4cded9e561ff3d798029e15d1290480852ae867be30d4c557c02f00e871e38e276a23bac80647c8ed0288b642ff351371fad83e31f2e63f1be6724ee1039639437da6376fceb9a244be367ce7b5 \nhtml object must be encrypted"
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/about-us",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["About Main"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update About Us",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Image",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Image Fİle"
+          },
+          {
+            "name": "Icon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Image File"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "html",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "example : a667d593f9e148d5667d0731747d3644c2e2391021b86bdb9d84b1706480403dae3b41de32db13f9e245311d0e458f59325be4eb5d5da72e229857469e043d836ef4cded9e561ff3d798029e15d1290480852ae867be30d4c557c02f00e871e38e276a23bac80647c8ed0288b642ff351371fad83e31f2e63f1be6724ee1039639437da6376fceb9a244be367ce7b5\nhtml object must be encrypted and sent in JSON format"
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/about-us",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["About Main"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete About Us",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/about-us",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["About Main"]
+      }
+    },
+    "/api/about/id": {
+        "get": {
+          "summary": "",
+          "description": "Get Find ID About Us Context",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "id must be JSON sent"
+            }
+          ],
+          "operationId": "/api/about/id",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "tags": ["About"]
+        }
+      },
+    "/api/about": {
+      "get": {
+        "summary": "",
+        "description": "Get All About Us Context",
+        "parameters": [],
+        "operationId": "/api/about",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["About"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create About Us",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+
+          {
+            "name": "html",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "example : a667d593f9e148d5667d0731747d3644c2e2391021b86bdb9d84b1706480403dae3b41de32db13f9e245311d0e458f59325be4eb5d5da72e229857469e043d836ef4cded9e561ff3d798029e15d1290480852ae867be30d4c557c02f00e871e38e276a23bac80647c8ed0288b642ff351371fad83e31f2e63f1be6724ee1039639437da6376fceb9a244be367ce7b5 \nhtml object must be encrypted"
+          },
+
+          {
+            "name": "Image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Image File"
+          }
+        ],
+        "operationId": "/api/about",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["About"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update About Us",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+
+          {
+            "name": "html",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "example : a667d593f9e148d5667d0731747d3644c2e2391021b86bdb9d84b1706480403dae3b41de32db13f9e245311d0e458f59325be4eb5d5da72e229857469e043d836ef4cded9e561ff3d798029e15d1290480852ae867be30d4c557c02f00e871e38e276a23bac80647c8ed0288b642ff351371fad83e31f2e63f1be6724ee1039639437da6376fceb9a244be367ce7b5\nhtml object must be encrypted and sent in JSON format"
+          },
+          {
+            "name": "Image",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Image Fİle"
+          }
+        ],
+        "operationId": "/api/about",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["About"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete About Us",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/about",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["About"]
+      }
+    }
+  },
+  "security": []
 }
