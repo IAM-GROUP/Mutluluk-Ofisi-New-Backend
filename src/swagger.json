@@ -19,6 +19,32 @@
         }
     },
     "paths": {
+        "/api/about-us/id": {
+            "get": {
+                "summary": "",
+                "description": "Get Find ID About Us Context",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID"
+                    }
+                ],
+                "operationId": "/api/about-us/id",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags":[
+                    "About"
+                ]
+            }
+        },
         "/api/about-us": {
             "get": {
                 "summary": "",
@@ -211,37 +237,11 @@
                     "default": {
                         "description": "Default response"
                     }
-                }
-            },
-            "tags":[
-                "About"
-            ]
-        },
-        "/api/about-us/id": {
-            "get": {
-                "summary": "",
-                "description": "Get Find ID About Us Context",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "description": "ID"
-                    }
-                ],
-                "operationId": "/api/about-us/id",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            },
-            "tags":[
-                "About"
-            ]
+                },
+                "tags":[
+                    "About"
+                ]
+            }
         }
     },
     "security": []
