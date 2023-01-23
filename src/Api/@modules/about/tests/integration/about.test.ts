@@ -29,8 +29,16 @@ describe('About Us Api Testing...', () => {
             .expect('Content-Type', /json/)
             .expect(200)
     })
-    it("Get Find About Context",()=>{
+    it("Get Find About Context", () => {
         request(server)
+            .get('/api/about-us/id')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .field('id', "63cb39b164e93b6768a4a230")
+            .end((err) => {
+                if (err) throw err
+
+            })
     })
     it('Post About Us', () => {
         request(server)
