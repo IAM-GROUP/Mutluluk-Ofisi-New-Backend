@@ -12,10 +12,10 @@ export const getAdmin = app.get('/admin', admin.AdminController.getAdmin)
 export const getAdminId = app.get('/admin/id', admin.AdminController.getAdminId)
 
 //* Post
-export const postAdmin = app.post('/admin', admin.AdminController.createAdmin)
+export const postAdmin = app.post('/', admin.AdminController.createAdmin)
 
 //? Update
-export const putAdmin = app.put('/admin', admin.AdminController.updateAdmin)
+export const putAdmin = app.put('/', admin.AdminController.updateAdmin)
 
 //! Delete
-export const deleteAdmin = app.delete('/admin', admin.AdminController.deleteAdmin)
+export const deleteAdmin = app.delete('/', admin.AdminController.deleteAdmin)
