@@ -4,4 +4,4 @@ const app = express()
 //! Admin routes
 import { getAdmin, deleteAdmin, getAdminId, postAdmin, putAdmin } from './routes/admin.routes'
 
-export const adminRoutes = app.use('/api', getAdmin, deleteAdmin, getAdminId, postAdmin, putAdmin)
+export const adminRoutes = app.use('/api/users', getAdmin, deleteAdmin, getAdminId, postAdmin, putAdmin)
