@@ -8,14 +8,14 @@ import { middleware } from '../../../../middlewares/middlewares'
 import { admin } from '../controllers/controllers'
 
 //? Get
-export const getAdmin = app.get('/admin', admin.AdminController.getAdmin)
-export const getAdminId = app.get('/admin/id', admin.AdminController.getAdminId)
+export const getAdmin = app.get('/', admin.AdminController.getAdmin)
+export const getAdminId = app.get('/id', admin.AdminController.getAdminId)
 
 //* Post
-export const postAdmin = app.post('/', admin.AdminController.createAdmin)
+export const postAdmin = app.post('/create', admin.AdminController.createAdmin)
 
 //? Update
-export const putAdmin = app.put('/', admin.AdminController.updateAdmin)
+export const putAdmin = app.put('/update', admin.AdminController.updateAdmin)
 
 //! Delete
-export const deleteAdmin = app.delete('/', admin.AdminController.deleteAdmin)
+export const deleteAdmin = app.delete('/delete', admin.AdminController.deleteAdmin)
