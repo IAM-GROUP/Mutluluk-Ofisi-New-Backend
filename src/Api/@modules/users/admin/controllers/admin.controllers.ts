@@ -13,9 +13,7 @@ export class AdminController {
         res.json({ admin: await admin.admin })
     }
     static createAdmin: Handler = async (req, res) => {
-
         const adminService = new AdminService()
-
         const { email, password, passwordRepeat } = req.body
         if (password !== passwordRepeat) {
             res.json({
@@ -23,7 +21,6 @@ export class AdminController {
             })
         }
         else {
-
             const admin = await adminService.adminCreate(email, password)
             res.json({
                 message: (await admin.create)?.message
@@ -32,8 +29,8 @@ export class AdminController {
     }
     static updateAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
-        const { id, email, password } = req.body
-        const admin = adminService.admintUpdate(id, email, password)
+        const { id, email, password,hash } = req.body
+        const admin = adminService.admintUpdate(id, email, password,hash)
         res.json({
             message: (await admin.update)?.message
         })
