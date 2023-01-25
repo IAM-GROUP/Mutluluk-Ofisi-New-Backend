@@ -1,12 +1,7 @@
 import { hashSync, compareSync } from 'bcrypt'
 
-//! Config
-import { Dotenv } from '../../core/config/config'
-
-Dotenv.dotenvConfig()
-
 export const encrypt = (password: string) => {
-    return hashSync(password, process.env.SECRET_KEYS as string)
+    return hashSync(password,8)
 }
 export const dencrypt = (password: string, hash: string) => {
     return {
