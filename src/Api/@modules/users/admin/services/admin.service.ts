@@ -46,11 +46,27 @@ export class AdminService {
             }
         }
     }
-    admintUpdate(id: string, email: string, password: string) {
+    admintUpdate(id: string, email: string, password: string, hash: string) {
+        const isEmail = validation.isEmailValidation(email)
         const isValidId = validation.isIdValidation(id)
+        const decrypt = security.bcrypt.dencrypt(password, hash)
         if (isValidId.isValid === true) {
-            return {
-                update: this.adminDataAcess.update(id, email, password)
+            if (isEmail.isEmail === true) {
+                if (decrypt.isDencrypt === true) {
+                    return {
+                        update: this.adminDataAcess.update(id, email, password)
+                    }
+                }
+                else {
+                    return {
+                        message: decrypt.message
+                    }
+                }
+            }
+            else {
+                return {
+                    message: isEmail.message
+                }
             }
         }
         else {
