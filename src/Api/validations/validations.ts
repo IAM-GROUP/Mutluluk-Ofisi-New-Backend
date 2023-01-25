@@ -1,5 +1,7 @@
 import { isIdValidation } from './isIdValidation'
+import { isEmailValidation } from './isEmailValidation'
 export const validation = {
-    isIdValidation
+    isIdValidation,
+    isEmailValidation
 
 }
