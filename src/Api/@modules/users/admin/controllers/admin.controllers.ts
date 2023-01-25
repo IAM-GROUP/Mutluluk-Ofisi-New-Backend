@@ -37,22 +37,22 @@ export class AdminController {
     }
     static updateAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
-        const { id, email, newPassword, hash } = req.body
+        const { id, email, newPassword,oldPassword, hash } = req.body
         if (!newPassword) {
             res.json({
                 message:"newPassword empty !!"
             })
         }
         else {
-            const admin = adminService.admintUpdate(id,email,newPassword,hash)
-            if ((await admin).message) {
+            const admin = adminService.admintUpdate(id,email,oldPassword,newPassword,hash)
+            if (admin.message) {
                 res.json({
-                    message: (await admin).message
+                    message:admin.message
                 })
             }
             else {
                 res.json({
-                    message: (await admin).update
+                    message: await admin.update
                 })
             }
         }

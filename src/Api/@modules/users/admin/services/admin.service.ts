@@ -46,11 +46,10 @@ export class AdminService {
             }
         }
     }
-    async admintUpdate(id: string, email: string, newPassword: string, hash: string) {
+     admintUpdate(id: string, email: string,oldPassword:string, newPassword: string, hash: string) {
         const isEmail = validation.isEmailValidation(email)
         const isValidId = validation.isIdValidation(id)
-        const isPasswordValid = (await this.adminFind(id).admin)?.password
-        const decrypt = security.bcrypt.dencrypt(isPasswordValid as string, hash)
+        const decrypt = security.bcrypt.dencrypt(oldPassword, hash)
         if (isValidId.isValid === true) {
             if (isEmail.isEmail === true) {
                 if (decrypt.isDencrypt === true) {
