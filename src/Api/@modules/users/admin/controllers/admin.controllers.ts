@@ -44,7 +44,7 @@ export class AdminController {
             })
         }
         else {
-            const admin = adminService.admintUpdate(id, email, newPassword, hash)
+            const admin = adminService.admintUpdate(id,email,newPassword,hash)
             if ((await admin).message) {
                 res.json({
                     message: (await admin).message
