@@ -11,4 +11,4 @@ const AdminSchema = new Schema<IAdmin>({
         type: String
     }
 })
-export const Admin = model('About', AdminSchema)
+export const Admin = model('Admin', AdminSchema)
