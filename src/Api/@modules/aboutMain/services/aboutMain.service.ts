@@ -48,7 +48,7 @@ export class AboutMainService {
     aboutMainUpdate(id: string, title: string, html: string, image: string) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
-            const decryptHtml = security.decrypt(html)
+            const decryptHtml = security.crypto.cryde(html)
             if (decryptHtml) {
                 return {
                     update: this.aboutMainDataAcess.update(id, title, decryptHtml, image)
@@ -67,7 +67,7 @@ export class AboutMainService {
         }
     }
     async aboutMainCreate(title: string, html: string, image: string) {
-        const decryptHtml = security.decrypt(html)
+        const decryptHtml = security.crypto.cryde(html)
         if (decryptHtml) {
             return {
                 create: this.aboutMainDataAcess.create(title, decryptHtml, image),
