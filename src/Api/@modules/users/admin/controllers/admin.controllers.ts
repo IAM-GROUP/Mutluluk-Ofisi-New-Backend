@@ -37,18 +37,26 @@ export class AdminController {
     }
     static updateAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
-        const { id, email, password, hash } = req.body
-        const admin = adminService.admintUpdate(id, email, password, hash)
-        if (admin.message) {
+        const { id, email, password, passwordRepeat, hash } = req.body
+        if (password !== passwordRepeat) {
             res.json({
-                message: await admin.message
+                message:"password not match"
             })
         }
         else {
-            res.json({
-                message: await admin.update
-            })
+            const admin = adminService.admintUpdate(id, email, password, hash)
+            if (admin.message) {
+                res.json({
+                    message: await admin.message
+                })
+            }
+            else {
+                res.json({
+                    message: await admin.update
+                })
+            }
         }
+
 
     }
     static deleteAdmin: Handler = async (req, res) => {
