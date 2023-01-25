@@ -7,7 +7,7 @@ import { IAdmin } from '../entity/IAdmin'
 //? Models
 import { Admin } from '../models/admin.model'
 
-export class AboutDal implements AdminRepository {
+export class AdminDal implements AdminRepository {
     async delete(id: string): Promise<{ message: string }> {
         await Admin.findByIdAndDelete(id)
         return new Promise((resolve, reject) => {
