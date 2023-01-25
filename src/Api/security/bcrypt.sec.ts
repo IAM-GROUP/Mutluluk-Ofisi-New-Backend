@@ -6,6 +6,6 @@ export const encrypt = (password: string) => {
 export const dencrypt = (password: string, hash: string) => {
     return {
         isDencrypt: compareSync(password, hash),
-        message: "password not match"
+        message: "password not match hash"
     }
 }

@@ -53,8 +53,9 @@ export class AdminService {
         if (isValidId.isValid === true) {
             if (isEmail.isEmail === true) {
                 if (decrypt.isDencrypt === true) {
+                    const encrypt = security.bcrypt.encrypt(password)
                     return {
-                        update: this.adminDataAcess.update(id, email, password)
+                        update: this.adminDataAcess.update(id, email, encrypt)
                     }
                 }
                 else {
