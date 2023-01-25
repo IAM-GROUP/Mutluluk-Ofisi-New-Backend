@@ -13,6 +13,7 @@ import { mongoConnection } from './core/data-source/mongo/connection'
 //! Routes
 import { aboutRoutes } from './Api/@modules/about/routes'
 import { aboutMainRoutes } from './Api/@modules/aboutMain/routes'
+import { adminRoute } from './Api/@modules/users/routes'
 
 
 
@@ -23,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //! Swagger
 import swaggerJson from './swagger.json'
 
-app.use('/', aboutRoutes, aboutMainRoutes)
+app.use('/', aboutRoutes, aboutMainRoutes, adminRoute)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
 mongoConnection()
