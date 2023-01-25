@@ -18,7 +18,7 @@ export class AdminService {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             return {
-                about: this.adminDataAcess.find(id),
+                admin: this.adminDataAcess.find(id),
                 message: isValidId.message
             }
         }
@@ -45,7 +45,9 @@ export class AdminService {
     admintUpdate(id: string, email: string, password: string) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
-            update: this.adminDataAcess.update(id, email, password)
+            return {
+                update: this.adminDataAcess.update(id, email, password)
+            }
         }
         else {
             return {
