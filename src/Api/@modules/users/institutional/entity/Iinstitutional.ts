@@ -1,7 +1,7 @@
 //! Dto
 import { IUser } from '../../dtos/IUsers'
 
-export interface IAdmin extends IUser {
+export interface Iinstitutional extends IUser {
     companyName: string,
     position: string,
     activityField: string
