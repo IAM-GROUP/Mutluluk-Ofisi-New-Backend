@@ -9,5 +9,8 @@ export const encrypt = (password: string) => {
     return hashSync(password, process.env.SECRET_KEYS as string)
 }
 export const dencrypt = (password: string, hash: string) => {
-    return compareSync(password, hash)
+    return {
+        isDencrypt: compareSync(password, hash),
+        message: "password not match"
+    }
 }
