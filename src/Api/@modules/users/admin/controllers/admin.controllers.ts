@@ -3,7 +3,7 @@ import { Handler } from 'express'
 import { AdminService } from '../services/admin.service'
 
 //! Validation
-import {} from '../../../../validations/validations'
+import { validation } from '../../../../validations/validations'
 
 export class AdminController {
     static getAdmin: Handler = async (req, res) => {
@@ -20,16 +20,24 @@ export class AdminController {
         const adminService = new AdminService()
 
         const { email, password, passwordRepeat } = req.body
-        if (password !== passwordRepeat) {
+        const isEmail = validation.isEmailValidation(email)
+        if (isEmail.isEmail === false) {
             res.json({
-                error: "password not match"
+                message: isEmail.message
             })
         }
         else {
-            const admin = await adminService.adminCreate(email, password)
-            res.json({
-                message: (await admin.create)?.message
-            })
+            if (password !== passwordRepeat) {
+                res.json({
+                    error: "password not match"
+                })
+            }
+            else {
+                const admin = await adminService.adminCreate(email, password)
+                res.json({
+                    message: (await admin.create)?.message
+                })
+            }
         }
     }
     static updateAdmin: Handler = async (req, res) => {
