@@ -76,8 +76,18 @@ export class AdminService {
         }
     }
     async adminCreate(email: string, password: string) {
-        return {
-            create: this.adminDataAcess.create(email, password),
+        const isEmail = validation.isEmailValidation(email)
+        const hash = security.bcrypt.encrypt(password)
+        if (isEmail.isEmail === true) {
+            return {
+                create: this.adminDataAcess.create(email, hash)
+            }
         }
+        else {
+            return {
+                create: this.adminDataAcess.create(email, hash)
+            }
+        }
+
     }
 }
