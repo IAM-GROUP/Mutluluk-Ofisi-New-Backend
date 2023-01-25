@@ -34,7 +34,7 @@ export class AboutMainController {
             }
             else {
                 res.json({
-                    message: (await aboutMain.create)?.message
+                    message: await aboutMain.create
                 })
             }
         }
@@ -57,7 +57,7 @@ export class AboutMainController {
             }
             else {
                 res.json({
-                    message: (await aboutMain.update)?.message
+                    message: await aboutMain.update
                 })
             }
         }
@@ -73,7 +73,7 @@ export class AboutMainController {
         }
         else {
             res.json({
-                message: (await aboutMain.delete)?.message
+                message: await aboutMain.delete
             })
         }
     }

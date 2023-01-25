@@ -22,25 +22,49 @@ export class AdminController {
         }
         else {
             const admin = await adminService.adminCreate(email, password)
-            res.json({
-                message: (await admin.create)?.message
-            })
+            if ((await admin.create).message) {
+                res.json({
+                    message: (await admin.create).message
+                })
+            }
+            else {
+                res.json({
+                    message: (await admin.create)?.message
+                })
+            }
+
         }
     }
     static updateAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
-        const { id, email, password,hash } = req.body
-        const admin = adminService.admintUpdate(id, email, password,hash)
-        res.json({
-            message: (await admin.update)?.message
-        })
+        const { id, email, password, hash } = req.body
+        const admin = adminService.admintUpdate(id, email, password, hash)
+        if (admin.message) {
+            res.json({
+                message: await admin.message
+            })
+        }
+        else {
+            res.json({
+                message: await admin.update
+            })
+        }
+
     }
     static deleteAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
         const { id } = req.body
         const admin = adminService.adminDelete(id)
-        res.json({
-            message: (await admin.delete)?.message
-        })
+        if (admin.message) {
+            res.json({
+                message: await admin.message
+            })
+        }
+        else {
+            res.json({
+                message: await admin.delete
+            })
+        }
+
     }
 }
