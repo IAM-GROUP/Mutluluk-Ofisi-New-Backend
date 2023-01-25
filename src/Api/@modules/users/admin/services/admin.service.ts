@@ -4,6 +4,10 @@ import { AdminDal } from '../dal/admin.dal'
 //? Validation
 import { validation } from '../../../../validations/validations'
 
+//! Security
+
+import { security } from '../../../../security/security'
+
 export class AdminService {
     private adminDataAcess: AdminDal = new AdminDal()
     constructor(private id?: string, private email?: string, private password?: string) {
