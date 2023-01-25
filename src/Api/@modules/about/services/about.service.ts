@@ -51,7 +51,7 @@ export class AboutService {
     aboutUpdate(id: string, image: string, title: string, text: string, description: string, html: string, icon: [{ src: string; context: string; }]) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
-            const decryptHtml = security.decrypt(html)
+            const decryptHtml = security.crypto.cryde(html)
             if (decryptHtml) {
                 return {
                     update: this.aboutDataAcess.update(id, image, title, text, description, decryptHtml, icon)
@@ -70,7 +70,7 @@ export class AboutService {
         }
     }
     async aboutCreate(image: string, title: string, text: string, description: string, html: string, icon: [{ src: string, context: string }]) {
-        const decryptHtml = security.decrypt(html)
+        const decryptHtml = security.crypto.cryde(html)
         if (decryptHtml) {
             return {
                 create: this.aboutDataAcess.create(image, title, text, description, decryptHtml, icon),
