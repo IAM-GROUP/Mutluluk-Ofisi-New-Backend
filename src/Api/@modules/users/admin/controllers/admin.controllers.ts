@@ -2,6 +2,9 @@ import { Handler } from 'express'
 //! Service
 import { AdminService } from '../services/admin.service'
 
+//! Validation
+import {} from '../../../../validations/validations'
+
 export class AdminController {
     static getAdmin: Handler = async (req, res) => {
         const admin = await new AdminService().adminFindAll()
