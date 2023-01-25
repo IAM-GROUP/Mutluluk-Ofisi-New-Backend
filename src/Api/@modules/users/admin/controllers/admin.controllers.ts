@@ -4,6 +4,7 @@ import { AdminService } from '../services/admin.service'
 
 //! Validation
 import { validation } from '../../../../validations/validations'
+import { security } from '../../../../security/security'
 
 export class AdminController {
     static getAdmin: Handler = async (req, res) => {
@@ -33,7 +34,8 @@ export class AdminController {
                 })
             }
             else {
-                const admin = await adminService.adminCreate(email, password)
+                const passHash = security.bcrypt.encrypt(password)
+                const admin = await adminService.adminCreate(email, passHash)
                 res.json({
                     message: (await admin.create)?.message
                 })
