@@ -1,9 +1,11 @@
 import { sign, verify } from 'jsonwebtoken'
-
 //! Config
-import { Dotenv } from '../../../core/config/config'
+import { config } from '../../../core/config/config'
 
-Dotenv.dotenvConfig()
+config.Dotenv()
+const redis = config.redis()
+
+
 
 export const signPayload = (payload: {}) => {
     try {

@@ -1,7 +1,7 @@
 import { createClient } from 'redis'
 
-export const redisConnect = () => {
-    createClient({
-        url: "redis://localhost:6379"
-    }).connect()
+export const redisConnect = async () => {
+    const redis = createClient()
+    await redis.connect()
+    return redis
 }

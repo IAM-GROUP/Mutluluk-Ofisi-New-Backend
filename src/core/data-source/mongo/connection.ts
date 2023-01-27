@@ -1,9 +1,9 @@
 import { connect } from 'mongoose'
 import chalk from 'chalk'
 //! Config
-import { Dotenv } from '../../config/config'
+import { config } from '../../config/config'
 
-Dotenv.dotenvConfig()
+config.Dotenv()
 
 
 export const mongoConnection = async () => {
