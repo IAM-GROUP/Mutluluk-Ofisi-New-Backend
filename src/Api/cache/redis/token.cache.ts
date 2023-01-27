@@ -41,7 +41,7 @@ export const addToken = async (payload: {}) => {
 export const checkToken = async (token: string) => {
     const redis = await config.redis()
     try {
-        const status = await redis.GET("valid")
+        const status = await redis.GET(token)
         return {
             status
         }
