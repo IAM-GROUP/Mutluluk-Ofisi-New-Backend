@@ -1,8 +1,8 @@
 import Crypto from 'cryptr'
 
 //! Config
-import { Dotenv } from '../../core/config/config'
-Dotenv.dotenvConfig()
+import { config } from '../../core/config/config'
+config.Dotenv()
 
 const cryptr = new Crypto(process.env.SECRET_KEY as string)
 

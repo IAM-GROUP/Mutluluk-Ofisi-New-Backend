@@ -3,10 +3,10 @@ import request from 'supertest'
 
 
 import { server } from '../../../../../server'
-import { Dotenv } from '../../../../../core/config/config'
+import { config } from '../../../../../core/config/config'
 
 
-Dotenv.dotenvConfig()
+config.Dotenv()
 
 beforeEach(async () => {
     jest.useFakeTimers()
