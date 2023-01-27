@@ -5,4 +5,5 @@ export interface AdminRepository {
     findAll(): Promise<IAdmin[]>
     update(id: string, email: string, password: string): Promise<{ message: string }>
     delete(id: string): Promise<{ message: string }>
+    sign(email: string, password: string): Promise<string>
 }
