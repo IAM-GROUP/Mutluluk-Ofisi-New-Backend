@@ -37,17 +37,17 @@ export class AdminController {
     }
     static updateAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
-        const { id, email, newPassword,oldPassword, hash } = req.body
+        const { id, email, newPassword, oldPassword, hash } = req.body
         if (!newPassword) {
             res.json({
-                message:"newPassword empty !!"
+                message: "newPassword empty !!"
             })
         }
         else {
-            const admin = adminService.admintUpdate(id,email,oldPassword,newPassword,hash)
+            const admin = adminService.admintUpdate(id, email, oldPassword, newPassword, hash)
             if (admin.message) {
                 res.json({
-                    message:admin.message
+                    message: admin.message
                 })
             }
             else {
@@ -73,12 +73,15 @@ export class AdminController {
         }
 
     }
-    static signAdmin:Handler = async (req,res) => {
+    static signAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
-        const {email,password} = req.body
-        const admin = await adminService.adminSign(email,password)
-         
-        
-   
+        const { email, password } = req.body
+        const admin = await adminService.adminSign(email, password)
+        if (admin.sign) {
+            res.json(admin.sign)
+        }
+        else {
+            res.json(admin.token)
+        }
     }
 }
