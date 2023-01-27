@@ -76,7 +76,9 @@ export class AdminController {
     static signAdmin:Handler = async (req,res) => {
         const adminService = new AdminService()
         const {email,password} = req.body
-        await adminService.adminSign(email,password)
+        const admin = await adminService.adminSign(email,password)
+         
+        
    
     }
 }

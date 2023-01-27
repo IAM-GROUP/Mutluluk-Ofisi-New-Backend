@@ -5,7 +5,7 @@ import { Dotenv } from '../../../core/config/config'
 
 Dotenv.dotenvConfig()
 
-export const signPayload = (payload: string) => {
+export const signPayload = (payload: {}) => {
     try {
         return {
             payload: sign(payload, process.env.SECRET_KEY as string, {
