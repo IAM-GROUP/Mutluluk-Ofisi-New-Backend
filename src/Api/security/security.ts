@@ -1,6 +1,6 @@
 import { dencrypt, encrypt } from './bcrypt.sec'
 import { decrypt as cryde, encrypt as cryen } from './crypto.sec'
-import { Sign, Verify } from './jwt/jwt.sec'
+import { jwt } from './jwt/jwt'
 
 export const security = {
     crypto: {
@@ -11,8 +11,5 @@ export const security = {
         dencrypt,
         encrypt
     },
-    jwt: {
-        Sign,
-        Verify
-    }
+    jwt
 }
