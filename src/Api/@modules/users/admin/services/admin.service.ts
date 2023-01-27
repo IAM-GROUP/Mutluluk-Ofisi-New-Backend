@@ -103,10 +103,9 @@ export class AdminService {
                     const payload = {
                         email: isAdmin.email
                     }
-                    console.log(cache.redis.Token.addToken(security.jwt.payload.signPayload(payload).payload as string))
                     try {
                         return {
-                            token: security.jwt.payload.signPayload(payload).payload
+                            token: (await cache.redis.Token.addToken(payload)).token
                         }
                     }
                     catch {

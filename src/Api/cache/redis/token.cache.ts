@@ -1,20 +1,23 @@
 //! Security
 import { security } from '../../security/security'
-import { JwtPayload } from 'jsonwebtoken'
+
 //? Config
 import { config } from '../../../core/config/config'
 
 
-export const addToken = async (token: string) => {
+export const addToken = async (payload: {}) => {
     const redis = await config.redis()
     try {
+        const token = security.jwt.payload.signPayload(payload).payload as string
         const check = await redis.EXISTS(token)
         if (check != 1) {
             await redis.SET(token, "valid")
             const payload = security.jwt.token.verifyToken(token)
             if (!payload.status) {
                 await redis.EXPIREAT("NX", payload.token?.payload?.exp as number)
-                return
+                return {
+                    token: await redis.GET('valid')
+                }
             }
             else {
                 return {
