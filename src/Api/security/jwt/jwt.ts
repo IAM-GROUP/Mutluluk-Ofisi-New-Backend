@@ -7,6 +7,6 @@ export const jwt = {
         verifyPayload
     },
     token: {
-        verifyPayload
+        verifyToken
     }
 }

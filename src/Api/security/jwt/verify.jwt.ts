@@ -3,7 +3,10 @@ import { verifyPayload } from './jwt.sec'
 
 export const verifyToken = (token:string) => {
     if (token) {
-        return verifyPayload(token)
+        return {
+            token:verifyPayload(token),
+            message:"Authorized"
+        }   
     }
     else {
         return {
