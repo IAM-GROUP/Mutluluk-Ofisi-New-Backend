@@ -17,7 +17,7 @@ export const addToken = async (payload: {}) => {
             if (!payload.status) {
                 await redis.EXPIREAT("NX", payload.token?.payload?.exp as number)
                 return {
-                    token: await redis.GET(token)
+                    token: security.jwt.payload.signPayload(payload).payload as string
                 }
             }
             else {
