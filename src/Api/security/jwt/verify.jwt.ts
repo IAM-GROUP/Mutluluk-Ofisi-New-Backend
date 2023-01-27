@@ -1,10 +1,7 @@
-import { Handler } from 'express'
-
 //! Security
 import { verifyPayload } from './jwt.sec'
 
-export const verifyToken: Handler = (req, res, next) => {
-    const token = req.headers['x-access-token'] as string
+export const verifyToken = (token:string) => {
     if (token) {
         return verifyPayload(token)
     }
