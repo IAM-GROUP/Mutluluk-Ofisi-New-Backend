@@ -18,25 +18,17 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: admin
       ME_CONFIG_MONGODB_URL: mongodb://admin:admin@mongo:27017/
-  redis-master:
-    image: 'bitnami/redis:latest'
+  redis:
+    image: redis:alpine
+    container_name: redis_db
+    command: redis-server --appendonly yes
     ports:
-      - '6379'
-    environment:
-      - REDIS_REPLICATION_MODE=master
-      - REDIS_PASSWORD=my_master_password
+      - 6379:6379
     volumes:
-      - '/path/to/redis-persistence:/bitnami'
-
-  redis-replica:
-    image: 'bitnami/redis:latest'
-    ports:
-      - '6379'
-    depends_on:
-      - redis-master
-    environment:
-      - REDIS_REPLICATION_MODE=slave
-      - REDIS_MASTER_HOST=redis-master
-      - REDIS_MASTER_PORT_NUMBER=6379
-      - REDIS_MASTER_PASSWORD=radeonares32
-      - REDIS_PASSWORD=radeonares32
+      - ./data:/data
+    restart: always
+    networks:
+      - redis_net
+networks:
+  redis_net:
+    driver: bridge
