@@ -1,2 +1,3 @@
 node_modules/
 dist/
+src/core/adapters/docker/data/dump.rdb

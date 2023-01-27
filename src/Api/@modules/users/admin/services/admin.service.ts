@@ -8,6 +8,9 @@ import { validation } from '../../../../validations/validations'
 
 import { security } from '../../../../security/security'
 
+//* Cache
+import { cache } from '../../../../cache/cache'
+
 export class AdminService {
     private adminDataAcess: AdminDal = new AdminDal()
     constructor(private id?: string, private email?: string, private password?: string) {
@@ -100,6 +103,7 @@ export class AdminService {
                     const payload = {
                         email: isAdmin.email
                     }
+                    console.log(cache.redis.Token.addToken(security.jwt.payload.signPayload(payload).payload as string))
                     try {
                         return {
                             token: security.jwt.payload.signPayload(payload).payload
