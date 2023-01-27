@@ -65,4 +65,15 @@ export class AdminDal implements AdminRepository {
             }
         })
     }
+    sign(email: string, password: string): Promise<IAdmin> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const admin = await Admin.findOne({ email, password })
+                resolve(admin as IAdmin)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
 }
