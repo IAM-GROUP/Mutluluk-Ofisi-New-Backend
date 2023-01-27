@@ -1,8 +1,10 @@
 import Crypto from 'cryptr'
 
 //! Config
+import { Dotenv } from '../../core/config/config'
+Dotenv.dotenvConfig()
 
-const cryptr = new Crypto("Rade")
+const cryptr = new Crypto(process.env.SECRET_KEY as string)
 
 export const encrypt = (text: any | any[]) => {
     try {
