@@ -20,7 +20,7 @@ export class AdminService {
     }
     adminFind(id: string) {
         const isValidId = validation.isIdValidation(id)
-        if (isValidId.isValid === true) {
+        if (isValidId.isValid) {
             return {
                 admin: this.adminDataAcess.find(id),
                 message: isValidId.message
@@ -34,7 +34,7 @@ export class AdminService {
     }
     adminDelete(id: string) {
         const isValidId = validation.isIdValidation(id)
-        if (isValidId.isValid === true) {
+        if (isValidId.isValid) {
             return {
 
                 delete: this.adminDataAcess.delete(id)
@@ -46,13 +46,13 @@ export class AdminService {
             }
         }
     }
-     admintUpdate(id: string, email: string,oldPassword:string, newPassword: string, hash: string) {
+    admintUpdate(id: string, email: string, oldPassword: string, newPassword: string, hash: string) {
         const isEmail = validation.isEmailValidation(email)
         const isValidId = validation.isIdValidation(id)
         const decrypt = security.bcrypt.dencrypt(oldPassword, hash)
-        if (isValidId.isValid === true) {
-            if (isEmail.isEmail === true) {
-                if (decrypt.isDencrypt === true) {
+        if (isValidId.isValid) {
+            if (isEmail.isEmail) {
+                if (decrypt.isDencrypt) {
                     const encrypt = security.bcrypt.encrypt(newPassword)
                     return {
                         update: this.adminDataAcess.update(id, email, encrypt)
@@ -79,7 +79,7 @@ export class AdminService {
     async adminCreate(email: string, password: string) {
         const isEmail = validation.isEmailValidation(email)
         const hash = security.bcrypt.encrypt(password)
-        if (isEmail.isEmail === true) {
+        if (isEmail.isEmail) {
             return {
                 create: this.adminDataAcess.create(email, hash)
             }
@@ -89,6 +89,13 @@ export class AdminService {
                 create: this.adminDataAcess.create(email, hash)
             }
         }
-
+    }
+    async adminSign(email: string, password: string) {
+        const isEmail = validation.isEmailValidation(email)
+        const hash = security.bcrypt.encrypt(password)
+        if (isEmail.isEmail) {
+            const isAdmin = await this.adminDataAcess.findEmail(email)
+            console.log(isAdmin)
+        }
     }
 }
