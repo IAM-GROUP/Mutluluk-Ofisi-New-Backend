@@ -8,6 +8,7 @@ import { config } from '../../../core/config/config'
 export const addToken = async (payload: {}) => {
     const redis = await config.redis()
     try {
+
         const token = security.jwt.payload.signPayload(payload).payload as string
         const check = await redis.EXISTS(token)
         if (check != 1) {
@@ -16,7 +17,7 @@ export const addToken = async (payload: {}) => {
             if (!payload.status) {
                 await redis.EXPIREAT("NX", payload.token?.payload?.exp as number)
                 return {
-                    token: await redis.GET('valid')
+                    token: await redis.GET(token)
                 }
             }
             else {
@@ -40,7 +41,7 @@ export const addToken = async (payload: {}) => {
 export const checkToken = async (token: string) => {
     const redis = await config.redis()
     try {
-        const status = await redis.GET(token)
+        const status = await redis.GET("valid")
         return {
             status
         }
