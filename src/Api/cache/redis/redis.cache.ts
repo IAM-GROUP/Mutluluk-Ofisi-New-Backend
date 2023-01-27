@@ -1,5 +1,5 @@
-import { addToken } from './token.cache'
+import { addToken, checkToken } from './token.cache'
 
 export const Token = {
-    addToken
+    addToken, checkToken
 }
