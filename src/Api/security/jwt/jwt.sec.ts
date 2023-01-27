@@ -1,4 +1,4 @@
-import { sign, verify } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 //! Config
 import { config } from '../../../core/config/config'
 
@@ -10,8 +10,7 @@ const redis = config.redis()
 export const signPayload = (payload: {}) => {
     try {
         return {
-            payload: sign(payload, process.env.SECRET_KEY as string, {
-                algorithm: "RS256",
+            payload: jwt.sign(payload, process.env.SECRET_KEY as string, {
                 expiresIn: '1h'
             })
         }
@@ -26,7 +25,7 @@ export const signPayload = (payload: {}) => {
 export const verifyPayload = (token: string) => {
     try {
         return {
-            payload: verify(token, process.env.SECRET_KEY as string)
+            payload: jwt.verify(token, process.env.SECRET_KEY as string)
         }
     }
     catch (err) {
