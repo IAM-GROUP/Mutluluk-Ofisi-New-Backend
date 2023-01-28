@@ -17,7 +17,6 @@ export class AboutController {
         const aboutService = new AboutService()
         const icons: [{ src: string, context: string }] = [{ src: "", context: "" }]
         const { html, title, description, text, context } = req.body
-
         const { image, icon } = req.files as any | any[]
         icons.push({ src: icon[0].path, context })
         icons.shift()
@@ -46,6 +45,7 @@ export class AboutController {
         const { id, html, title, description, text, context } = req.body
         const icons: [{ src: string, context: string }] = [{ src: "", context: "" }]
         const { image, icon } = req.files as any | any[]
+        
         icons.push({ src: icon[0].path, context })
         icons.shift()
         if (html.Error) {

@@ -8,16 +8,15 @@ import { config } from '../../../core/config/config'
 export const addToken = async (payload: {}) => {
     const redis = await config.redis()
     try {
-
         const token = security.jwt.payload.signPayload(payload).payload as string
         const check = await redis.EXISTS(token)
         if (check != 1) {
-            await redis.SET(token, "valid")
+            await redis.set(token, "valid")
             const payload = security.jwt.token.verifyToken(token)
             if (!payload.status) {
-                await redis.EXPIREAT("NX", payload.token?.payload?.exp as number)
+                await redis.expire(token, payload.token?.payload?.exp as number)
                 return {
-                    token: security.jwt.payload.signPayload(payload).payload as string
+                    token
                 }
             }
             else {
@@ -41,7 +40,7 @@ export const addToken = async (payload: {}) => {
 export const checkToken = async (token: string) => {
     const redis = await config.redis()
     try {
-        const status = await redis.GET(token)
+        const status = await redis.get(token)
         return {
             status
         }

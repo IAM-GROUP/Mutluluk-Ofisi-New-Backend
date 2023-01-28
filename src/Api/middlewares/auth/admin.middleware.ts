@@ -10,13 +10,15 @@ import { AdminService } from '../../@modules/users/admin/services/admin.service'
 import { cache } from '../../cache/cache'
 
 export const adminAuth: Handler = async ({ headers }, res, next) => {
+
     const adminService = new AdminService()
     const token = headers['x-access-token'] as string
+    
     if (token) {
-        const isRedisToken = cache.redis.Token.checkToken(token)
+        const isRedisToken = cache.redis.Token.checkToken(token.toString())
         if ((await isRedisToken).status === "valid") {
             const verify = security.jwt.token.verifyToken(token)
-            if (verify.message) {
+            if (verify.status) {
                 res.status(verify.status as number).json(verify.message)
             }
             else {
@@ -26,13 +28,13 @@ export const adminAuth: Handler = async ({ headers }, res, next) => {
                     next()
                 }
                 else {
-                    res.status(401).json({ message: isEmail.message })
+                    res.status(200).json({ message: isEmail.message })
                 }
 
             }
         }
         else {
-            res.status(401).json({ message: (await isRedisToken).message })
+            res.status(401).json({ message:  (await isRedisToken).message})
         }
     }
     else {
