@@ -132,4 +132,26 @@ export class AdminService {
             }
         }
     }
+    async adminFindEmail(email: string) {
+        const isEmail = validation.isEmailValidation(email)
+        const admin = await this.adminDataAcess.findEmail(email)
+        if (isEmail.isEmail) {
+            if (admin) {
+                return {
+                    email: admin.email
+                }
+            }
+            else {
+                return {
+                    email: "not found user"
+                }
+            }
+        }
+        else {
+            return {
+                email: isEmail.message
+            }
+        }
+
+    }
 }

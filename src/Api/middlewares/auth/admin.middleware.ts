@@ -9,6 +9,6 @@ export const adminAuth: Handler = ({ headers }, res, next) => {
         return res.status(verify.status as number).json(verify.message)
     }
     else {
-        console.log(verify.token)
+        console.log(verify.token?.payload?.email)
     }
 }
