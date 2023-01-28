@@ -143,13 +143,13 @@ export class AdminService {
             }
             else {
                 return {
-                    email: "not found user"
+                    message: "not found user"
                 }
             }
         }
         else {
             return {
-                email: isEmail.message
+                message: isEmail.message
             }
         }
 
