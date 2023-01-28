@@ -1,18 +1,18 @@
-import jwt,{JwtPayload} from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 //! Config
 import { config } from '../../../core/config/config'
+//! Entity
+import { Jwt } from './jwt.payload'
+
 
 config.Dotenv()
-const redis = config.redis()
-
-
 
 export const signPayload = (payload: {}) => {
     try {
         return {
             payload: jwt.sign(payload, process.env.SECRET_KEY as string, {
                 expiresIn: '1h'
-            }) 
+            })
         }
     }
     catch (err) {
@@ -22,15 +22,17 @@ export const signPayload = (payload: {}) => {
     }
 }
 
+
+
 export const verifyPayload = (token: string) => {
     try {
         return {
-            payload: jwt.verify(token, process.env.SECRET_KEY as string) as JwtPayload
+            payload: jwt.verify(token, process.env.SECRET_KEY as string) as Jwt
         }
     }
     catch (err) {
         return {
-            err:err as string
+            err: err as string
         }
     }
 }
