@@ -1,2 +1,12 @@
-export * as middleware from './multer/multer.middleware'
-export * as auth from './auth/admin.middleware'
+import { aboutMainMultiUploads, aboutMultiUploads } from './multer/multer.middleware'
+import { adminAuth } from './auth/admin.middleware'
+
+export const middleware = {
+    multer: {
+        aboutMainMultiUploads,
+        aboutMultiUploads
+    },
+    auth: {
+        adminAuth
+    }
+}
