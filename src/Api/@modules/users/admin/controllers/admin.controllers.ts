@@ -84,4 +84,19 @@ export class AdminController {
             res.json(admin.token)
         }
     }
+    static logoutAdmin: Handler = async ({ headers }, res) => {
+        const adminService = new AdminService()
+        const token = headers['x-access-token']
+        if (token) {
+            const admin = await adminService.adminLogout(token as string)
+            res.status(200).json({
+                message: admin.message
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }
