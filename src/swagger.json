@@ -61,6 +61,15 @@
         "description": "Create About Us",
         "parameters": [
           {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
             "name": "Image",
             "in": "query",
             "required": true,
@@ -135,6 +144,15 @@
         "description": "Update About Us",
         "parameters": [
           {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
             "name": "id",
             "in": "query",
             "required": true,
@@ -215,6 +233,15 @@
         "description": "Delete About Us",
         "parameters": [
           {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
             "name": "id",
             "in": "query",
             "required": false,
@@ -234,29 +261,29 @@
       }
     },
     "/api/about/id": {
-        "get": {
-          "summary": "",
-          "description": "Get Find ID About Us Context",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "query",
-              "required": true,
-              "schema": {
-                "type": "string"
-              },
-              "description": "id must be JSON sent"
-            }
-          ],
-          "operationId": "/api/about/id",
-          "responses": {
-            "200": {
-              "description": "OK"
-            }
-          },
-          "tags": ["About"]
-        }
-      },
+      "get": {
+        "summary": "",
+        "description": "Get Find ID About Us Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/about/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["About"]
+      }
+    },
     "/api/about": {
       "get": {
         "summary": "",
@@ -274,6 +301,15 @@
         "summary": "",
         "description": "Create About Us",
         "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
           {
             "name": "title",
             "in": "query",
@@ -315,6 +351,15 @@
         "summary": "",
         "description": "Update About Us",
         "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
           {
             "name": "id",
             "in": "query",
@@ -365,6 +410,15 @@
         "description": "Delete About Us",
         "parameters": [
           {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
             "name": "id",
             "in": "query",
             "required": false,
@@ -383,6 +437,5 @@
         "tags": ["About"]
       }
     }
-  },
-  "security": []
+  }
 }
