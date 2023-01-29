@@ -50,3 +50,17 @@ export const checkToken = async (token: string) => {
         }
     }
 }
+export const deleteToken = async (token: string) => {
+    const redis = await config.redis()
+    try {
+        const del = await redis.del(token)
+        return {
+            status: del
+        }
+
+    } catch (error) {
+        return {
+            message: "Fetching token from cache failed"
+        }
+    }
+}
