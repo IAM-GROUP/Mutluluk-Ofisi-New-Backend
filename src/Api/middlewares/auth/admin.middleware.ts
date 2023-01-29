@@ -13,7 +13,7 @@ export const adminAuth: Handler = async ({ headers }, res, next) => {
 
     const adminService = new AdminService()
     const token = headers['x-access-token'] as string
-    
+
     if (token) {
         const isRedisToken = cache.redis.Token.checkToken(token.toString())
         if ((await isRedisToken).status === "valid") {
@@ -33,8 +33,11 @@ export const adminAuth: Handler = async ({ headers }, res, next) => {
 
             }
         }
+        else if ((await isRedisToken).status === null) {
+            res.status(401).json({ message: "invalid token" })
+        }
         else {
-            res.status(401).json({ message:  (await isRedisToken).message})
+            res.status(401).json({ message: (await isRedisToken).message })
         }
     }
     else {
