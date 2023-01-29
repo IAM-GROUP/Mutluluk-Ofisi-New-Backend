@@ -87,5 +87,4 @@ export class AdminDal implements AdminRepository {
             }
         })
     }
-   
 }

@@ -7,5 +7,4 @@ export interface AdminRepository {
     update(id: string, email: string, password: string): Promise<{ message: string }>
     delete(id: string): Promise<{ message: string }>
     sign(email: string, password: string): Promise<IAdmin>
-    logout(token:string): Promise<{ message: string }>
 }
