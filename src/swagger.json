@@ -436,6 +436,20 @@
         },
         "tags": ["About"]
       }
+    },
+    "/api/users/admin": {
+      "get": {
+        "summary": "",
+        "description": "Get All Admin Users",
+        "parameters": [],
+        "operationId": "/api/users/admin",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Admin"]
+      }
     }
   }
 }
