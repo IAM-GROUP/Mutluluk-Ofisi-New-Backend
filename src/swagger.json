@@ -566,6 +566,62 @@
         },
         "tags": ["Admin"]
       }
+    },
+    "/api/users/admin/update": {
+      "post": {
+        "summary": "",
+        "description": "Admin User Update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "oldPassword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "newPassword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          }
+        ],
+        "operationId": "/api/users/admin/update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Admin"]
+      }
     }
   }
 }
