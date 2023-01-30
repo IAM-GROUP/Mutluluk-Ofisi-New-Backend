@@ -465,7 +465,38 @@
             }
           }
         ],
-        "operationId": "/api/users/admin",
+        "operationId": "/api/users/admin/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Admin"]
+      }
+    },
+    "/api/users/admin/sign": {
+      "post": {
+        "summary": "",
+        "description": "Sign",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/admin/sign",
         "responses": {
           "200": {
             "description": "OK"
