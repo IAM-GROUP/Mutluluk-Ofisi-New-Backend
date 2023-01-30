@@ -527,6 +527,45 @@
         },
         "tags": ["Admin"]
       }
+    },
+    "/api/users/admin/create": {
+      "post": {
+        "summary": "",
+        "description": "Admin User Create",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "passwordRepeat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/admin/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Admin"]
+      }
     }
   }
 }
