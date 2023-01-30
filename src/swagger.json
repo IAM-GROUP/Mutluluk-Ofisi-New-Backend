@@ -477,7 +477,7 @@
     "/api/users/admin/sign": {
       "post": {
         "summary": "",
-        "description": "Sign",
+        "description": "Admin User Sign",
         "parameters": [
           {
             "name": "email",
@@ -497,6 +497,29 @@
           }
         ],
         "operationId": "/api/users/admin/sign",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Admin"]
+      }
+    },
+    "/api/users/admin/logout": {
+      "post": {
+        "summary": "",
+        "description": "Admin User Logout",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/admin/logout",
         "responses": {
           "200": {
             "description": "OK"
