@@ -450,6 +450,29 @@
         },
         "tags": ["Admin"]
       }
+    },
+    "/api/users/admin/id": {
+      "get": {
+        "summary": "",
+        "description": "Get  Admin User",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/admin",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Admin"]
+      }
     }
   }
 }
