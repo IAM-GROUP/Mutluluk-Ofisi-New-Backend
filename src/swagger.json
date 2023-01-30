@@ -568,7 +568,7 @@
       }
     },
     "/api/users/admin/update": {
-      "post": {
+      "put": {
         "summary": "",
         "description": "Admin User Update",
         "parameters": [
@@ -615,6 +615,29 @@
           }
         ],
         "operationId": "/api/users/admin/update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Admin"]
+      }
+    },
+    "/api/users/admin/delete": {
+      "delete": {
+        "summary": "",
+        "description": "Admin User Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/admin/delete",
         "responses": {
           "200": {
             "description": "OK"
