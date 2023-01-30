@@ -8,7 +8,7 @@ const cryptr = new Crypto(process.env.SECRET_KEY as string)
 
 export const encrypt = (text: any | any[]) => {
     try {
-        return cryptr.encrypt(text)
+        return cryptr.encrypt(JSON.stringify(text))
     }
     catch (err) {
         return {
