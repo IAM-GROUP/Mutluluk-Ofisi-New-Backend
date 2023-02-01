@@ -1,6 +1,6 @@
-import { ObjectId } from 'mongoose'
+import { Schema } from 'mongoose'
 
 export interface ICategory {
     title: string
-    categoryMain: ObjectId
+    categoryMain: Schema.Types.ObjectId
 }
