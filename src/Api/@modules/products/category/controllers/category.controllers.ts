@@ -3,7 +3,7 @@ import { Handler } from 'express'
 import { CategoryService } from '../services/category.service'
 
 export class CategoryController {
-    static getCategory: Handler = async (req, res) => {
+    static getCategory: Handler = async (_req, res) => {
         const categoryService = await new CategoryService().categoryFindAll()
         res.json({ categoryService })
     }
