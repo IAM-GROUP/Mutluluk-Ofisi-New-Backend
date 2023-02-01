@@ -1,3 +1,4 @@
+import { Types } from 'mongoose'
 //? Repository
 import { CategoryRepository } from '../repository/category.repo'
 
@@ -19,7 +20,7 @@ export class CategoryDal implements CategoryRepository {
             }
         })
     }
-    async create(title: string, categoryMain: Pick<ICategory, "categoryMain">): Promise<{ message: string }> {
+    async create(title: string, categoryMain: Types.ObjectId): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 await Category.create({ title, categoryMain })
@@ -51,7 +52,7 @@ export class CategoryDal implements CategoryRepository {
             }
         })
     }
-    async update(id: string, title: string, categoryMain: Pick<ICategory, "categoryMain">): Promise<{ message: string }> {
+    async update(id: string, title: string, categoryMain: Types.ObjectId): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 const category = await Category.findByIdAndUpdate(id, { title, categoryMain })
