@@ -16,7 +16,7 @@ export class CategoryService {
     categoryFindAll() {
         return this.categoryDataAcess.findAll()
     }
-    categoryMainFind(id: string) {
+    categoryFind(id: string) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             return {
@@ -30,7 +30,7 @@ export class CategoryService {
             }
         }
     }
-    categoryMainDelete(id: string) {
+    categoryDelete(id: string) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             return {
@@ -58,7 +58,7 @@ export class CategoryService {
             }
         }
     }
-    async categoryMainCreate(title: string, categoryMain: string) {
+    async categoryCreate(title: string, categoryMain: string) {
         if (title) {
             const objectId = new Types.ObjectId(categoryMain)
             return {
