@@ -8,14 +8,14 @@ import { middleware } from '../../../../middlewares/middlewares'
 import { categoryMain } from '../controllers/controllers'
 
 //? Get
-export const getCategoryMain = app.get('/categoryMain', categoryMain.CategoryMainController.getCategoryMain)
-export const getCategoryMainId = app.get('/categoryMain/id', categoryMain.CategoryMainController.getCategoryMainId)
+export const getCategoryMain = app.get('/', categoryMain.CategoryMainController.getCategoryMain)
+export const getCategoryMainId = app.get('/id', categoryMain.CategoryMainController.getCategoryMainId)
 
 //* Post
-export const postCategoryMain = app.post('/categoryMain', middleware.auth.adminAuth, categoryMain.CategoryMainController.createCategoryMain)
+export const postCategoryMain = app.post('/create', middleware.auth.adminAuth, categoryMain.CategoryMainController.createCategoryMain)
 
 //? Update
-export const putCategoryMain = app.put('/categoryMain', middleware.auth.adminAuth, categoryMain.CategoryMainController.updateCategoryMain)
+export const putCategoryMain = app.put('/update', middleware.auth.adminAuth, categoryMain.CategoryMainController.updateCategoryMain)
 
 //! Delete
-export const deleteCategoryMain = app.delete('/categoryMain', middleware.auth.adminAuth, categoryMain.CategoryMainController.deleteCategoryMain)
+export const deleteCategoryMain = app.delete('/delete', middleware.auth.adminAuth, categoryMain.CategoryMainController.deleteCategoryMain)
