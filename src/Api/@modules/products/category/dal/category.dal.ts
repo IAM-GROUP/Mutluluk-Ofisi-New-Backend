@@ -33,7 +33,7 @@ export class CategoryDal implements CategoryRepository {
     async find(id: string): Promise<ICategory> {
         return new Promise(async (resolve, reject) => {
             try {
-                const category = await Category.findById(id)
+                const category = await Category.findById(id).populate('categoryMain')
                 resolve(category as ICategory)
             }
             catch (err) {
@@ -44,7 +44,7 @@ export class CategoryDal implements CategoryRepository {
     async findAll(): Promise<ICategory[]> {
         return new Promise(async (resolve, reject) => {
             try {
-                const category = await Category.find().populate('CategoryMain')
+                const category = await Category.find().populate("categoryMain")
                 resolve(category as ICategory[])
             }
             catch (err) {
