@@ -3,7 +3,7 @@ import { CategoryMainDal } from '../dal/categoryMain.dal'
 
 //? Validation
 import { validation } from '../../../../validations/validations'
-
+ 
 export class CategoryMainService {
     private categoryMainDataAcess: CategoryMainDal = new CategoryMainDal()
     constructor(private id?: string, private title?: string) {
