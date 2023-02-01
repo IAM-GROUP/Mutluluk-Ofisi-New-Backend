@@ -775,6 +775,160 @@
         },
         "tags": ["Category Main"]
       }
+    },
+    "/api/products/category": {
+      "get": {
+        "summary": "",
+        "description": "Get All Category",
+        "parameters": [],
+        "operationId": "/api/products/category",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Category"]
+      }
+    },
+     "/api/products/category/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Category",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/products/category/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Category"]
+      }
+    },
+    "/api/products/category/create": {
+      "post": {
+        "summary": "",
+        "description": "Category Main Create",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "categoryMain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "api/products/category/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Category"]
+      }
+    },
+    "/api/products/category/update": {
+      "post": {
+        "summary": "",
+        "description": "Category Update",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "categoryMain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "api/products/category/update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Category"]
+      }
+    },
+    "/api/products/category/delete": {
+      "delete": {
+        "summary": "",
+        "description": "Category Delete",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "api/products/category/delete",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Category"]
+      }
     }
   }
 }
