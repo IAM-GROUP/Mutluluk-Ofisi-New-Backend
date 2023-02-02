@@ -30,4 +30,4 @@ const ProductSchema = new Schema<IProduct>({
         ref: "Category"
     }
 })
-export const About = model('Product', ProductSchema)
+export const Product = model('Product', ProductSchema)
