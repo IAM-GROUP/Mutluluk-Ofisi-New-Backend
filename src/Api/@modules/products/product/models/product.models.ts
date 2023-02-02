@@ -21,7 +21,7 @@ const ProductSchema = new Schema<IProduct>({
     },
     discount: {
         type: Number
-    }
+    },
     images: {
         type: [{ src: String }]
     },
