@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongoose'
 export interface IProduct {
     name: string
     description: string
@@ -6,5 +7,6 @@ export interface IProduct {
     images: [{ src: string }]
     cargo: [{ title: string, src: string }]
     property: string
+    category: ObjectId
 
 }
