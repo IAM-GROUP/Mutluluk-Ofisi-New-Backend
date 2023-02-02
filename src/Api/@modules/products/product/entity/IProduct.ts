@@ -4,6 +4,8 @@ export interface IProduct {
     description: string
     types: [{ type: string, context: string }]
     quantity: number
+    price:number
+    discount:number
     images: [{ src: string }]
     cargo: [{ title: string, src: string }]
     property: string
