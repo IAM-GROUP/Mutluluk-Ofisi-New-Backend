@@ -16,6 +16,12 @@ const ProductSchema = new Schema<IProduct>({
     quantity: {
         type: Number
     },
+    price: {
+        type: Number
+    },
+    discount: {
+        type: Number
+    }
     images: {
         type: [{ src: String }]
     },
