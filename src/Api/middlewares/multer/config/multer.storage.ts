@@ -18,3 +18,19 @@ export const aboutMainStorage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
+export const productStorage = multer.diskStorage({
+    destination: (_, _file, cb) => {
+        cb(null, process.cwd() + '/src/Api/public/products')
+    },
+    filename: (_, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
+    }
+})
+export const cargoStorage = multer.diskStorage({
+    destination: (_, _file, cb) => {
+        cb(null, process.cwd() + '/src/Api/public/products/cargo')
+    },
+    filename: (_, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
+    }
+})
