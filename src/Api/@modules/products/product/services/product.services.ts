@@ -52,7 +52,7 @@ export class ProductService {
             }
         }
     }
-    productUpdate(id: string, name: string, description: string, types: [{ type: string, context: string }], quantity: number, price: number, discount: number, images: [{ src: string }], cargo: [{ title: string, src: string }], property: string, category: string) {
+    productUpdate(id: string, name: string, description: string, types: [{ types: string, context: string }], quantity: number, price: number, discount: number, images: [{ src: string }], cargo: [{ title: string, src: string }], property: string, category: string) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             const categoryId = new Types.ObjectId(category)
@@ -66,7 +66,7 @@ export class ProductService {
             }
         }
     }
-    async productCreate(name: string, description: string, types: [{ type: string, context: string }], quantity: number, price: number, discount: number, images: [{ src: string }], cargo: [{ title: string, src: string }], property: string, category: string) {
+    async productCreate(name: string, description: string, types: [{ types: string, context: string }], quantity: number, price: number, discount: number, images: [{ src: string }], cargo: [{ title: string, src: string }], property: string, category: string) {
         if (name) {
             const categoryId = new Types.ObjectId(category)
             return {

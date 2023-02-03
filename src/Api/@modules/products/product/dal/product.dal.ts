@@ -20,7 +20,7 @@ export class ProductDal implements ProductRepository {
             }
         })
     }
-    async create(name: string, description: string, types: [{ type: string, context: string }], quantity: number, price: number, discount: number, images: [{ src: string }], cargo: [{ title: string, src: string }], property: string, category: Types.ObjectId): Promise<{ message: string }> {
+    async create(name: string, description: string, types: [{ types: string, context: string }], quantity: number, price: number, discount: number, images: [{ src: string }], cargo: [{ title: string, src: string }], property: string, category: Types.ObjectId): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 await Product.create({ name, description, types, quantity, images, cargo, property, price, discount, category })
@@ -52,7 +52,7 @@ export class ProductDal implements ProductRepository {
             }
         })
     }
-    async update(id: string, name: string, description: string, types: [{ type: string, context: string }], quantity: number, price: number, discount: number, images: [{ src: string }], cargo: [{ title: string, src: string }], property: string, category: Types.ObjectId): Promise<{ message: string }> {
+    async update(id: string, name: string, description: string, types: [{ types: string, context: string }], quantity: number, price: number, discount: number, images: [{ src: string }], cargo: [{ title: string, src: string }], property: string, category: Types.ObjectId): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 const product = await Product.findByIdAndUpdate(id, { name, description, types, quantity, price, discount, images, cargo, property, category })

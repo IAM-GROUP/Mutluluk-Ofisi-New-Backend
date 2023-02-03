@@ -11,7 +11,7 @@ const ProductSchema = new Schema<IProduct>({
         type: String
     },
     types: {
-        type: [{ type: String, context: String }]
+        type: [{ types: String, context: String }]
     },
     quantity: {
         type: Number

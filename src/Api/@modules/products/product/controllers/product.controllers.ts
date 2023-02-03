@@ -16,12 +16,17 @@ export class ProductController {
         const productService = new ProductService()
         const cargos: [{ title: string, src: string }] = [{ title: "", src: "" }]
         const images: [{ src: string }] = [{ src: "" }]
-        const { name, description, types, quantity, price, discount, property, category, CargoTitle } = req.body
+        const types: [{ types: string, context: string }] = [{ types: "", context: "" }]
+        const { name, description, type, context, quantity, price, discount, property, category, cargoTitle } = req.body
         const { image, cargo } = req.files as any | any[]
-        cargos.push({ src: cargo[0].path, title: CargoTitle })
-        images.push({ src: image[0].path })
+        cargos.push({ src: cargo[0].path, title: cargoTitle })
+        types.push({ types: type, context })
+        image.forEach((img: any) => {
+            images.push({ src: img.path })
+        });
         cargos.shift()
         images.shift()
+        types.shift()
         const product = await productService.productCreate(name, description, types, quantity, price, discount, images, cargos, property, category)
         if (product.message) {
             res.json({
@@ -33,18 +38,23 @@ export class ProductController {
                 message: await product.create
             })
         }
-
     }
     static updateProduct: Handler = async (req, res) => {
         const productService = new ProductService()
         const cargos: [{ title: string, src: string }] = [{ title: "", src: "" }]
         const images: [{ src: string }] = [{ src: "" }]
-        const { id, name, description, types, quantity, price, discount, property, category, CargoTitle } = req.body
+        const types: [{ types: string, context: string }] = [{ types: "", context: "" }]
+        const { id, name, description, type, context, quantity, price, discount, property, category, cargoTitle } = req.body
         const { image, cargo } = req.files as any | any[]
-        cargos.push({ src: cargo[0].path, title: CargoTitle })
-        images.push({ src: image[0].path })
+        cargos.push({ src: cargo[0].path, title: cargoTitle })
+        types.push({ types: type, context })
+        image.forEach((img: any) => {
+            images.push({ src: img.path })
+        });
         cargos.shift()
         images.shift()
+        types.shift()
+
         const product = productService.productUpdate(id, name, description, types, quantity, price, discount, images, cargos, property, category)
         if (product.message) {
             res.json({

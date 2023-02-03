@@ -2,7 +2,7 @@ import { ObjectId } from 'mongoose'
 export interface IProduct {
     name: string
     description: string
-    types: [{ type: string, context: string }]
+    types: [{ types: string, context: string }]
     quantity: number
     price:number
     discount:number

@@ -28,7 +28,7 @@ export const adminAuth: Handler = async ({ headers }, res, next) => {
                     next()
                 }
                 else {
-                    res.status(200).json({ message: isEmail.message })
+                    res.status(200).json({ message: "token expired" })
                 }
 
             }
