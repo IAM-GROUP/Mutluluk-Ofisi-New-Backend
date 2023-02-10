@@ -3,7 +3,7 @@ import { model, Schema } from 'mongoose'
 //! Entity
 import { IProjectConsultant } from '../entity/projectConsultant.entity'
 
-const projectConsultantSchema = new Schema<IProjectConsultant>({
+const ProjectConsultantSchema = new Schema<IProjectConsultant>({
     title: {
         type: String
     },
@@ -21,4 +21,4 @@ const projectConsultantSchema = new Schema<IProjectConsultant>({
         ref: "ProjectConsultantCategory"
     }
 })
-export const projectConsultant = model('ProjectConsultant', projectConsultantSchema)
+export const ProjectConsultant = model('ProjectConsultant', ProjectConsultantSchema)
