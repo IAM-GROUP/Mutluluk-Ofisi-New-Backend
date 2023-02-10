@@ -7,7 +7,7 @@ import { validation } from '../../../../validations/validations'
 
 //* Security
 import { security } from '../../../../security/security'
-export class ProductService {
+export class ProjectConsultantService {
     private projectConsultantDataAcess: ProjectConsultantDal = new ProjectConsultantDal()
     constructor(private id?: string, private title?: string, private subTitle?: string, private text?: string, private image?: string,  private category?: string) {
         this.id = id
