@@ -15,7 +15,7 @@ import { aboutRoutes } from './Api/@modules/about/routes'
 import { aboutMainRoutes } from './Api/@modules/aboutMain/routes'
 import { adminRoute } from './Api/@modules/users/routes'
 import { productsRoute } from './Api/@modules/products/routes'
-import { projectConsultantRoute } from './Api/@modules/projectConsultant/routes'
+import { projectConsultantRoute } from './Api/@modules/projectConsultants/routes'
 
 
 
