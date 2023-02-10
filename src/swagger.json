@@ -1247,6 +1247,346 @@
         },
         "tags": ["Product"]
       }
+    },
+    "/api/project-consultant/category": {
+      "get": {
+        "summary": "",
+        "description": "Get All Project Consultant",
+        "parameters": [],
+        "operationId": "/api/project-consultant/category",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant Category"]
+      }
+    },
+    "/api/project-consultant/category/id": {
+      "get": {
+        "summary": "",
+        "description": "Get  Project Consultant",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/project-consultant/category/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant Category"]
+      }
+    },
+    "/api/project-consultant/category/create": {
+      "post": {
+        "summary": "",
+        "description": "Post Project Consultant",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/project-consultant/category/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant Category"]
+      }
+    },
+    "/api/project-consultant/category/update": {
+      "put": {
+        "summary": "",
+        "description": "Put Project Consultant",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/project-consultant/category/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant Category"]
+      }
+    },
+    "/api/project-consultant/category/delete": {
+      "delete": {
+        "summary": "",
+        "description": "Delete Project Consultant",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/project-consultant/category/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant Category"]
+      }
+    },
+    "/api/project-consultant/project": {
+      "get": {
+        "summary": "",
+        "description": "Get All Project Consultant",
+        "parameters": [],
+        "operationId": "/api/project-consultant/project",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant"]
+      }
+    },
+    "/api/project-consultant/project/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Project Consultant",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/project-consultant/project/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant"]
+      }
+    },
+    "/api/project-consultant/project/create": {
+      "post": {
+        "summary": "",
+        "description": "Post Project Consultant",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subTitle",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/project-consultant/project/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant"]
+      }
+    },
+    "/api/project-consultant/project/update": {
+      "put": {
+        "summary": "",
+        "description": "Put Project Consultant",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subTitle",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/project-consultant/project/update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant"]
+      }
+    },
+    "/api/project-consultant/project/delete": {
+      "delete": {
+        "summary": "",
+        "description": "Delete Project Consultant",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/project-consultant/project/delete",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Project Consultant"]
+      }
     }
   }
 }
