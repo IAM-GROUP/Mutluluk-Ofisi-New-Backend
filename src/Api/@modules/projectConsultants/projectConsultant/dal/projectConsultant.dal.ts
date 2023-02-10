@@ -44,7 +44,7 @@ export class ProjectConsultantDal implements ProjectConsultantRepository {
     async findAll(): Promise<IProjectConsultant[]> {
         return new Promise(async (resolve, reject) => {
             try {
-                const projectConsultant = await ProjectConsultant.find().populate('ProjectConsultantCategory')
+                const projectConsultant = await ProjectConsultant.find().populate('category')
                 resolve(projectConsultant as IProjectConsultant[])
             }
             catch (err) {

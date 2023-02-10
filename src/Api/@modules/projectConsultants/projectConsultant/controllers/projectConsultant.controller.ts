@@ -14,9 +14,9 @@ export class ProjectConsultantController {
     }
     static createProject: Handler = async (req, res) => {
         const projectConsultant = new ProjectConsultantService()
-        const { title,subTitle,text,category } = req.body
-        const { image } = req.file as any
-       /*  const projectCons = await projectConsultant.projectConsultantCreate(title,subTitle,text,)
+        const { title, subTitle, text, category } = req.body
+        const { image } = req.files as any
+        const projectCons = await projectConsultant.projectConsultantCreate(title, subTitle, text, image[0].path, category)
         if (projectCons.message) {
             res.json({
                 error: projectCons.message
@@ -26,14 +26,14 @@ export class ProjectConsultantController {
             res.json({
                 message: await projectCons.create
             })
-        } */
+        }
     }
     static updateProject: Handler = async (req, res) => {
         const projectConsultant = new ProjectConsultantService()
-        
-        const {id,title,subTitle,text,category } = req.body
-        const { image } = req.file as any
-        /* const projectCons = projectConsultant.projectConsultantUpdate(id, title,subTitle,text,category)
+
+        const { id, title, subTitle, text, category } = req.body
+        const { image } = req.files as any
+        const projectCons = projectConsultant.projectConsultantUpdate(id, title, subTitle, text, image[0].path, category)
         if (projectCons.message) {
             res.json({
                 error: projectCons.message
@@ -43,7 +43,7 @@ export class ProjectConsultantController {
             res.json({
                 message: await projectCons.update
             })
-        } */
+        }
     }
     static deleteProject: Handler = async (req, res) => {
         const projectConsultant = new ProjectConsultantService()
