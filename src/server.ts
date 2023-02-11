@@ -16,6 +16,7 @@ import { aboutMainRoutes } from './Api/@modules/aboutMain/routes'
 import { adminRoute } from './Api/@modules/users/routes'
 import { productsRoute } from './Api/@modules/products/routes'
 import { projectConsultantRoute } from './Api/@modules/projectConsultants/routes'
+import { announcementRoutes } from './Api/@modules/announcement/routes'
 
 
 
@@ -25,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //! Swagger
 import swaggerJson from './swagger.json'
 
-app.use('/', aboutRoutes, aboutMainRoutes, adminRoute, productsRoute,projectConsultantRoute)
+app.use('/', aboutRoutes, aboutMainRoutes, adminRoute, productsRoute,projectConsultantRoute,announcementRoutes)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
 mongoConnection()
