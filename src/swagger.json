@@ -1660,7 +1660,8 @@
             "schema": {
               "type": "string"
             }
-          }{
+          },
+          {
             "name": "title",
             "in": "query",
             "required": true,
