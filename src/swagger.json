@@ -1587,6 +1587,136 @@
         },
         "tags": ["Project Consultant"]
       }
+    },
+    "/api/announcement": {
+      "get": {
+        "summary": "",
+        "description": "Get All Announcement Us Context",
+        "parameters": [],
+        "operationId": "/api/announcement",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Announcement"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create Announcement",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Image File"
+          }
+        ],
+        "operationId": "/api/announcement",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Announcement"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update Announcement",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }{
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Image File"
+          }
+        ],
+        "operationId": "/api/announcement",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Announcement"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete Announcement",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/announcement",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Announcement"]
+      }
     }
   }
 }
