@@ -1588,6 +1588,30 @@
         "tags": ["Project Consultant"]
       }
     },
+    "/api/announcement/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Find ID Announcement Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/announcement/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Announcement"]
+      }
+    },
     "/api/announcement": {
       "get": {
         "summary": "",
