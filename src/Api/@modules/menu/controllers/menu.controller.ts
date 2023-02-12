@@ -7,7 +7,7 @@ export class MenuController {
         const menu = await new MenuService().menuFindAll()
         res.json({ menu })
     }
-    static getAnnouncementId: Handler = async (req, res) => {
+    static getMenuId: Handler = async (req, res) => {
         const { id } = req.body
         const menu = new MenuService().menuFind(id)
         res.json({ menu: await menu.menu })
