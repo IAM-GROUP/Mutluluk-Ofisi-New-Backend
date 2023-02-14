@@ -19,6 +19,7 @@ import { projectConsultantRoute } from './Api/@modules/projectConsultants/routes
 import { announcementRoutes } from './Api/@modules/announcement/routes'
 import { menuRoutes } from './Api/@modules/menu/routes'
 import { seoRoutes } from './Api/@modules/seo/routes'
+import { concatUsRoutes } from './Api/@modules/contactUs/routes'
 
 
 
@@ -28,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //! Swagger
 import swaggerJson from './swagger.json'
 
-app.use('/', aboutRoutes, aboutMainRoutes, adminRoute, productsRoute,projectConsultantRoute,announcementRoutes,menuRoutes,seoRoutes)
+app.use('/', aboutRoutes, aboutMainRoutes, adminRoute, productsRoute,projectConsultantRoute,announcementRoutes,menuRoutes,seoRoutes,concatUsRoutes)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
 mongoConnection()
