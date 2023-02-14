@@ -2080,6 +2080,239 @@
         },
         "tags": ["Seo"]
       }
+    },
+    "/api/concat-us": {
+      "get": {
+        "summary": "",
+        "description": "Get All Concat Us Context",
+        "parameters": [],
+        "operationId": "/api/concat-us",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Concat Us"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create Concat Us",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instagram",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "facebook",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "linkedin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mapLink",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/concat-us",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Concat Us"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update Concat Us",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "instagram",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "facebook",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "linkedin",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mapLink",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/concat-us",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Concat Us"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete Concat Us",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/concat-us",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Concat Us"]
+      }
+    },
+    "/api/concat-us/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Find ID Concat Us Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/concat-us/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Concat Us"]
+      }
     }
   }
 }
