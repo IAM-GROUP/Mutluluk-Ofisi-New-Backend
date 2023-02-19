@@ -6,5 +6,11 @@ export interface IUser {
     password: string,
     dateOfBirth: Date,
     gender: string,
-    roles: []
+    roles: [],
+    basket:string,
+    order:string,
+    creditCardName:string,
+    creditCardSurname:string,
+    creditCardNumber:string,
+    creditCardCvv:string
 }
