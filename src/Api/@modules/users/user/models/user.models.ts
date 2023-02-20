@@ -16,6 +16,9 @@ export const User = neo4j()?.model<IUser>("user",{
     email:{
         type:"string"
     },
+    image:{
+        type:"string"
+    },
     phone:{
         type:"string"
     },
