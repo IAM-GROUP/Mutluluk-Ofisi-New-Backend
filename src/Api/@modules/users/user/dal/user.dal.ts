@@ -70,8 +70,8 @@ export class UserDal implements UserRepository {
     async follow(follow: string, followers:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.writeCypher("match (f1:user {id:$follow}) match(f2:user {id:$following}) create(f1)-[follow:FOLLOW]->(f2) create (f2)-[followers:FOLLOWERS]->(f1) ", { follow, followers });
-                resolve(user as any)
+                const user =await neo4j()?.writeCypher("match (f1:user {id:$follow}) match(f2:user {id:$followers}) create(f1)-[follow:FOLLOW]->(f2) create (f2)-[followers:FOLLOWERS]->(f1) ", { follow, followers });
+                resolve({ message: "Success following" })
             }
             catch (err) {
                 reject({ message: "Error " + err })
@@ -81,7 +81,18 @@ export class UserDal implements UserRepository {
     async unFollow(follow: string, followers:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.writeCypher("match(f1:user {id:$follow})-[follow:FOLLOW]->(f2:user {id:$following}) match(f2:user {id:$following})-[followers:FOLLOWERS]->(f1:user {id:$follow}) delete followers,follow", { follow, followers });
+                const user =await neo4j()?.writeCypher("match(f1:user {id:$follow})-[follow:FOLLOW]->(f2:user {id:$followers}) match(f2:user {id:$following})-[followers:FOLLOWERS]->(f1:user {id:$follow}) delete followers,follow", { follow, followers });
+                resolve({ message: "Success un follow" })
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async getFollow(id:string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user =await neo4j()?.cypher("match (n:user {id:$id})-[followers:FOLLOWERS]->(n1:user) return n1.id,n1.name,n1.surname", { id: id })
                 resolve(user as any)
             }
             catch (err) {
