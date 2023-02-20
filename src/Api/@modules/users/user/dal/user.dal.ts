@@ -67,4 +67,26 @@ export class UserDal implements UserRepository {
             }
         })
     }
+    async follow(follow: string, followers:string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user =await neo4j()?.writeCypher("match (f1:user {id:$follow}) match(f2:user {id:$following}) create(f1)-[follow:FOLLOW]->(f2) create (f2)-[followers:FOLLOWERS]->(f1) ", { follow, followers });
+                resolve(user as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async unFollow(follow: string, followers:string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user =await neo4j()?.writeCypher("match(f1:user {id:$follow})-[follow:FOLLOW]->(f2:user {id:$following}) match(f2:user {id:$following})-[followers:FOLLOWERS]->(f1:user {id:$follow}) delete followers,follow", { follow, followers });
+                resolve(user as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
 }
