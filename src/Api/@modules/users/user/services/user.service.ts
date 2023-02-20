@@ -80,7 +80,19 @@ export class UserService {
         }
         else {
             return {
-                message: "name prop empty"
+                message: "follow || followers prop empty"
+            }
+        }
+    }
+    async userUnFollow(follow: string, followers:string) {
+        if (follow || followers ) {
+            return {
+                follow: this.userDataAcess.unFollow(follow,followers),
+            }
+        }
+        else {
+            return {
+                message: "follow || followers prop empty"
             }
         }
     }
