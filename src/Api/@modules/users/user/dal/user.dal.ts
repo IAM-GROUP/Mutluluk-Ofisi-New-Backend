@@ -22,10 +22,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async create(name: string, surname: string, email: string,phone:string,password:string,dateOfBirth:string,gender:string,roles:string,basket:string,order:string,creditCardName:string,creditCardSurname:string,creditCardNumber:string,creditCardCvv:string): Promise<{ message: string }> {
+    async create(name: string, surname: string, email: string,image:string,phone:string,password:string,dateOfBirth:string,gender:string,roles:string,basket:string,order:string,creditCardName:string,creditCardSurname:string,creditCardNumber:string,creditCardCvv:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                await User?.create({name,surname,email,phone,password,dateOfBirth,gender,roles,basket,order,creditCardName,creditCardSurname,creditCardNumber,creditCardCvv})
+                await User?.create({name,surname,email,image,phone,password,dateOfBirth,gender,roles,basket,order,creditCardName,creditCardSurname,creditCardNumber,creditCardCvv})
                 resolve({ message: "Success created" })
             } catch (err) {
                 reject({ message: "Error " + err })
@@ -35,30 +35,31 @@ export class UserDal implements UserRepository {
     async find(id: string): Promise<IUser> {
         return new Promise(async (resolve, reject) => {
             try {
-                const menu = await neo4j()?.cypher("match (u:user {id:$id} return u.id,u.name)")
-                resolve(menu as IUser)
+                const user = await neo4j()?.cypher("match (u:user {id:$id} return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.roles,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv)",{})
+                resolve(user as any)
             }
             catch (err) {
                 reject({ message: "Error " + err })
             }
         })
     }
-    async findAll(): Promise<IMenu[]> {
+    async findAll(): Promise<IUser[]> {
         return new Promise(async (resolve, reject) => {
             try {
-                const menu = await Menu.find()
-                resolve(menu as IMenu[])
+                const user =  await neo4j()?.cypher("match (u:user) return u",{})
+                resolve(user as any)
             }
             catch (err) {
                 reject({ message: "Error " + err })
             }
         })
     }
-    async update(id: string, name: string, type: string, status: boolean): Promise<{ message: string }> {
+    async update(id: string, name: string, surname: string, email: string,image:string,phone:string,password:string,dateOfBirth:string,gender:string,roles:string,basket:string,order:string,creditCardName:string,creditCardSurname:string,creditCardNumber:string,creditCardCvv:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const menu = await Menu.findByIdAndUpdate(id, { name, type, status })
-                menu?.save()
+                const user = await neo4j()?.writeCypher("match (u:user {id:$id}) set u.name=$name,u.surname=$surname,u.email=$email,u.image=$image,u.phone=$phone,u.password=$password,u.dateOfBirth=$dateOfBirth,u.gender=$gender,u.roles=$roles,u.basket=$basket,u.order=$order,u.creditCardName=$creditCardName,u.creditCardSurname=$creditCardSurname,u.creditCardNumber=$creditCardNumber,u.creditCardCvv=$creditCardCvv return u",{
+                    id,name,surname,email,image,phone,password,dateOfBirth,gender,roles,basket,order,creditCardName,creditCardSurname,creditCardNumber,creditCardCvv    
+                })
                 resolve({ message: "Success update" })
             }
             catch (err) {
