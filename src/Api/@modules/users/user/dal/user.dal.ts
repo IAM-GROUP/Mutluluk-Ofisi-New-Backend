@@ -153,4 +153,26 @@ export class UserDal implements UserRepository {
             }
         })
     }
+    async addRoles(name:string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const role =await neo4j()?.writeCypher("create (r:role {name:$name})",{name})
+                resolve({ message: "Success role" })
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async deleteRoles(name:string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const role =await neo4j()?.writeCypher("match (r:role {name:$name}) delete r",{name})
+                resolve({ message: "Deleted role" })
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
 }
