@@ -81,3 +81,5 @@ services:
 networks:
   redis_net:
     driver: bridge
+  lan:
+    driver: bridge
