@@ -71,6 +71,17 @@ export class UserService {
                 message: "name prop empty"
             }
         }
-
+    }
+    async userFollow(follow: string, followers:string) {
+        if (follow || followers ) {
+            return {
+                follow: this.userDataAcess.follow(follow,followers),
+            }
+        }
+        else {
+            return {
+                message: "name prop empty"
+            }
+        }
     }
 }
