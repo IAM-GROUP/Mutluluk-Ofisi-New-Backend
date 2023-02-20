@@ -156,7 +156,7 @@ export class UserDal implements UserRepository {
     async addRoles(name:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const role =await neo4j()?.writeCypher("create (r:role {name:$name})",{name})
+                await neo4j()?.writeCypher("create (r:role {name:$name})",{name})
                 resolve({ message: "Success role" })
             }
             catch (err) {
@@ -167,8 +167,30 @@ export class UserDal implements UserRepository {
     async deleteRoles(name:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const role =await neo4j()?.writeCypher("match (r:role {name:$name}) delete r",{name})
+                await neo4j()?.writeCypher("match (r:role {name:$name}) delete r",{name})
                 resolve({ message: "Deleted role" })
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async addUserRole(userId: string, roleId:string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await neo4j()?.writeCypher("match (u:user {id:$userId}) match(r:role {id:$roleId}) create(u)-[rol:ROLE]->(r) create (r)-[user:USER]->(u) ", { userId, roleId });
+                resolve({ message: "Success user role rel" })
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async deleteUserRole(userId: string, roleId:string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await neo4j()?.writeCypher("match(u:user {id:$userId})-[rol:ROLE]->(r:role {id:$roleId}) match(r:role {id:$roleId})-[user:USER]->(u:user {id:$userId}) delete rol,user", { userId, roleId });
+                resolve({ message: "Success user role rel" })
             }
             catch (err) {
                 reject({ message: "Error " + err })
