@@ -96,10 +96,22 @@ export class UserService {
             }
         }
     }
-    async userGetFlow(id:string) {
+    async userGetFollow(id:string) {
         if (id) {
             return {
                 follow: this.userDataAcess.getFollow(id),
+            }
+        }
+        else {
+            return {
+                message: "id prop empty"
+            }
+        }
+    }
+    async userGetFollowers(id:string) {
+        if (id) {
+            return {
+                followers: this.userDataAcess.getFollowers(id),
             }
         }
         else {
