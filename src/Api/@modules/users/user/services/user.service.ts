@@ -144,4 +144,16 @@ export class UserService {
             }
         }
     }
+    async addRoles(name: string) {
+        if (name) {
+            return {
+                followers: this.userDataAcess.addRoles(name),
+            }
+        }
+        else {
+            return {
+                message: "name prop empty"
+            }
+        }
+    }
 }
