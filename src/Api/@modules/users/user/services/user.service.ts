@@ -120,10 +120,11 @@ export class UserService {
             }
         }
     }
-    async userAddBasket(id: string, basket: string) {
-        if (id || basket) {
+    async userAddBasket(id: string, basket: any) {
+        const userBasket = security.crypto.cryen(basket)
+        if (userBasket) {
             return {
-                basket: this.userDataAcess.addBasket(id, basket),
+                basket: this.userDataAcess.addBasket(id, userBasket.toString()),
             }
         }
         else {
@@ -132,10 +133,11 @@ export class UserService {
             }
         }
     }
-    async userAddOrder(id: string, order: string) {
-        if (id || order) {
+    async userAddOrder(id: string, order: any) {
+        const userOrder = security.crypto.cryen(order)
+        if (userOrder) {
             return {
-                order: this.userDataAcess.addOrder(id, order),
+                order: this.userDataAcess.addOrder(id, userOrder.toString()),
             }
         }
         else {
