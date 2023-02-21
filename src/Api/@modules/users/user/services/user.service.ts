@@ -120,10 +120,10 @@ export class UserService {
             }
         }
     }
-    async addBasket(id: string, basket: string) {
+    async userAddBasket(id: string, basket: string) {
         if (id || basket) {
             return {
-                followers: this.userDataAcess.addBasket(id, basket),
+                basket: this.userDataAcess.addBasket(id, basket),
             }
         }
         else {
@@ -132,10 +132,10 @@ export class UserService {
             }
         }
     }
-    async addOrder(id: string, order: string) {
+    async userAddOrder(id: string, order: string) {
         if (id || order) {
             return {
-                followers: this.userDataAcess.addOrder(id, order),
+                order: this.userDataAcess.addOrder(id, order),
             }
         }
         else {
@@ -144,10 +144,22 @@ export class UserService {
             }
         }
     }
-    async addRoles(name: string) {
+    async userAddRoles(name: string) {
         if (name) {
             return {
-                followers: this.userDataAcess.addRoles(name),
+                roles: this.userDataAcess.addRoles(name),
+            }
+        }
+        else {
+            return {
+                message: "name prop empty"
+            }
+        }
+    }
+    async userDeleteRoles(name: string) {
+        if (name) {
+            return {
+                roles: this.userDataAcess.deleteRoles(name),
             }
         }
         else {
