@@ -40,12 +40,12 @@ export class UserService {
             }
         }
     }
-    userUpdate(id: string, name: string, surname: string, email: string,image:string,phone:string,password:string,dateOfBirth:string,gender:string,basket:string,order:string,creditCardName:string,creditCardSurname:string,creditCardNumber:string,creditCardCvv:string) {
+    userUpdate(id: string, name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             if (id) {
                 return {
-                    update: this.userDataAcess.update(id,name,surname,email,image,phone,password,dateOfBirth,gender,basket,order,creditCardName,creditCardSurname,creditCardNumber,creditCardCvv)
+                    update: this.userDataAcess.update(id, name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv)
                 }
             }
             else {
@@ -60,10 +60,10 @@ export class UserService {
             }
         }
     }
-    async userCreate(name: string, surname: string, email: string,image:string,phone:string,password:string,dateOfBirth:string,gender:string,basket:string,order:string,creditCardName:string,creditCardSurname:string,creditCardNumber:string,creditCardCvv:string) {
+    async userCreate(name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string) {
         if (name) {
             return {
-                create: this.userDataAcess.create(name,surname,email,image,phone,password,dateOfBirth,gender,basket,order,creditCardName,creditCardSurname,creditCardNumber,creditCardCvv),
+                create: this.userDataAcess.create(name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv),
             }
         }
         else {
@@ -72,10 +72,10 @@ export class UserService {
             }
         }
     }
-    async userFollow(follow: string, followers:string) {
-        if (follow || followers ) {
+    async userFollow(follow: string, followers: string) {
+        if (follow || followers) {
             return {
-                follow: this.userDataAcess.follow(follow,followers),
+                follow: this.userDataAcess.follow(follow, followers),
             }
         }
         else {
@@ -84,10 +84,10 @@ export class UserService {
             }
         }
     }
-    async userUnFollow(follow: string, followers:string) {
-        if (follow || followers ) {
+    async userUnFollow(follow: string, followers: string) {
+        if (follow || followers) {
             return {
-                follow: this.userDataAcess.unFollow(follow,followers),
+                follow: this.userDataAcess.unFollow(follow, followers),
             }
         }
         else {
@@ -96,7 +96,7 @@ export class UserService {
             }
         }
     }
-    async userGetFollow(id:string) {
+    async userGetFollow(id: string) {
         if (id) {
             return {
                 follow: this.userDataAcess.getFollow(id),
@@ -108,7 +108,7 @@ export class UserService {
             }
         }
     }
-    async userGetFollowers(id:string) {
+    async userGetFollowers(id: string) {
         if (id) {
             return {
                 followers: this.userDataAcess.getFollowers(id),
@@ -117,6 +117,18 @@ export class UserService {
         else {
             return {
                 message: "id prop empty"
+            }
+        }
+    }
+    async addBasket(id: string, basket: string) {
+        if (id || basket) {
+            return {
+                followers: this.userDataAcess.addBasket(id, basket),
+            }
+        }
+        else {
+            return {
+                message: "id basket prop empty"
             }
         }
     }
