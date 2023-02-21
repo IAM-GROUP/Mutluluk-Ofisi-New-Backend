@@ -170,10 +170,22 @@ export class UserService {
             }
         }
     }
-    async userRelRoles(userId:string,roleId:string) {
+    async userRelAddRoles(userId:string,roleId:string) {
         if (userId || roleId) {
             return {
                 userRoles: this.userDataAcess.addUserRole(userId,roleId),
+            }
+        }
+        else {
+            return {
+                message: "userId roleId prop empty"
+            }
+        }
+    }
+    async userRelDeleteRoles(userId:string,roleId:string) {
+        if (userId || roleId) {
+            return {
+                userRoles: this.userDataAcess.deleteUserRole(userId,roleId),
             }
         }
         else {
