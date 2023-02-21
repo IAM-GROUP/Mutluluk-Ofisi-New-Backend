@@ -12,7 +12,7 @@ import { neo4j } from '../../../../../core/data-source/neo4j/connection'
 
 export class UserDal implements UserRepository {
     async delete(id: string): Promise<{ message: string }> {
-        await neo4j()?.cypher("match (u:user {id:$id}) delete u",{ id:id })
+        await neo4j()?.cypher("match (u:user {id:$id}) delete u", { id: id })
         return new Promise((resolve, reject) => {
             try {
                 return resolve({ message: "Success deleted" })
@@ -22,10 +22,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async create(name: string, surname: string, email: string,image:string,phone:string,password:string,dateOfBirth:string,gender:string,basket:string,order:string,creditCardName:string,creditCardSurname:string,creditCardNumber:string,creditCardCvv:string): Promise<{ message: string }> {
+    async create(name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                await User?.create({name,surname,email,image,phone,password,dateOfBirth,gender,basket,order,creditCardName,creditCardSurname,creditCardNumber,creditCardCvv})
+                await User?.create({ name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv })
                 resolve({ message: "Success created" })
             } catch (err) {
                 reject({ message: "Error " + err })
@@ -35,7 +35,7 @@ export class UserDal implements UserRepository {
     async find(id: string): Promise<IUser> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = await neo4j()?.cypher("match (u:user {id:$id} return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv)",{})
+                const user = await neo4j()?.cypher("match (u:user {id:$id} return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv)", {})
                 resolve(user as any)
             }
             catch (err) {
@@ -46,7 +46,7 @@ export class UserDal implements UserRepository {
     async findAll(): Promise<IUser[]> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =  await neo4j()?.cypher("match (u:user) return u",{})
+                const user = await neo4j()?.cypher("match (u:user) return u", {})
                 resolve(user as any)
             }
             catch (err) {
@@ -54,11 +54,11 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async update(id: string, name: string, surname: string, email: string,image:string,phone:string,password:string,dateOfBirth:string,gender:string,basket:string,order:string,creditCardName:string,creditCardSurname:string,creditCardNumber:string,creditCardCvv:string): Promise<{ message: string }> {
+    async update(id: string, name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = await neo4j()?.writeCypher("match (u:user {id:$id}) set u.name=$name,u.surname=$surname,u.email=$email,u.image=$image,u.phone=$phone,u.password=$password,u.dateOfBirth=$dateOfBirth,u.gender=$gender,u.basket=$basket,u.order=$order,u.creditCardName=$creditCardName,u.creditCardSurname=$creditCardSurname,u.creditCardNumber=$creditCardNumber,u.creditCardCvv=$creditCardCvv return u",{
-                    id,name,surname,email,image,phone,password,dateOfBirth,gender,basket,order,creditCardName,creditCardSurname,creditCardNumber,creditCardCvv    
+                const user = await neo4j()?.writeCypher("match (u:user {id:$id}) set u.name=$name,u.surname=$surname,u.email=$email,u.image=$image,u.phone=$phone,u.password=$password,u.dateOfBirth=$dateOfBirth,u.gender=$gender,u.basket=$basket,u.order=$order,u.creditCardName=$creditCardName,u.creditCardSurname=$creditCardSurname,u.creditCardNumber=$creditCardNumber,u.creditCardCvv=$creditCardCvv return u", {
+                    id, name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv
                 })
                 resolve({ message: "Success update" })
             }
@@ -67,10 +67,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async follow(follow: string, followers:string): Promise<{ message: string }> {
+    async follow(follow: string, followers: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.writeCypher("match (f1:user {id:$follow}) match(f2:user {id:$followers}) create(f1)-[follow:FOLLOW]->(f2) create (f2)-[followers:FOLLOWERS]->(f1) ", { follow, followers });
+                const user = await neo4j()?.writeCypher("match (f1:user {id:$follow}) match(f2:user {id:$followers}) create(f1)-[follow:FOLLOW]->(f2) create (f2)-[followers:FOLLOWERS]->(f1) ", { follow, followers });
                 resolve({ message: "Success following" })
             }
             catch (err) {
@@ -78,10 +78,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async unFollow(follow: string, followers:string): Promise<{ message: string }> {
+    async unFollow(follow: string, followers: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.writeCypher("match(f1:user {id:$follow})-[follow:FOLLOW]->(f2:user {id:$followers}) match(f2:user {id:$following})-[followers:FOLLOWERS]->(f1:user {id:$follow}) delete followers,follow", { follow, followers });
+                const user = await neo4j()?.writeCypher("match(f1:user {id:$follow})-[follow:FOLLOW]->(f2:user {id:$followers}) match(f2:user {id:$following})-[followers:FOLLOWERS]->(f1:user {id:$follow}) delete followers,follow", { follow, followers });
                 resolve({ message: "Success un follow" })
             }
             catch (err) {
@@ -89,10 +89,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async getFollow(id:string): Promise<{ message: string }> {
+    async getFollow(id: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.cypher("match (n:user {id:$id})-[follow:FOLLOW]->(n1:user) return n1.id,n1.name,n1.surname,n1.email,n1.image,n1.phone,n1.password,n1.dateOfBirth,n1.gender,n1.basket,n1.order,n1.creditCardName,n1.creditCardSurname,n1.creditCardNumber,n1.creditCardCvv", { id: id })
+                const user = await neo4j()?.cypher("match (n:user {id:$id})-[follow:FOLLOW]->(n1:user) return n1.id,n1.name,n1.surname,n1.email,n1.image,n1.phone,n1.password,n1.dateOfBirth,n1.gender,n1.basket,n1.order,n1.creditCardName,n1.creditCardSurname,n1.creditCardNumber,n1.creditCardCvv", { id: id })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res
@@ -105,10 +105,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async getFollowers(id:string): Promise<{ message: string }> {
+    async getFollowers(id: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.cypher("match (n:user {id:$id})-[followers:FOLLOWERS]->(n1:user) return return n1.id,n1.name,n1.surname,n1.email,n1.image,n1.phone,n1.password,n1.dateOfBirth,n1.gender,n1.basket,n1.order,n1.creditCardName,n1.creditCardSurname,n1.creditCardNumber,n1.creditCardCvv", { id: id })
+                const user = await neo4j()?.cypher("match (n:user {id:$id})-[followers:FOLLOWERS]->(n1:user) return return n1.id,n1.name,n1.surname,n1.email,n1.image,n1.phone,n1.password,n1.dateOfBirth,n1.gender,n1.basket,n1.order,n1.creditCardName,n1.creditCardSurname,n1.creditCardNumber,n1.creditCardCvv", { id: id })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res
@@ -121,10 +121,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async addBasket(id:string,basket:string): Promise<{ message: string }> {
+    async addBasket(id: string, basket: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.writeCypher(`match (u:user {id:'${id}'}) set u.basket='${basket}' return u`,{})
+                const user = await neo4j()?.writeCypher(`match (u:user {id:'${id}'}) set u.basket='${basket}' return u`, {})
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res
@@ -137,10 +137,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async addOrder(id:string,order:string): Promise<{ message: string }> {
+    async addOrder(id: string, order: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.writeCypher(`match (u:user {id:'${id}'}) set u.order='${order}' return u`,{})
+                const user = await neo4j()?.writeCypher(`match (u:user {id:'${id}'}) set u.order='${order}' return u`, {})
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res
@@ -153,10 +153,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async addRoles(name:string): Promise<{ message: string }> {
+    async addRoles(name: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                await neo4j()?.writeCypher("create (r:role {name:$name})",{name})
+                await neo4j()?.writeCypher("create (r:role {name:$name})", { name })
                 resolve({ message: "Success role" })
             }
             catch (err) {
@@ -164,10 +164,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async deleteRoles(name:string): Promise<{ message: string }> {
+    async deleteRoles(name: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                await neo4j()?.writeCypher("match (r:role {name:$name}) delete r",{name})
+                await neo4j()?.writeCypher("match (r:role {name:$name}) delete r", { name })
                 resolve({ message: "Deleted role" })
             }
             catch (err) {
@@ -175,7 +175,7 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async addUserRole(userId: string, roleId:string): Promise<{ message: string }> {
+    async addUserRole(userId: string, roleId: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 await neo4j()?.writeCypher("match (u:user {id:$userId}) match(r:role {id:$roleId}) create(u)-[rol:ROLE]->(r) create (r)-[user:USER]->(u) ", { userId, roleId });
@@ -186,7 +186,7 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async deleteUserRole(userId: string, roleId:string): Promise<{ message: string }> {
+    async deleteUserRole(userId: string, roleId: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 await neo4j()?.writeCypher("match(u:user {id:$userId})-[rol:ROLE]->(r:role {id:$roleId}) match(r:role {id:$roleId})-[user:USER]->(u:user {id:$userId}) delete rol,user", { userId, roleId });
@@ -197,10 +197,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async getUserRole(id:string): Promise<{ message: string }> {
+    async getUserRole(id: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.cypher("match (n:user {id:$id})-[rol:ROLE]->(r:role) return r.name", { id: id })
+                const user = await neo4j()?.cypher("match (n:user {id:$id})-[rol:ROLE]->(r:role) return r.name", { id: id })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res
@@ -213,10 +213,26 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async getRoleUser(id:string): Promise<{ message: string }> {
+    async getRoleUser(id: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user =await neo4j()?.cypher("match (r:role {id:$id})-[user:USER]->(u:user) return u.id,u.name,u.surname", { id: id })
+                const user = await neo4j()?.cypher("match (r:role {id:$id})-[user:USER]->(u:user) return u.id,u.name,u.surname", { id: id })
+                const rUser = user?.records.map(uss => {
+                    return uss.map(res => {
+                        return res
+                    })
+                })
+                resolve(rUser as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async getUserEmail(email: string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = await neo4j()?.cypher("match (u:user {email:$email}) return u.id,u.name,u.surname", { email: email })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res
