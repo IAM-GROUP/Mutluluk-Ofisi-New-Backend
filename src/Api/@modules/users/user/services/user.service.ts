@@ -161,7 +161,7 @@ export class UserService {
     async userDeleteRoles(name: string) {
         if (name) {
             return {
-                roles: this.userDataAcess.deleteRoles(name),
+                userRoles: this.userDataAcess.deleteRoles(name),
             }
         }
         else {
@@ -198,6 +198,18 @@ export class UserService {
         if (id) {
             return {
                 userRoles: this.userDataAcess.getUserRole(id),
+            }
+        }
+        else {
+            return {
+                message: "id roleId prop empty"
+            }
+        }
+    }
+    async userGetRoleUser(id:string) {
+        if (id) {
+            return {
+                userRoles: this.userDataAcess.getRoleUser(id),
             }
         }
         else {
