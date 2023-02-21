@@ -132,4 +132,16 @@ export class UserService {
             }
         }
     }
+    async addOrder(id: string, order: string) {
+        if (id || order) {
+            return {
+                followers: this.userDataAcess.addOrder(id, order),
+            }
+        }
+        else {
+            return {
+                message: "id order prop empty"
+            }
+        }
+    }
 }
