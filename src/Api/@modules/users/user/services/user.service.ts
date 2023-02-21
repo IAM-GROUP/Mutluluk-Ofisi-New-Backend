@@ -194,4 +194,16 @@ export class UserService {
             }
         }
     }
+    async userGetUserRole(id:string) {
+        if (id) {
+            return {
+                userRoles: this.userDataAcess.getUserRole(id),
+            }
+        }
+        else {
+            return {
+                message: "id roleId prop empty"
+            }
+        }
+    }
 }
