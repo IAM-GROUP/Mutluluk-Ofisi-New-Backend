@@ -40,19 +40,32 @@ export class UserService {
             }
         }
     }
-    userUpdate(id: string, name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string) {
+    userUpdate(id: string, name: string, surname: string, email: string, image: string, phone: string, hash: string, oldPassword: string, newPassword: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string) {
         const isValidId = validation.isIdValidation(id)
-        if (isValidId.isValid === true) {
-            if (id) {
-                return {
-                    update: this.userDataAcess.update(id, name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv)
+        const isEmail = validation.isEmailValidation(email)
+        const decrypt = security.bcrypt.dencrypt(oldPassword, hash)
+        if (isValidId.isValid) {
+            if (isEmail.isEmail) {
+                if (decrypt.isDencrypt) {
+                    const encrypt = security.bcrypt.encrypt(newPassword)
+                    return {
+                        update: this.userDataAcess.update(id, name, surname, email, image, phone, encrypt, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv)
+                    }
                 }
+                else {
+                    return {
+                        message: decrypt.message
+                    }
+
+                }
+
             }
             else {
                 return {
-                    message: "id prop empty"
+                    message: isEmail.message
                 }
             }
+
         }
         else {
             return {
@@ -61,14 +74,16 @@ export class UserService {
         }
     }
     async userCreate(name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string) {
-        if (name) {
+        const hash = security.bcrypt.encrypt(password)
+        const isEmail = validation.isEmailValidation(email)
+        if (isEmail.isEmail) {
             return {
-                create: this.userDataAcess.create(name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv),
+                create: this.userDataAcess.create(name, surname, email, image, phone, hash, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv),
             }
         }
         else {
             return {
-                message: "name prop empty"
+                message: "email not valid"
             }
         }
     }
@@ -170,10 +185,10 @@ export class UserService {
             }
         }
     }
-    async userRelAddRoles(userId:string,roleId:string) {
+    async userRelAddRoles(userId: string, roleId: string) {
         if (userId || roleId) {
             return {
-                userRoles: this.userDataAcess.addUserRole(userId,roleId),
+                userRoles: this.userDataAcess.addUserRole(userId, roleId),
             }
         }
         else {
@@ -182,10 +197,10 @@ export class UserService {
             }
         }
     }
-    async userRelDeleteRoles(userId:string,roleId:string) {
+    async userRelDeleteRoles(userId: string, roleId: string) {
         if (userId || roleId) {
             return {
-                userRoles: this.userDataAcess.deleteUserRole(userId,roleId),
+                userRoles: this.userDataAcess.deleteUserRole(userId, roleId),
             }
         }
         else {
@@ -194,7 +209,7 @@ export class UserService {
             }
         }
     }
-    async userGetUserRole(id:string) {
+    async userGetUserRole(id: string) {
         if (id) {
             return {
                 userRoles: this.userDataAcess.getUserRole(id),
@@ -206,7 +221,7 @@ export class UserService {
             }
         }
     }
-    async userGetRoleUser(id:string) {
+    async userGetRoleUser(id: string) {
         if (id) {
             return {
                 userRoles: this.userDataAcess.getRoleUser(id),
@@ -218,7 +233,7 @@ export class UserService {
             }
         }
     }
-    async userSign(email:string,password:string) {
+    async userSign(email: string, password: string) {
         const isEmail = validation.isEmailValidation(email)
         if (isEmail.isEmail) {
             const isUser = await this.userDataAcess.getUserEmail(email)
