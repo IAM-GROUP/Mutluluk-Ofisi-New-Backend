@@ -5,4 +5,4 @@ const app = express.Router()
 import { adminRoutes } from './admin/routes'
 import { userRoutes } from './user/routes'
 
-export const  userRoute = app.use('/api/users', userRoutes)
+export const  userRoute = app.use('/api/users', userRoutes,adminRoutes)
