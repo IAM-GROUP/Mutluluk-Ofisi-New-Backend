@@ -218,4 +218,11 @@ export class UserService {
             }
         }
     }
+    async userSign(email:string,password:string) {
+        const isEmail = validation.isEmailValidation(email)
+        if (isEmail.isEmail) {
+            const isUser = await this.userDataAcess.getUserEmail(email)
+            /* const isHashTrue = security.bcrypt.dencrypt(password, isUser.password) */
+        }
+    }
 }
