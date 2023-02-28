@@ -2,6 +2,7 @@ import express from 'express'
 import http from 'http'
 import swaggerUI from 'swagger-ui-express'
 import bodyParser from 'body-parser'
+import passport from 'passport'
 
 const app = express()
 export const server = http.createServer(app)
@@ -9,6 +10,10 @@ export const server = http.createServer(app)
 
 //! Database
 import { mongoConnection } from './core/data-source/mongo/connection'
+
+
+//! Config
+import { passportConfig } from './core/config/passport/passport'
 
 //! Routes
 import { aboutRoutes } from './Api/@modules/about/routes'
@@ -25,11 +30,15 @@ import { concatUsRoutes } from './Api/@modules/contactUs/routes'
 
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(passport.initialize())
+app.use(passport.session())
+
+passportConfig(passport)
 
 //! Swagger
 import swaggerJson from './swagger.json'
 
-app.use('/', aboutRoutes, aboutMainRoutes, userRoute, productsRoute,projectConsultantRoute,announcementRoutes,menuRoutes,seoRoutes,concatUsRoutes)
+app.use('/', aboutRoutes, aboutMainRoutes, userRoute, productsRoute, projectConsultantRoute, announcementRoutes, menuRoutes, seoRoutes, concatUsRoutes)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
 mongoConnection()
