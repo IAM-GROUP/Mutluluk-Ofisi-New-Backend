@@ -87,17 +87,21 @@ export class UserController {
         }
     }
     static signGoogleUser: Handler = async (req, res) => {
-        const user = req.user
-        console.log(user)
-       /*  const userService = new UserService()
-        const { email, password } = req.body
-        const user = await userService.userSign(email, password)
-        if (user.token) {
-            res.json(user.token)
+        const user: any = req.user
+        const userService = new UserService()
+        const users = await userService.userCreate(user.name.givenName, user.name.familyName, user.emails[0].value, user.photos[0].value, "", user.name.givenName + user.name.familyName, "", "", "", "", "", "", "", "")
+        if (users.create) {
+            const userSign = await userService.userSign(user.emails[0].value, user.name.givenName + user.name.familyName)
+            if (userSign.token) {
+                res.json(user.token)
+            }
+            else {
+                res.json(user.sign)
+            }
         }
         else {
             res.json(user.sign)
-        } */
+        }
     }
     static logoutUser: Handler = async ({ headers }, res) => {
         const userService = new UserService()
