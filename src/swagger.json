@@ -2498,6 +2498,437 @@
         },
         "tags": ["Contract"]
       }
+    },
+    "/api/users/user": {
+      "get": {
+        "summary": "",
+        "description": "Get All Users",
+        "parameters": [],
+        "operationId": "/api/users/users",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/id": {
+      "get": {
+        "summary": "",
+        "description": "Get User",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/sign": {
+      "post": {
+        "summary": "",
+        "description": "User User Sign",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/sign",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/logout": {
+      "post": {
+        "summary": "",
+        "description": "User Logout",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/logout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/create": {
+      "post": {
+        "summary": "",
+        "description": "User Create",
+        "parameters": [
+          {
+            "name": "surname",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "passwordRepeat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateOfBirth",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "basket",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardSurname",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardCvv",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          }
+        ],
+        "operationId": "/api/users/user/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/update": {
+      "post": {
+        "summary": "",
+        "description": "User Update",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "surname",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "oldPassword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "newPassword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"old password hash"
+          },
+          {
+            "name": "dateOfBirth",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "basket",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardSurname",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardCvv",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          }
+        ],
+        "operationId": "/api/users/user/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/delete": {
+      "delete": {
+        "summary": "",
+        "description": "User Delete",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/delete",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/googleAuth": {
+      "get": {
+        "summary": "",
+        "description": "Get User",
+        "parameters": [],
+        "operationId": "/api/users/user/id",
+        "responses": {
+          "200": {
+            "description": "default password is combination of name and surname example arc warden = arcwarden If photo, google cdn will come, database will be registered, not multer, other fields will be written as 'empty'."
+          }
+        },
+        "tags": ["User"]
+      }
     }
     
   }
