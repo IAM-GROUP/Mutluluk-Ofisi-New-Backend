@@ -14,12 +14,13 @@ import { user } from '../controllers/controllers'
 export const getUser = app.get('/', user.UserController.getUser)
 export const getUserId = app.get('/id', middleware.auth.userAuth, user.UserController.getUserId)
 export const getUserGoogleAuth = app.get('/googleAuth', passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res) => res.redirect('api/users/user/googleSign'))
+export const getGoogleUserSign = app.get('/googleSign', user.UserController.signGoogleUser)
+
 
 //* Post
 export const postUser = app.post('/create', middleware.multer.userUploads, user.UserController.createUser)
 export const signUser = app.post('/sign', user.UserController.signUser)
 export const logoutUser = app.post('/logout', user.UserController.logoutUser)
-export const postGoogleUserSign = app.post('/googleSign', user.UserController.signGoogleUser)
 
 
 //? Update
