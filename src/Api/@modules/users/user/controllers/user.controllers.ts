@@ -86,6 +86,19 @@ export class UserController {
             res.json(user.sign)
         }
     }
+    static signGoogleUser: Handler = async (req, res) => {
+        const user = req.user
+        console.log(user)
+       /*  const userService = new UserService()
+        const { email, password } = req.body
+        const user = await userService.userSign(email, password)
+        if (user.token) {
+            res.json(user.token)
+        }
+        else {
+            res.json(user.sign)
+        } */
+    }
     static logoutUser: Handler = async ({ headers }, res) => {
         const userService = new UserService()
         const token = headers['x-access-token']
