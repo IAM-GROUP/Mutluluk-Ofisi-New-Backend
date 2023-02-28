@@ -86,11 +86,11 @@ export class UserController {
             res.json(user.sign)
         }
     }
-   /*  static logoutAdmin: Handler = async ({ headers }, res) => {
-        const adminService = new AdminService()
+    static logoutUser: Handler = async ({ headers }, res) => {
+        const userService = new UserService()
         const token = headers['x-access-token']
         if (token) {
-            const admin = await adminService.adminLogout(token as string)
+            const admin = await userService.userLogout(token as string)
             res.status(200).json({
                 message: admin.message
             })
@@ -100,5 +100,5 @@ export class UserController {
                 message: "not found token"
             })
         }
-    } */
+    }
 }
