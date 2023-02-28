@@ -252,7 +252,7 @@ export class UserService {
         const isEmail = validation.isEmailValidation(email)
         if (isEmail.isEmail) {
             const isUser: any = await this.userDataAcess.getUserEmail(email)
-            if (isUser) {
+            if (isUser.length > 0) {
                 const isHashTrue = security.bcrypt.dencrypt(password, isUser[0][1])
                 if (isHashTrue.isDencrypt) {
                     const payload = {
