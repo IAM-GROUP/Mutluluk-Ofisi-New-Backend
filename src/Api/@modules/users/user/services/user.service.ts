@@ -7,6 +7,9 @@ import { validation } from '../../../../validations/validations'
 //* Security
 import { security } from '../../../../security/security'
 
+//* Cache
+import { cache } from '../../../../cache/cache'
+
 export class UserService {
     private userDataAcess: UserDal = new UserDal()
     userFindAll() {
@@ -233,14 +236,55 @@ export class UserService {
             }
         }
     }
+    async userFindEmail(email: string) {
+        if (email) {
+            return {
+                userRoles: this.userDataAcess.getUserEmail(email),
+            }
+        }
+        else {
+            return {
+                message: "id roleId prop empty"
+            }
+        }
+    }
     async userSign(email: string, password: string) {
         const isEmail = validation.isEmailValidation(email)
         if (isEmail.isEmail) {
-            const isUser:any = await this.userDataAcess.getUserEmail(email)
-            return {
-                sign:isUser[0][0]
+            const isUser: any = await this.userDataAcess.getUserEmail(email)
+            if (isUser) {
+                const isHashTrue = security.bcrypt.dencrypt(password, isUser[0][1])
+                if (isHashTrue.isDencrypt) {
+                    const payload = {
+                        email: isUser[0][0]
+                    }
+                    try {
+                        return {
+                            token: (await cache.redis.Token.addToken(payload)).token
+                        }
+
+                    } catch {
+                        return {
+                            token: security.jwt.payload.signPayload(payload).err
+                        }
+                    }
+                }
+                else {
+                    return {
+                        sign: isHashTrue.message
+                    }
+                }
             }
-            /* const isHashTrue = security.bcrypt.dencrypt(password, isUser.password) */
+            else {
+                return {
+                    sign: "users not fount"
+                }
+            }
+        }
+        else {
+            return {
+                sign: isEmail.message
+            }
         }
     }
 }
