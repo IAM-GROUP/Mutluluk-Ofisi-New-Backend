@@ -3,6 +3,7 @@ import http from 'http'
 import swaggerUI from 'swagger-ui-express'
 import bodyParser from 'body-parser'
 import passport from 'passport'
+import session from 'express-session'
 
 const app = express()
 export const server = http.createServer(app)
@@ -27,6 +28,12 @@ import { seoRoutes } from './Api/@modules/seo/routes'
 import { concatUsRoutes } from './Api/@modules/contactUs/routes'
 
 
+
+app.use(session({
+    secret: 'radeonares',
+    resave: false,
+    saveUninitialized: true
+}))
 
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
