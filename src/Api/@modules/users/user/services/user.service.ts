@@ -236,7 +236,10 @@ export class UserService {
     async userSign(email: string, password: string) {
         const isEmail = validation.isEmailValidation(email)
         if (isEmail.isEmail) {
-            const isUser = await this.userDataAcess.getUserEmail(email)
+            const isUser:any = await this.userDataAcess.getUserEmail(email)
+            return {
+                sign:isUser[0][0]
+            }
             /* const isHashTrue = security.bcrypt.dencrypt(password, isUser.password) */
         }
     }

@@ -243,7 +243,23 @@ export class UserDal implements UserRepository {
     async getUserEmail(email: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = await neo4j()?.cypher("match (u:user {email:$email}) return u.email", { email: email })
+                const user = await neo4j()?.cypher("match (u:user {email:$email}) return u.email", { email })
+                const rUser = user?.records.map(uss => {
+                    return uss.map(res => {
+                        return res
+                    })
+                })
+                resolve(rUser as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async getSign(email: string,password:string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = await neo4j()?.cypher("match (u:user {email:$email,password:$password}) return u", { email,password })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res.properties
