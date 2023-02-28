@@ -12,9 +12,9 @@ import { neo4j } from '../../../../../core/data-source/neo4j/connection'
 
 export class UserDal implements UserRepository {
     async delete(id: string): Promise<{ message: string }> {
-        await neo4j()?.cypher("match (u:user {id:$id}) delete u", { id: id })
-        return new Promise((resolve, reject) => {
+        return new Promise( async (resolve, reject) => {
             try {
+                await neo4j()?.writeCypher("match (u:user {id:$id}) detach delete u", { id: id })
                 return resolve({ message: "Success deleted" })
             }
             catch (err) {

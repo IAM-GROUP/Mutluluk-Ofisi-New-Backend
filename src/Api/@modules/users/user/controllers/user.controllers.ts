@@ -79,15 +79,12 @@ export class UserController {
         const userService = new UserService()
         const { email, password } = req.body
         const user = await userService.userSign(email, password)
-        console.log(user)
-      
-        
-        /* if (user.sign) {
-            res.json(user.sign)
+        if (user.token) {
+            res.json(user.token)
         }
         else {
-            res.json(admin.token)
-        } */
+            res.json(user.sign)
+        }
     }
    /*  static logoutAdmin: Handler = async ({ headers }, res) => {
         const adminService = new AdminService()

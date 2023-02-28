@@ -287,4 +287,25 @@ export class UserService {
             }
         }
     }
+    async userLogout(token: string) {
+        try {
+            const delToken = await cache.redis.Token.deleteToken(token)
+            if (delToken.message) {
+                return {
+                    message: delToken.message
+                }
+            }
+            else {
+                return {
+                    message: delToken.status
+                }
+
+            }
+        }
+        catch (err) {
+            return {
+                message: err
+            }
+        }
+    }
 }
