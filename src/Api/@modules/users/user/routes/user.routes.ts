@@ -14,7 +14,7 @@ export const getUserId = app.get('/id', middleware.auth.userAuth,user.UserContro
 //* Post
 export const postUser = app.post('/create', middleware.multer.userUploads, user.UserController.createUser)
 export const signUser = app.post('/sign', user.UserController.signUser)
-/* export const logoutUser = app.post('/logout', admin.AdminController.logoutAdmin) */
+export const logoutUser = app.post('/logout', user.UserController.logoutUser)
 
 //? Update
 export const putUser = app.put('/update',middleware.auth.userAuth, middleware.multer.userUploads, user.UserController.updateUser)
