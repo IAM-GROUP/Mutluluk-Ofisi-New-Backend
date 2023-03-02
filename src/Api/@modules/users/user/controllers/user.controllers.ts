@@ -10,7 +10,7 @@ export class UserController {
     static getUserId: Handler = async (req, res) => {
         const { id } = req.body
         const user = new UserService().userFind(id)
-        res.json({ user: await user.user })
+        res.json({ user: await user })
     }
     static createUser: Handler = async (req, res) => {
         const userService = new UserService()
@@ -124,7 +124,7 @@ export class UserController {
         if (follow && followers) {
             const user = await userService.userFollow(follow, followers)
             res.status(200).json({
-                message: user.follow
+                message: await user.follow
             })
         }
         else {
@@ -139,7 +139,7 @@ export class UserController {
         if (follow && followers) {
             const user = await userService.userUnFollow(follow, followers)
             res.status(200).json({
-                message: user.follow
+                message: await user.follow
             })
         }
         else {
@@ -154,7 +154,7 @@ export class UserController {
         if (follow) {
             const user = await userService.userGetFollow(follow)
             res.status(200).json({
-                message: user.follow
+                user: await user.follow
             })
         }
         else {

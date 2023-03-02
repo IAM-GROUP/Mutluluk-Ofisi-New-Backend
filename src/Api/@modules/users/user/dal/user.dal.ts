@@ -38,7 +38,7 @@ export class UserDal implements UserRepository {
                 const user:any = await neo4j()?.cypher("match (u:user {id:$id} return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv)", {})
                 const rUser = user.records.map((uss:any) => {
                     return uss.map((res:any) => {
-                        return res.properties
+                        return res
                     })
                 })
                 resolve(rUser as any)
@@ -106,7 +106,7 @@ export class UserDal implements UserRepository {
                 const user = await neo4j()?.cypher("match (n:user {id:$id})-[follow:FOLLOW]->(n1:user) return n1.id,n1.name,n1.surname,n1.email,n1.image,n1.phone,n1.password,n1.dateOfBirth,n1.gender,n1.basket,n1.order,n1.creditCardName,n1.creditCardSurname,n1.creditCardNumber,n1.creditCardCvv", { id: id })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
-                        return res.properties
+                        return res
                     })
                 })
                 resolve(rUser as any)
@@ -122,7 +122,7 @@ export class UserDal implements UserRepository {
                 const user = await neo4j()?.cypher("match (n:user {id:$id})-[followers:FOLLOWERS]->(n1:user) return return n1.id,n1.name,n1.surname,n1.email,n1.image,n1.phone,n1.password,n1.dateOfBirth,n1.gender,n1.basket,n1.order,n1.creditCardName,n1.creditCardSurname,n1.creditCardNumber,n1.creditCardCvv", { id: id })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
-                        return res.properties
+                        return res
                     })
                 })
                 resolve(rUser as any)
@@ -141,7 +141,7 @@ export class UserDal implements UserRepository {
                         return res.properties
                     })
                 })
-                resolve(rUser as any)
+                resolve({ message: "Success Add Basket" })
             }
             catch (err) {
                 reject({ message: "Error " + err })
@@ -157,7 +157,7 @@ export class UserDal implements UserRepository {
                         return res.properties
                     })
                 })
-                resolve(rUser as any)
+                resolve({ message: "Success Add Order" })
             }
             catch (err) {
                 reject({ message: "Error " + err })
@@ -214,7 +214,7 @@ export class UserDal implements UserRepository {
                 const user = await neo4j()?.cypher("match (n:user {id:$id})-[rol:ROLE]->(r:role) return r.name", { id: id })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
-                        return res.properties
+                        return res
                     })
                 })
                 resolve(rUser as any)
@@ -230,7 +230,7 @@ export class UserDal implements UserRepository {
                 const user = await neo4j()?.cypher("match (r:role {id:$id})-[user:USER]->(u:user) return u.id,u.name,u.surname", { id: id })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
-                        return res.properties
+                        return res
                     })
                 })
                 resolve(rUser as any)

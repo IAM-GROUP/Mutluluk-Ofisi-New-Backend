@@ -15,11 +15,11 @@ export class UserService {
     userFindAll() {
         return this.userDataAcess.findAll()
     }
-    userFind(id: string) {
+   async userFind(id: string) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             return {
-                user: this.userDataAcess.find(id),
+                user: await this.userDataAcess.find(id),
                 message: isValidId.message
             }
         }
@@ -117,7 +117,7 @@ export class UserService {
     async userGetFollow(id: string) {
         if (id) {
             return {
-                follow: this.userDataAcess.getFollow(id),
+                follow: await this.userDataAcess.getFollow(id),
             }
         }
         else {
@@ -129,7 +129,7 @@ export class UserService {
     async userGetFollowers(id: string) {
         if (id) {
             return {
-                followers: this.userDataAcess.getFollowers(id),
+                followers: await this.userDataAcess.getFollowers(id),
             }
         }
         else {
