@@ -43,4 +43,4 @@ export const putRole = app.post('/updateRole', middleware.auth.adminAuth, user.U
 //! Delete
 export const deleteUser = app.delete('/delete', middleware.auth.adminAuth, user.UserController.deleteUser)
 export const deleteRole = app.delete('/deleteRole', middleware.auth.adminAuth, user.UserController.deleteRoles)
-export const DeleteRelRoles = app.delete('/deleteRelRole', middleware.auth.adminAuth, user.UserController.relDeleteRoles)
+export const deleteRelRoles = app.delete('/deleteRelRole', middleware.auth.adminAuth, user.UserController.relDeleteRoles)
