@@ -15,7 +15,7 @@ export class UserService {
     userFindAll() {
         return this.userDataAcess.findAll()
     }
-   async userFind(id: string) {
+    async userFind(id: string) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             return {
@@ -151,6 +151,18 @@ export class UserService {
             }
         }
     }
+    async userGetBasket(id: string) {
+        if (id) {
+            return {
+                basket: await this.userDataAcess.getBasket(id),
+            }
+        }
+        else {
+            return {
+                message: "id prop empty"
+            }
+        }
+    }
     async userAddOrder(id: string, order: any) {
         const userOrder = security.crypto.cryen(order)
         if (userOrder) {
@@ -161,6 +173,18 @@ export class UserService {
         else {
             return {
                 message: "id order prop empty"
+            }
+        }
+    }
+    async userGetOrder(id: string) {
+        if (id) {
+            return {
+                order: await this.userDataAcess.getOrder(id),
+            }
+        }
+        else {
+            return {
+                message: "id prop empty"
             }
         }
     }
