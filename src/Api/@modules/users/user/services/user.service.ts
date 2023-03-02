@@ -167,7 +167,7 @@ export class UserService {
         const userOrder = security.crypto.cryen(order)
         if (userOrder) {
             return {
-                order: this.userDataAcess.addOrder(id, userOrder.toString()),
+                order: await this.userDataAcess.addOrder(id, userOrder.toString()),
             }
         }
         else {
