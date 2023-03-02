@@ -19,6 +19,10 @@ export const getFollowUser = app.get('/getFollow', user.UserController.getFollow
 export const getFollowersUser = app.get('/getFollowers', user.UserController.getFollowersUser)
 export const getBasketUser = app.get('/getBasket',middleware.auth.userAuth ,user.UserController.getBasket)
 export const getOrderUser = app.get('/getOrder',middleware.auth.userAuth, user.UserController.getOrder)
+export const getRoles = app.get('/getRoles',middleware.auth.adminAuth, user.UserController.getRoles)
+export const getRole = app.get('/getRole',middleware.auth.adminAuth, user.UserController.getRoles)
+export const getUserRole = app.get('/getUserRole',middleware.auth.adminAuth, user.UserController.getUserRole)
+export const getRoleUser = app.get('/getRoleUser',middleware.auth.adminAuth, user.UserController.getRoleUser)
 
 //* Post
 export const postUser = app.post('/create', middleware.multer.userUploads, user.UserController.createUser)
@@ -28,10 +32,15 @@ export const followUser = app.post('/follow', middleware.auth.userAuth, user.Use
 export const unFollowUser = app.post('/unFollow', middleware.auth.userAuth, user.UserController.unFollowUser)
 export const postBasket = app.post('/basket', middleware.auth.userAuth, user.UserController.postBasket)
 export const postOrder = app.post('/order', middleware.auth.userAuth, user.UserController.postOrder)
+export const postAddRoles = app.post('/addRoles', middleware.auth.adminAuth, user.UserController.addRoles)
+export const postRelAddRoles = app.post('/addRelRoles', middleware.auth.adminAuth, user.UserController.relAddRoles)
 
 
 //? Update
 export const putUser = app.put('/update', middleware.auth.userAuth, middleware.multer.userUploads, user.UserController.updateUser)
+export const putRole = app.post('/updateRole', middleware.auth.adminAuth, user.UserController.updateRole)
 
 //! Delete
 export const deleteUser = app.delete('/delete', middleware.auth.adminAuth, user.UserController.deleteUser)
+export const deleteRole = app.delete('/deleteRole', middleware.auth.adminAuth, user.UserController.deleteRoles)
+export const DeleteRelRoles = app.delete('/deleteRelRole', middleware.auth.adminAuth, user.UserController.relDeleteRoles)
