@@ -49,7 +49,7 @@ export class AdminService {
             }
         }
     }
-    admintUpdate(id: string, email: string, oldPassword: string, newPassword: string, hash: string) {
+    admintUpdate(id: string,oldPassword: string, name:string,surname:string,email: string, password: string,gsmNumber:string,identityNumber:string,city:string,country:string,zipCode:string,newPassword: string, hash: string) {
         const isEmail = validation.isEmailValidation(email)
         const isValidId = validation.isIdValidation(id)
         const decrypt = security.bcrypt.dencrypt(oldPassword, hash)
@@ -58,7 +58,7 @@ export class AdminService {
                 if (decrypt.isDencrypt) {
                     const encrypt = security.bcrypt.encrypt(newPassword)
                     return {
-                        update: this.adminDataAcess.update(id, email, encrypt)
+                        update: this.adminDataAcess.update(id,name,surname,email,encrypt,gsmNumber,identityNumber,city,country,zipCode )
                     }
                 }
                 else {
@@ -79,17 +79,17 @@ export class AdminService {
             }
         }
     }
-    async adminCreate(email: string, password: string) {
+    async adminCreate(name:string,surname:string,email: string, password: string,gsmNumber:string,identityNumber:string,city:string,country:string,zipCode:string) {
         const isEmail = validation.isEmailValidation(email)
         const hash = security.bcrypt.encrypt(password)
         if (isEmail.isEmail) {
             return {
-                create: this.adminDataAcess.create(email, hash)
+                create: this.adminDataAcess.create(name,surname,email,hash,gsmNumber,identityNumber,city,country,zipCode)
             }
         }
         else {
             return {
-                create: this.adminDataAcess.create(email, hash)
+                message: "email not vaild"
             }
         }
     }

@@ -19,11 +19,11 @@ export class AdminDal implements AdminRepository {
             }
         })
     }
-    async create(email: string, password: string): Promise<{ message: string }> {
+    async create(name:string,surname:string,email: string, password: string,gsmNumber:string,identityNumber:string,city:string,country:string,zipCode:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
 
-                await Admin.create({ email, password })
+                await Admin.create({ email, password,name,surname,gsmNumber,identityNumber,city,country,zipCode })
                 resolve({ message: "Success created" })
             } catch (err) {
                 reject({ message: "Error " + err })
@@ -53,10 +53,10 @@ export class AdminDal implements AdminRepository {
             }
         })
     }
-    async update(id: string, email: string, password: string): Promise<{ message: string }> {
+    async update(id: string,name:string,surname:string,email: string, password: string,gsmNumber:string,identityNumber:string,city:string,country:string,zipCode:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const admin = await Admin.findByIdAndUpdate(id, { email, password })
+                const admin = await Admin.findByIdAndUpdate(id, {  email, password,name,surname,gsmNumber,identityNumber,city,country,zipCode })
                 admin?.save()
                 resolve({ message: "Success update" })
             }

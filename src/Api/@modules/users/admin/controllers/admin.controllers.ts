@@ -14,17 +14,18 @@ export class AdminController {
     }
     static createAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
-        const { email, password, passwordRepeat } = req.body
+
+        const { email, password, passwordRepeat,name,gsmNumber,identityNumber,city,country,surname,zipCode } = req.body
         if (password !== passwordRepeat) {
             res.json({
                 error: "password not match"
             })
         }
         else {
-            const admin = await adminService.adminCreate(email, password)
-            if ((await admin.create).message) {
+            const admin = await adminService.adminCreate(name,surname,email,password,gsmNumber,identityNumber,city,country,zipCode)
+            if ((await admin.create)?.message) {
                 res.json({
-                    message: (await admin.create).message
+                    message: (await admin.create)?.message
                 })
             }
             else {
@@ -37,14 +38,14 @@ export class AdminController {
     }
     static updateAdmin: Handler = async (req, res) => {
         const adminService = new AdminService()
-        const { id, email, newPassword, oldPassword, hash } = req.body
+        const { id, email, newPassword, oldPassword, hash, password, passwordRepeat,name,gsmNumber,identityNumber,city,country,surname,zipCode } = req.body
         if (!newPassword) {
             res.json({
                 message: "newPassword empty !!"
             })
         }
         else {
-            const admin = adminService.admintUpdate(id, email, oldPassword, newPassword, hash)
+            const admin = adminService.admintUpdate(id,oldPassword,name,surname,email,password,gsmNumber,identityNumber,city,country,zipCode,newPassword,hash)
             if (admin.message) {
                 res.json({
                     message: admin.message
