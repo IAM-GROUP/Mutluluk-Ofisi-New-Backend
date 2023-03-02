@@ -238,4 +238,8 @@ export class UserController {
             })
         }
     }
+    static getRoles: Handler = async (req, res) => {
+        const user = await new UserService().userGetRoles()
+        res.json({ user })
+    }
 }
