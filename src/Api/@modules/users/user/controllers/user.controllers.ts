@@ -148,4 +148,19 @@ export class UserController {
             })
         }
     }
+    static getFollowUser: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { follow } = req.body
+        if (follow) {
+            const user = await userService.userGetFollow(follow)
+            res.status(200).json({
+                message: user.follow
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }
