@@ -208,7 +208,7 @@ export class UserService {
     async userAddRoles(name: string) {
         if (name) {
             return {
-                roles: this.userDataAcess.addRoles(name),
+                roles: await this.userDataAcess.addRoles(name),
             }
         }
         else {
