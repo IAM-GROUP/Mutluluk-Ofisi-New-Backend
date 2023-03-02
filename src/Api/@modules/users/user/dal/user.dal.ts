@@ -255,10 +255,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async deleteRoles(name: string): Promise<{ message: string }> {
+    async deleteRoles(id: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                await neo4j()?.writeCypher("match (r:role {name:$name}) delete r", { name })
+                await neo4j()?.writeCypher("match (r:role {id:$id}) delete r", { id })
                 resolve({ message: "Deleted role" })
             }
             catch (err) {

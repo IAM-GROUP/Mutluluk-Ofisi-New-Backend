@@ -361,4 +361,28 @@ export class UserService {
             }
         }
     }
+    async userUpdateRole(id: string, name: string) {
+        if (id && name) {
+            return {
+                role: await this.userDataAcess.updateRoles(id, name),
+            }
+        }
+        else {
+            return {
+                message: "id name prop empty"
+            }
+        }
+    }
+    async userDeleteRole(id: string) {
+        if (id) {
+            return {
+                role: await this.userDataAcess.deleteRoles(id),
+            }
+        }
+        else {
+            return {
+                message: "id name prop empty"
+            }
+        }
+    }
 }
