@@ -397,4 +397,16 @@ export class UserService {
             }
         }
     }
+    async userDeleteUserRole(userId: string, roleId: string) {
+        if (userId && roleId) {
+            return {
+                role: await this.userDataAcess.deleteUserRole(userId,roleId),
+            }
+        }
+        else {
+            return {
+                message: "userId roleId prop empty"
+            }
+        }
+    }
 }
