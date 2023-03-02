@@ -332,4 +332,7 @@ export class UserService {
             }
         }
     }
+    async userGetRoles() {
+            return this.userDataAcess.getRoles()  
+    }
 }
