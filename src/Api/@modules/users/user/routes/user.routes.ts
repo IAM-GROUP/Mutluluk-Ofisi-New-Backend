@@ -12,7 +12,7 @@ import { user } from '../controllers/controllers'
 
 //? Get
 export const getUser = app.get('/', user.UserController.getUser)
-export const getUserId = app.get('/id', middleware.auth.userAuth, user.UserController.getUserId)
+export const getUserId = app.get('/id', user.UserController.getUserId)
 export const getUserGoogleAuth = app.get('/googleAuth', passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res) => res.redirect('/api/users/user/googleSign'))
 export const getGoogleUserSign = app.get('/googleSign', user.UserController.signGoogleUser)
 export const getFollowUser = app.get('/getFollow', user.UserController.getFollowUser)
