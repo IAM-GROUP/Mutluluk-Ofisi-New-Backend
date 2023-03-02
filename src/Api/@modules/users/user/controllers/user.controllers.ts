@@ -242,4 +242,19 @@ export class UserController {
         const user = await new UserService().userGetRoles()
         res.json({ user })
     }
+    static getRole: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { id } = req.body
+        if (id) {
+            const user = await userService.userGetRole(id)
+            res.status(200).json({
+                user: user.role
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }
