@@ -27,6 +27,7 @@ export const logoutUser = app.post('/logout', user.UserController.logoutUser)
 export const followUser = app.post('/follow', middleware.auth.userAuth, user.UserController.followUser)
 export const unFollowUser = app.post('/unFollow', middleware.auth.userAuth, user.UserController.unFollowUser)
 export const postBasket = app.post('/basket', middleware.auth.userAuth, user.UserController.postBasket)
+export const postOrder = app.post('/order', middleware.auth.userAuth, user.UserController.postOrder)
 
 
 //? Update
