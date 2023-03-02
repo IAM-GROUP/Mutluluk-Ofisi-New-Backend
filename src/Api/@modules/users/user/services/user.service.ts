@@ -333,6 +333,20 @@ export class UserService {
         }
     }
     async userGetRoles() {
-            return this.userDataAcess.getRoles()  
+        return this.userDataAcess.getRoles()
+    }
+    async userGetRole(id: string) {
+        const isValidId = validation.isIdValidation(id)
+        if (isValidId.isValid === true) {
+            return {
+                role: await this.userDataAcess.getRole(id),
+                message: isValidId.message
+            }
+        }
+        else {
+            return {
+                message: isValidId.message
+            }
+        }
     }
 }
