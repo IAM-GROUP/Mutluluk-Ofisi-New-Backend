@@ -385,4 +385,16 @@ export class UserService {
             }
         }
     }
+    async userAddUserRole(userId: string, roleId: string) {
+        if (userId && roleId) {
+            return {
+                role: await this.userDataAcess.addUserRole(userId,roleId),
+            }
+        }
+        else {
+            return {
+                message: "userId roleId prop empty"
+            }
+        }
+    }
 }
