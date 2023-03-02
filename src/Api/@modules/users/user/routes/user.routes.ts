@@ -17,6 +17,8 @@ export const getUserGoogleAuth = app.get('/googleAuth', passport.authenticate('g
 export const getGoogleUserSign = app.get('/googleSign', user.UserController.signGoogleUser)
 export const getFollowUser = app.get('/getFollow', user.UserController.getFollowUser)
 export const getFollowersUser = app.get('/getFollowers', user.UserController.getFollowersUser)
+export const getBasketUser = app.get('/getBasket', user.UserController.getBasket)
+export const getOrderUser = app.get('/getOrder', user.UserController.getOrder)
 
 //* Post
 export const postUser = app.post('/create', middleware.multer.userUploads, user.UserController.createUser)
