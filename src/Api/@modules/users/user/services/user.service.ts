@@ -232,7 +232,7 @@ export class UserService {
     async userDeleteRoles(name: string) {
         if (name) {
             return {
-                userRoles: this.userDataAcess.deleteRoles(name),
+                userRoles: await this.userDataAcess.deleteRoles(name),
             }
         }
         else {
@@ -244,7 +244,7 @@ export class UserService {
     async userRelAddRoles(userId: string, roleId: string) {
         if (userId || roleId) {
             return {
-                userRoles: this.userDataAcess.addUserRole(userId, roleId),
+                userRoles: await this.userDataAcess.addUserRole(userId, roleId),
             }
         }
         else {
@@ -256,7 +256,7 @@ export class UserService {
     async userRelDeleteRoles(userId: string, roleId: string) {
         if (userId || roleId) {
             return {
-                userRoles: this.userDataAcess.deleteUserRole(userId, roleId),
+                userRoles: await this.userDataAcess.deleteUserRole(userId, roleId),
             }
         }
         else {
@@ -268,7 +268,7 @@ export class UserService {
     async userGetUserRole(id: string) {
         if (id) {
             return {
-                userRoles: this.userDataAcess.getUserRole(id),
+                userRoles: await this.userDataAcess.getUserRole(id),
             }
         }
         else {
@@ -280,7 +280,7 @@ export class UserService {
     async userGetRoleUser(id: string) {
         if (id) {
             return {
-                userRoles: this.userDataAcess.getRoleUser(id),
+                userRoles: await this.userDataAcess.getRoleUser(id),
             }
         }
         else {
@@ -292,7 +292,7 @@ export class UserService {
     async userFindEmail(email: string) {
         if (email) {
             return {
-                userEmail: this.userDataAcess.getUserEmail(email),
+                userEmail: await this.userDataAcess.getUserEmail(email),
             }
         }
         else {
