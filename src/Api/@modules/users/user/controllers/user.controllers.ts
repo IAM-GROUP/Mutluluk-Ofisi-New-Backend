@@ -107,9 +107,24 @@ export class UserController {
         const userService = new UserService()
         const token = headers['x-access-token']
         if (token) {
-            const admin = await userService.userLogout(token as string)
+            const user = await userService.userLogout(token as string)
             res.status(200).json({
-                message: admin.message
+                message: user.message
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
+    static followUser: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { follow, followers } = req.body
+        if (follow && followers) {
+            const user = await userService.userFollow(follow, followers)
+            res.status(200).json({
+                message: user.follow
             })
         }
         else {
