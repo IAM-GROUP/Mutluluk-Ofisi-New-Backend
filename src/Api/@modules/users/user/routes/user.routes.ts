@@ -16,6 +16,7 @@ export const getUserId = app.get('/id', middleware.auth.userAuth, user.UserContr
 export const getUserGoogleAuth = app.get('/googleAuth', passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res) => res.redirect('/api/users/user/googleSign'))
 export const getGoogleUserSign = app.get('/googleSign', user.UserController.signGoogleUser)
 export const getFollowUser = app.get('/getFollow', user.UserController.getFollowUser)
+export const getFollowersUser = app.get('/getFollowers', user.UserController.getFollowersUser)
 
 //* Post
 export const postUser = app.post('/create', middleware.multer.userUploads, user.UserController.createUser)
