@@ -349,4 +349,16 @@ export class UserService {
             }
         }
     }
+    async userAddRole(name: string) {
+        if (name) {
+            return {
+                role: await this.userDataAcess.addRoles(name),
+            }
+        }
+        else {
+            return {
+                message: "id order prop empty"
+            }
+        }
+    }
 }
