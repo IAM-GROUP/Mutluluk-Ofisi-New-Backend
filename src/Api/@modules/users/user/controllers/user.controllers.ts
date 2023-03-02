@@ -317,5 +317,19 @@ export class UserController {
             })
         }
     }
-
+    static relDeleteRoles: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { userId, roleId } = req.body
+        if (userId && roleId) {
+            const user = await userService.userRelDeleteRoles(userId, roleId)
+            res.status(200).json({
+                user: user.userRoles
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }
