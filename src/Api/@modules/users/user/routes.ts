@@ -3,6 +3,6 @@ const app = express.Router()
 
 //! User routes
 
-import { deleteUser, getUser, getUserId, postUser, putUser, signUser, getUserGoogleAuth, logoutUser, getGoogleUserSign } from './routes/user.routes'
+import { deleteUser, getUser, getUserId, postUser, putUser, signUser, getUserGoogleAuth, logoutUser, getGoogleUserSign,followUser } from './routes/user.routes'
 
-export const userRoutes = app.use('/user', getUser, getUserId, postUser, putUser, signUser, deleteUser, getUserGoogleAuth, logoutUser, getGoogleUserSign)
+export const userRoutes = app.use('/user', getUser, getUserId, postUser, putUser, signUser, deleteUser, getUserGoogleAuth, logoutUser, getGoogleUserSign,followUser)
