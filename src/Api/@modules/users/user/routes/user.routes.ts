@@ -22,6 +22,7 @@ export const postUser = app.post('/create', middleware.multer.userUploads, user.
 export const signUser = app.post('/sign', user.UserController.signUser)
 export const logoutUser = app.post('/logout', user.UserController.logoutUser)
 export const followUser = app.post('/follow', middleware.auth.userAuth,user.UserController.followUser)
+export const unFollowUser = app.post('/unFollow', middleware.auth.userAuth,user.UserController.unFollowUser)
 
 
 //? Update
