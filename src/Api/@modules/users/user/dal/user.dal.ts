@@ -35,7 +35,7 @@ export class UserDal implements UserRepository {
     async find(id: string): Promise<IUser> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user:any = await neo4j()?.cypher("match (u:user {id:$id} return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv)", {})
+                const user:any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv", {id})
                 const rUser = user.records.map((uss:any) => {
                     return uss.map((res:any) => {
                         return res
