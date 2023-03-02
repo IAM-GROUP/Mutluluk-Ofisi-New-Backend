@@ -148,6 +148,22 @@ export class UserDal implements UserRepository {
             }
         })
     }
+    async getBasket(id: string): Promise<IUser> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user:any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.basket", {id})
+                const rUser = user.records.map((uss:any) => {
+                    return uss.map((res:any) => {
+                        return res
+                    })
+                })
+                resolve(rUser as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
     async addOrder(id: string, order: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
