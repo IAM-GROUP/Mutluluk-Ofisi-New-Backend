@@ -208,6 +208,21 @@ export class UserController {
             })
         }
     }
+    static postOrder: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { id, order } = req.body
+        if (id && order) {
+            const user = await userService.userAddOrder(id, order)
+            res.status(200).json({
+                user: user.order
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
     static getOrder: Handler = async (req, res) => {
         const userService = new UserService()
         const { id } = req.body
