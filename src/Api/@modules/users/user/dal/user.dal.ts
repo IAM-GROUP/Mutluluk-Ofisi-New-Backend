@@ -12,7 +12,7 @@ import { neo4j } from '../../../../../core/data-source/neo4j/connection'
 
 export class UserDal implements UserRepository {
     async delete(id: string): Promise<{ message: string }> {
-        return new Promise( async (resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             try {
                 await neo4j()?.writeCypher("match (u:user {id:$id}) detach delete u", { id: id })
                 return resolve({ message: "Success deleted" })
@@ -35,9 +35,9 @@ export class UserDal implements UserRepository {
     async find(id: string): Promise<IUser> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user:any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv", {id})
-                const rUser = user.records.map((uss:any) => {
-                    return uss.map((res:any) => {
+                const user: any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv", { id })
+                const rUser = user.records.map((uss: any) => {
+                    return uss.map((res: any) => {
                         return res
                     })
                 })
@@ -51,9 +51,9 @@ export class UserDal implements UserRepository {
     async findAll(): Promise<IUser[]> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user:any = await neo4j()?.cypher("match (u:user) return u", {})
-                const rUser = user.records.map((uss:any) => {
-                    return uss.map((res:any) => {
+                const user: any = await neo4j()?.cypher("match (u:user) return u", {})
+                const rUser = user.records.map((uss: any) => {
+                    return uss.map((res: any) => {
                         return res.properties
                     })
                 })
@@ -81,7 +81,7 @@ export class UserDal implements UserRepository {
         return new Promise(async (resolve, reject) => {
             try {
                 const user = await neo4j()?.writeCypher("match (f1:user {id:$follow}) match(f2:user {id:$followers}) create(f1)-[follow:FOLLOW]->(f2) create (f2)-[followers:FOLLOWERS]->(f1) ", { follow, followers });
-                
+
                 resolve({ message: "Success following" })
             }
             catch (err) {
@@ -151,9 +151,9 @@ export class UserDal implements UserRepository {
     async getBasket(id: string): Promise<IUser> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user:any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.basket", {id})
-                const rUser = user.records.map((uss:any) => {
-                    return uss.map((res:any) => {
+                const user: any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.basket", { id })
+                const rUser = user.records.map((uss: any) => {
+                    return uss.map((res: any) => {
                         return res
                     })
                 })
@@ -183,9 +183,9 @@ export class UserDal implements UserRepository {
     async getOrder(id: string): Promise<IUser> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user:any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.order", {id})
-                const rUser = user.records.map((uss:any) => {
-                    return uss.map((res:any) => {
+                const user: any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.order", { id })
+                const rUser = user.records.map((uss: any) => {
+                    return uss.map((res: any) => {
                         return res
                     })
                 })
@@ -201,6 +201,38 @@ export class UserDal implements UserRepository {
             try {
                 await neo4j()?.writeCypher("create (r:role {name:$name})", { name })
                 resolve({ message: "Success role" })
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async getRoles(): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = await neo4j()?.cypher("match (r:role) return r", {})
+                const rUser = user?.records.map(uss => {
+                    return uss.map(res => {
+                        return res.properties
+                    })
+                })
+                resolve(rUser as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async getRole(id: string): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = await neo4j()?.cypher("match (r:role {id:$id}) return r.id,r.name", { id })
+                const rUser = user?.records.map(uss => {
+                    return uss.map(res => {
+                        return res
+                    })
+                })
+                resolve(rUser as any)
             }
             catch (err) {
                 reject({ message: "Error " + err })
@@ -288,10 +320,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async getSign(email: string,password:string): Promise<{ message: string }> {
+    async getSign(email: string, password: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = await neo4j()?.cypher("match (u:user {email:$email,password:$password}) return u", { email,password })
+                const user = await neo4j()?.cypher("match (u:user {email:$email,password:$password}) return u", { email, password })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res.properties
