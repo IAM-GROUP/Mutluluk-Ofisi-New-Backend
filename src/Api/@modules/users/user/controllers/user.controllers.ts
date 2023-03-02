@@ -272,4 +272,34 @@ export class UserController {
             })
         }
     }
+    static updateRole: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { id, name } = req.body
+        if (name) {
+            const user = await userService.userUpdateRole(id, name)
+            res.status(200).json({
+                user: user.role
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
+    static deleteRoles: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { name } = req.body
+        if (name) {
+            const user = await userService.userDeleteRoles(name)
+            res.status(200).json({
+                user: user.userRoles
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }
