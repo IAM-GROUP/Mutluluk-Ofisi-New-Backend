@@ -154,7 +154,7 @@ export class UserController {
         if (follow) {
             const user = await userService.userGetFollow(follow)
             res.status(200).json({
-                user: await user.follow
+                user: user.follow
             })
         }
         else {
