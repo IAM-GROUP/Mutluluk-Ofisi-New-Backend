@@ -133,4 +133,19 @@ export class UserController {
             })
         }
     }
+    static unFollowUser: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { follow, followers } = req.body
+        if (follow && followers) {
+            const user = await userService.userUnFollow(follow, followers)
+            res.status(200).json({
+                message: user.follow
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }
