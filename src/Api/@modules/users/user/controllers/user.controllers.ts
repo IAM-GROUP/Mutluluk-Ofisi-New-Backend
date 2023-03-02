@@ -178,4 +178,19 @@ export class UserController {
             })
         }
     }
+    static postBasket: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { id, basket } = req.body
+        if (id && basket) {
+            const user = await userService.userAddBasket(id, basket)
+            res.status(200).json({
+                user: user.basket
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }

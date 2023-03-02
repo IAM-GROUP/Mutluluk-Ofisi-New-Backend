@@ -142,7 +142,7 @@ export class UserService {
         const userBasket = security.crypto.cryen(basket)
         if (userBasket) {
             return {
-                basket: this.userDataAcess.addBasket(id, userBasket.toString()),
+                basket: await this.userDataAcess.addBasket(id, userBasket.toString()),
             }
         }
         else {
