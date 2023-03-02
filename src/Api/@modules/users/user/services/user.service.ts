@@ -188,6 +188,23 @@ export class UserService {
             }
         }
     }
+    async userGetRoles() {
+        return this.userDataAcess.getRoles()
+    }
+    async userGetRole(id: string) {
+        const isValidId = validation.isIdValidation(id)
+        if (isValidId.isValid === true) {
+            return {
+                role: await this.userDataAcess.getRole(id),
+                message: isValidId.message
+            }
+        }
+        else {
+            return {
+                message: isValidId.message
+            }
+        }
+    }
     async userAddRoles(name: string) {
         if (name) {
             return {
@@ -197,6 +214,18 @@ export class UserService {
         else {
             return {
                 message: "name prop empty"
+            }
+        }
+    }
+    async userUpdateRole(id: string, name: string) {
+        if (id && name) {
+            return {
+                role: await this.userDataAcess.updateRoles(id, name),
+            }
+        }
+        else {
+            return {
+                message: "id name prop empty"
             }
         }
     }
@@ -329,83 +358,6 @@ export class UserService {
         catch (err) {
             return {
                 message: err
-            }
-        }
-    }
-    async userGetRoles() {
-        return this.userDataAcess.getRoles()
-    }
-    async userGetRole(id: string) {
-        const isValidId = validation.isIdValidation(id)
-        if (isValidId.isValid === true) {
-            return {
-                role: await this.userDataAcess.getRole(id),
-                message: isValidId.message
-            }
-        }
-        else {
-            return {
-                message: isValidId.message
-            }
-        }
-    }
-    async userAddRole(name: string) {
-        if (name) {
-            return {
-                role: await this.userDataAcess.addRoles(name),
-            }
-        }
-        else {
-            return {
-                message: "id order prop empty"
-            }
-        }
-    }
-    async userUpdateRole(id: string, name: string) {
-        if (id && name) {
-            return {
-                role: await this.userDataAcess.updateRoles(id, name),
-            }
-        }
-        else {
-            return {
-                message: "id name prop empty"
-            }
-        }
-    }
-    async userDeleteRole(id: string) {
-        if (id) {
-            return {
-                role: await this.userDataAcess.deleteRoles(id),
-            }
-        }
-        else {
-            return {
-                message: "id name prop empty"
-            }
-        }
-    }
-    async userAddUserRole(userId: string, roleId: string) {
-        if (userId && roleId) {
-            return {
-                role: await this.userDataAcess.addUserRole(userId,roleId),
-            }
-        }
-        else {
-            return {
-                message: "userId roleId prop empty"
-            }
-        }
-    }
-    async userDeleteUserRole(userId: string, roleId: string) {
-        if (userId && roleId) {
-            return {
-                role: await this.userDataAcess.deleteUserRole(userId,roleId),
-            }
-        }
-        else {
-            return {
-                message: "userId roleId prop empty"
             }
         }
     }
