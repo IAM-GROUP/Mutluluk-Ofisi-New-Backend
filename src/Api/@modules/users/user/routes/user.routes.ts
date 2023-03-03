@@ -34,6 +34,7 @@ export const postBasket = app.post('/basket', middleware.auth.userAuth, user.Use
 export const postOrder = app.post('/order', middleware.auth.userAuth, user.UserController.postOrder)
 export const postAddRoles = app.post('/addRoles', middleware.auth.adminAuth, user.UserController.addRoles)
 export const postRelAddRoles = app.post('/addRelRoles', middleware.auth.adminAuth, user.UserController.relAddRoles)
+export const postPayment = app.post('/payment', middleware.auth.userAuth, user.UserController.postPayment)
 
 
 //? Update

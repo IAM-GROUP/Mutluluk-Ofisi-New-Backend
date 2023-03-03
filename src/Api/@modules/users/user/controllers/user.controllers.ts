@@ -362,4 +362,19 @@ export class UserController {
             })
         }
     }
+    static postPayment: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { id } = req.body
+        if (id) {
+            const user = await userService.userPayment(id)
+            res.status(200).json({
+                user: user.payment
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }
