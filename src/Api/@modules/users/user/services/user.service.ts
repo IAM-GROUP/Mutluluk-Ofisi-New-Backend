@@ -361,10 +361,10 @@ export class UserService {
             }
         }
     }
-    async userPayment(id:string,adminId:string) {
+    async userPayment(id:string) {
         if (id) {
             return {
-                payment: await this.userDataAcess.payment(id,adminId),
+                payment: await this.userDataAcess.payment(id),
             }
         }
         else {

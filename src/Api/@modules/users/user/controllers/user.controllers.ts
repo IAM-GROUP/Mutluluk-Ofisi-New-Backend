@@ -364,9 +364,9 @@ export class UserController {
     }
     static postPayment: Handler = async (req, res) => {
         const userService = new UserService()
-        const { id,adminId } = req.body
+        const { id } = req.body
         if (id) {
-            const user = await userService.userPayment(id,adminId)
+            const user = await userService.userPayment(id)
             res.status(200).json({
                 user: user.payment
             })

@@ -15,8 +15,6 @@ import { neo4j } from '../../../../../core/data-source/neo4j/connection'
 //? Helper
 import { paymentRequest } from '../helper/payment.helper'
 
-//? Admin Dal
-import { AdminDal } from '../../admin/dal/admin.dal'
 
 export class UserDal implements UserRepository {
     async delete(id: string): Promise<{ message: string }> {
@@ -360,13 +358,13 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async payment(id:string,adminId:string): Promise<{ message: string }> {
+    async payment(id:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const adminDal = new AdminDal()
+               
                 const payReq:any = {}
                 const user:any = await this.find(id)
-                const admin = await adminDal.find(adminId)
+                
                 console.log(user[0])
                 const iyzipay = new Iyzipay({
                     apiKey:"sandbox-9xcTDLFciF1PiqfZlOG4pZ9XitSLpSQk",
@@ -382,10 +380,10 @@ export class UserDal implements UserRepository {
                 payReq.name = user[0][1]
                 payReq.surname = user[0][2]
                 payReq.email = user[0][3]
-                payReq.identityNumber = admin.identityNumber
+              /*   payReq.identityNumber = admin.identityNumber
                 payReq.city = admin.city
                 payReq.country = admin.country
-                payReq.zipCode = admin.zipCode 
+                payReq.zipCode = admin.zipCode  */
                 console.log(payReq)
                
                 iyzipay.payment.create(paymentRequest(), function (err:any, result:any) {
