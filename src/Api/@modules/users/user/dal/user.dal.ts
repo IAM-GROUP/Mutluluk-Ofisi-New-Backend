@@ -15,6 +15,8 @@ import { neo4j } from '../../../../../core/data-source/neo4j/connection'
 //? Helper
 import { paymentRequest } from '../helper/payment.helper'
 
+//? Security 
+import { security } from '../../../../security/security'
 
 export class UserDal implements UserRepository {
     async delete(id: string): Promise<{ message: string }> {
@@ -41,7 +43,7 @@ export class UserDal implements UserRepository {
     async find(id: string): Promise<IUser> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user: any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv,u.city,u.country,u.address,u.zipCode,u.expireMonth,u.expireYear,u.identityNumber", { id })
+                const user: any = await neo4j()?.cypher("match (u:user {id:$id}) return u.id,u.name,u.surname,u.email,u.image,u.dateOfBirth,u.gender,u.basket,u.order,u.creditCardName,u.creditCardSurname,u.creditCardNumber,u.creditCardCvv,u.city,u.country,u.address,u.zipCode,u.expireMonth,u.expireYear,u.identityNumber,u.phone", { id })
                 const rUser = user.records.map((uss: any) => {
                     return uss.map((res: any) => {
                         return res
@@ -75,7 +77,7 @@ export class UserDal implements UserRepository {
             try {
                 const user = await neo4j()?.writeCypher("match (u:user {id:$id}) set u.name=$name,u.surname=$surname,u.email=$email,u.image=$image,u.phone=$phone,u.password=$password,u.dateOfBirth=$dateOfBirth,u.gender=$gender,u.basket=$basket,u.order=$order,u.creditCardName=$creditCardName,u.creditCardSurname=$creditCardSurname,u.creditCardNumber=$creditCardNumber,u.creditCardCvv=$creditCardCvv,u.city=$city,u.country=$country,u.address=$address,u.zipCode=$zipCode,u.expireMonth=$expireMonth,u.expireYear=$expireYear,u.identityNumber=$identityNumber return u", {
                     id, name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode,expireMonth,expireYear,identityNumber
-                })
+                }).catch(err=>console.log(err))
                 resolve({ message: "Success update" })
             }
             catch (err) {
@@ -361,31 +363,41 @@ export class UserDal implements UserRepository {
     async payment(id:string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-               
+                let price = 0
                 const payReq:any = {}
                 const user:any = await this.find(id)
                 
-                console.log(user[0])
+                
                 const iyzipay = new Iyzipay({
                     apiKey:"sandbox-9xcTDLFciF1PiqfZlOG4pZ9XitSLpSQk",
                     secretKey:"sandbox-BZCqOiZqjxYjDGNvCtPKGHdQzpRX96O5",
                     uri: 'https://sandbox-api.iyzipay.com'
                 })
+
+                const basket = security.crypto.cryde(user[0][7])
+                basket.map((item:any)=>{
+                    price += item.price
+                })
+                
                 payReq.cardHolderName = user[0][1] + " " + user[0][2]
                 payReq.cardNumber = user[0][11]
                 payReq.expireMonth = user[0][17]
                 payReq.expireYear = user[0][18]
                 payReq.cvc = user[0][12]
-                payReq.contactName = user
+                payReq.gsmNumber = user[0][20]
+                payReq.contactName = user[0][1] + " " + user[0][2]
                 payReq.name = user[0][1]
+                payReq.price = price
                 payReq.surname = user[0][2]
                 payReq.email = user[0][3]
-              /*   payReq.identityNumber = admin.identityNumber
-                payReq.city = admin.city
-                payReq.country = admin.country
-                payReq.zipCode = admin.zipCode  */
-                console.log(payReq)
+                payReq.identityNumber = "11111111111"
+                payReq.city = user[0][13]
+                payReq.basket = basket
+                payReq.country = user[0][14]
+                payReq.address = user[0][15]
+                payReq.zipCode = user[0][16]
                
+               console.log(payReq)
                 iyzipay.payment.create(paymentRequest(), function (err:any, result:any) {
                     console.log(err)
                     
