@@ -18,5 +18,6 @@ export interface IUser {
     address: string, 
     zipCode: string,
     expireMonth:string,
-    expireYear:string
+    expireYear:string,
+    identityNumber:string
 }
