@@ -52,6 +52,12 @@ export const User = neo4j()?.model<IUser>("user", {
     creditCardCvv: {
         type: "string"
     },
+    expireMonth:{
+        type:"string"
+    },
+    expireYear:{
+        type:"string"
+    },
     city: {
         type: "string"
     }

@@ -16,5 +16,7 @@ export interface IUser {
     city: string, 
     country: string, 
     address: string, 
-    zipCode: string
+    zipCode: string,
+    expireMonth:string,
+    expireYear:string
 }
