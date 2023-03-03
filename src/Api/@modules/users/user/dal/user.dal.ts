@@ -1,5 +1,6 @@
 const Iyzipay = require('iyzipay');
 import ip from 'ip'
+import date from 'date-and-time'
 //? Repository
 import { UserRepository } from '../repository/user.repo'
 
@@ -381,8 +382,8 @@ export class UserDal implements UserRepository {
                 basket.map((item:any)=>{
                     price += item.price
                     item.itemType = Iyzipay.BASKET_ITEM_TYPE.PHYSICAL
-                })
-                
+                }) 
+                const now = new Date()
                 payReq.cardHolderName = user[0][1] + " " + user[0][2]
                 payReq.cardNumber = user[0][11]
                 payReq.expireMonth = user[0][17]
@@ -406,16 +407,17 @@ export class UserDal implements UserRepository {
                 payReq.address = user[0][15]
                 payReq.zipCode = user[0][16]
                 payReq.ip = ip.address()
+                payReq.date = date.format(now,"YYYY-MM-DD HH:mm:ss")
                 
-                
-               console.log(paymentRequest(payReq))
-               
                 iyzipay.payment.create(paymentRequest(payReq), function (err:any, result:any) {
-                    console.log(err)
-                    console.log(result)
-                    
+                    if(result.status === "success") {
+                        resolve({ message: "Success Payment" })
+                    }
+                    if(err) {
+                        reject({ message: "Error " + err })
+                    }
                 });
-                resolve({ message: "devami gelecek " })
+             
             }
             catch (err) {
                 reject({ message: "Error " + err })
