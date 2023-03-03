@@ -1,5 +1,5 @@
 const Iyzipay = require('iyzipay');
-
+import ip from 'ip'
 //? Repository
 import { UserRepository } from '../repository/user.repo'
 
@@ -17,6 +17,9 @@ import { paymentRequest } from '../helper/payment.helper'
 
 //? Security 
 import { security } from '../../../../security/security'
+
+//? Admin Dal
+import { AdminDal } from '../../admin/dal/admin.dal'
 
 export class UserDal implements UserRepository {
     async delete(id: string): Promise<{ message: string }> {
@@ -366,8 +369,8 @@ export class UserDal implements UserRepository {
                 let price = 0
                 const payReq:any = {}
                 const user:any = await this.find(id)
-                
-                
+                const adminDal = new AdminDal()
+                const admin = await adminDal.findAll()
                 const iyzipay = new Iyzipay({
                     apiKey:"sandbox-9xcTDLFciF1PiqfZlOG4pZ9XitSLpSQk",
                     secretKey:"sandbox-BZCqOiZqjxYjDGNvCtPKGHdQzpRX96O5",
@@ -377,6 +380,7 @@ export class UserDal implements UserRepository {
                 const basket = security.crypto.cryde(user[0][7])
                 basket.map((item:any)=>{
                     price += item.price
+                    item.itemType = Iyzipay.BASKET_ITEM_TYPE.PHYSICAL
                 })
                 
                 payReq.cardHolderName = user[0][1] + " " + user[0][2]
@@ -388,6 +392,11 @@ export class UserDal implements UserRepository {
                 payReq.contactName = user[0][1] + " " + user[0][2]
                 payReq.name = user[0][1]
                 payReq.price = price
+                payReq.adminContactName = admin[0].name + " " + admin[0].surname
+                payReq.adminCity = admin[0].city
+                payReq.adminCountry = admin[0].country
+                payReq.adminAddress = admin[0].country + " " + admin[0].city
+                payReq.adminZipCode = admin[0].zipCode
                 payReq.surname = user[0][2]
                 payReq.email = user[0][3]
                 payReq.identityNumber = "11111111111"
@@ -396,10 +405,14 @@ export class UserDal implements UserRepository {
                 payReq.country = user[0][14]
                 payReq.address = user[0][15]
                 payReq.zipCode = user[0][16]
+                payReq.ip = ip.address()
+                
+                
+               console.log(paymentRequest(payReq))
                
-               console.log(payReq)
-                iyzipay.payment.create(paymentRequest(), function (err:any, result:any) {
+                iyzipay.payment.create(paymentRequest(payReq), function (err:any, result:any) {
                     console.log(err)
+                    console.log(result)
                     
                 });
                 resolve({ message: "devami gelecek " })
