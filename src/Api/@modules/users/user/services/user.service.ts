@@ -43,7 +43,7 @@ export class UserService {
             }
         }
     }
-    userUpdate(id: string, name: string, surname: string, email: string, image: string, phone: string, hash: string, oldPassword: string, newPassword: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string) {
+    userUpdate(id: string, name: string, surname: string, email: string, image: string, phone: string, hash: string, oldPassword: string, newPassword: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string, city: string, country: string, address: string, zipCode: string) {
         const isValidId = validation.isIdValidation(id)
         const isEmail = validation.isEmailValidation(email)
         const decrypt = security.bcrypt.dencrypt(oldPassword, hash)
@@ -52,7 +52,7 @@ export class UserService {
                 if (decrypt.isDencrypt) {
                     const encrypt = security.bcrypt.encrypt(newPassword)
                     return {
-                        update: this.userDataAcess.update(id, name, surname, email, image, phone, encrypt, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv)
+                        update: this.userDataAcess.update(id, name, surname, email, image, phone, encrypt, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode)
                     }
                 }
                 else {
@@ -76,12 +76,12 @@ export class UserService {
             }
         }
     }
-    async userCreate(name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string) {
+    async userCreate(name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string, city: string, country: string, address: string, zipCode: string) {
         const hash = security.bcrypt.encrypt(password)
         const isEmail = validation.isEmailValidation(email)
         if (isEmail.isEmail) {
             return {
-                create: this.userDataAcess.create(name, surname, email, image, phone, hash, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv),
+                create: this.userDataAcess.create(name, surname, email, image, phone, hash, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode),
             }
         }
         else {
