@@ -4,7 +4,7 @@ import { Server } from 'socket.io'
 import date from 'date-and-time'
 //? Repository
 import { UserRepository } from '../repository/user.repo'
-
+import {v4 as uuid} from 'uuid'
 //? Entity
 import { IUser } from '../../dtos/IUsers'
 
@@ -224,7 +224,7 @@ export class UserDal implements UserRepository {
     async addRoles(name: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                await neo4j()?.writeCypher("create (r:role {name:$name})", { name })
+                await neo4j()?.writeCypher("create (r:role {id:$id,name:$name})", { id:uuid(),name })
                 resolve({ message: "Success role" })
             }
             catch (err) {
