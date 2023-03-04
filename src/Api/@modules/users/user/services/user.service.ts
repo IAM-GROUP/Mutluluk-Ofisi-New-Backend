@@ -373,4 +373,28 @@ export class UserService {
             }
         }
     }
+    async userChatSendMessage(userId:any,otherUserId:any) {
+        if (userId && otherUserId) {
+            return {
+                chat: await this.userDataAcess.chatSendMessage(userId,otherUserId),
+            }
+        }
+        else {
+            return {
+                message: "userId otherUserId prop empty"
+            }
+        }
+    }
+    async userChatJoinRoom(userId:any,otherUserId:any) {
+        if (userId && otherUserId) {
+            return {
+                chat: await this.userDataAcess.chatJoinRoom(userId,otherUserId),
+            }
+        }
+        else {
+            return {
+                message: "userId otherUserId prop empty"
+            }
+        }
+    }
 }
