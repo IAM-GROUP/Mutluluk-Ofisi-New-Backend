@@ -334,9 +334,9 @@ export class UserController {
     }
     static getUserRole: Handler = async (req, res) => {
         const userService = new UserService()
-        const { id } = req.body
-        if (id) {
-            const user = await userService.userGetUserRole(id)
+        const { userId } = req.body
+        if (userId) {
+            const user = await userService.userGetUserRole(userId)
             res.status(200).json({
                 user: user.userRoles
             })

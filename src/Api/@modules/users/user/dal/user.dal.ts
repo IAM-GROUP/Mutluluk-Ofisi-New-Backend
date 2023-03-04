@@ -316,7 +316,7 @@ export class UserDal implements UserRepository {
     async getUserRole(id: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = await neo4j()?.cypher("match (n:user {id:$id})-[rol:ROLE]->(r:role) return r.name", { id: id })
+                const user = await neo4j()?.cypher("match (n:user {id:$id})-[rol:ROLE]->(r:role) return r.name,r.id", { id: id })
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res
