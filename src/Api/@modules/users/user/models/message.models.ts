@@ -2,7 +2,7 @@ import { neo4j } from '../../../../../core/data-source/neo4j/connection'
 import { IMessage } from '../entity/IMessage';
 
 
-export const Message = neo4j()?.model<IMessage>('Chat', {
+export const Message = neo4j()?.model<IMessage>('Message', {
     id: {
         primary: true,
         type: 'uuid',
