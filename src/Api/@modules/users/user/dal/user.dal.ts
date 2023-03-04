@@ -1,5 +1,6 @@
 const Iyzipay = require('iyzipay');
 import ip from 'ip'
+import { Server } from 'socket.io'
 import date from 'date-and-time'
 //? Repository
 import { UserRepository } from '../repository/user.repo'
@@ -22,6 +23,16 @@ import { security } from '../../../../security/security'
 //? Admin Dal
 import { AdminDal } from '../../admin/dal/admin.dal'
 
+//? Server
+import { server } from '../../../../../server'
+
+const io = new Server(server, {
+    cors: {
+        origin: "*"
+    }
+})
+
+
 export class UserDal implements UserRepository {
     async delete(id: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
@@ -34,10 +45,10 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async create(name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string, city: string, country: string, address: string, zipCode: string,expireMonth:string,expireYear:string,identityNumber:string): Promise<{ message: string }> {
+    async create(name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string, city: string, country: string, address: string, zipCode: string, expireMonth: string, expireYear: string, identityNumber: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                await User?.create({ name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode,expireMonth,expireYear,identityNumber })
+                await User?.create({ name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode, expireMonth, expireYear, identityNumber })
                 resolve({ message: "Success created" })
             } catch (err) {
                 reject({ message: "Error " + err })
@@ -76,12 +87,12 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async update(id: string, name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string, city: string, country: string, address: string, zipCode: string,expireMonth:string,expireYear:string,identityNumber:string): Promise<{ message: string }> {
+    async update(id: string, name: string, surname: string, email: string, image: string, phone: string, password: string, dateOfBirth: string, gender: string, basket: string, order: string, creditCardName: string, creditCardSurname: string, creditCardNumber: string, creditCardCvv: string, city: string, country: string, address: string, zipCode: string, expireMonth: string, expireYear: string, identityNumber: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 const user = await neo4j()?.writeCypher("match (u:user {id:$id}) set u.name=$name,u.surname=$surname,u.email=$email,u.image=$image,u.phone=$phone,u.password=$password,u.dateOfBirth=$dateOfBirth,u.gender=$gender,u.basket=$basket,u.order=$order,u.creditCardName=$creditCardName,u.creditCardSurname=$creditCardSurname,u.creditCardNumber=$creditCardNumber,u.creditCardCvv=$creditCardCvv,u.city=$city,u.country=$country,u.address=$address,u.zipCode=$zipCode,u.expireMonth=$expireMonth,u.expireYear=$expireYear,u.identityNumber=$identityNumber return u", {
-                    id, name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode,expireMonth,expireYear,identityNumber
-                }).catch(err=>console.log(err))
+                    id, name, surname, email, image, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode, expireMonth, expireYear, identityNumber
+                }).catch(err => console.log(err))
                 resolve({ message: "Success update" })
             }
             catch (err) {
@@ -364,25 +375,25 @@ export class UserDal implements UserRepository {
             }
         })
     }
-    async payment(id:string): Promise<{ message: string }> {
+    async payment(id: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 let price = 0
-                const payReq:any = {}
-                const user:any = await this.find(id)
+                const payReq: any = {}
+                const user: any = await this.find(id)
                 const adminDal = new AdminDal()
                 const admin = await adminDal.findAll()
                 const iyzipay = new Iyzipay({
-                    apiKey:"sandbox-9xcTDLFciF1PiqfZlOG4pZ9XitSLpSQk",
-                    secretKey:"sandbox-BZCqOiZqjxYjDGNvCtPKGHdQzpRX96O5",
+                    apiKey: "sandbox-9xcTDLFciF1PiqfZlOG4pZ9XitSLpSQk",
+                    secretKey: "sandbox-BZCqOiZqjxYjDGNvCtPKGHdQzpRX96O5",
                     uri: 'https://sandbox-api.iyzipay.com'
                 })
 
                 const basket = security.crypto.cryde(user[0][7])
-                basket.map((item:any)=>{
+                basket.map((item: any) => {
                     price += item.price
                     item.itemType = Iyzipay.BASKET_ITEM_TYPE.PHYSICAL
-                }) 
+                })
                 const now = new Date()
                 payReq.cardHolderName = user[0][1] + " " + user[0][2]
                 payReq.cardNumber = user[0][11]
@@ -407,17 +418,17 @@ export class UserDal implements UserRepository {
                 payReq.address = user[0][15]
                 payReq.zipCode = user[0][16]
                 payReq.ip = ip.address()
-                payReq.date = date.format(now,"YYYY-MM-DD HH:mm:ss")
-                
-                iyzipay.payment.create(paymentRequest(payReq), function (err:any, result:any) {
-                    if(result.status === "success") {
+                payReq.date = date.format(now, "YYYY-MM-DD HH:mm:ss")
+
+                iyzipay.payment.create(paymentRequest(payReq), function (err: any, result: any) {
+                    if (result.status === "success") {
                         resolve({ message: "Success Payment" })
                     }
-                    if(err) {
+                    if (err) {
                         reject({ message: "Error " + err })
                     }
                 });
-             
+
             }
             catch (err) {
                 reject({ message: "Error " + err })
