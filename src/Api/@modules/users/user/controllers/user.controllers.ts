@@ -377,4 +377,34 @@ export class UserController {
             })
         }
     }
+    static postChatSendMessage: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { userId,otherUserId } = req.body
+        if (userId && otherUserId ) {
+            const user = await userService.userChatSendMessage(userId,otherUserId)
+            res.status(200).json({
+                user: user.chat
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
+    static postChatJoinRoom: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { userId,otherUserId } = req.body
+        if (userId && otherUserId ) {
+            const user = await userService.userChatJoinRoom(userId,otherUserId)
+            res.status(200).json({
+                user: user.chat
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
 }
