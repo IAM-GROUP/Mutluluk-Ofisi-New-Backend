@@ -35,6 +35,9 @@ export const postOrder = app.post('/order', middleware.auth.userAuth, user.UserC
 export const postAddRoles = app.post('/addRoles', middleware.auth.adminAuth, user.UserController.addRoles)
 export const postRelAddRoles = app.post('/addRelRoles', middleware.auth.adminAuth, user.UserController.relAddRoles)
 export const postPayment = app.post('/payment', middleware.auth.userAuth, user.UserController.postPayment)
+export const postSendMessage = app.post('/sendMessage', middleware.auth.userAuth, user.UserController.postChatSendMessage)
+export const postJoinRoom = app.post('/joinRoom', middleware.auth.userAuth, user.UserController.postChatJoinRoom)
+
 
 
 //? Update
