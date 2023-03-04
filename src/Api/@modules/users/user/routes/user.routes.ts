@@ -42,7 +42,7 @@ export const postJoinRoom = app.post('/joinRoom', middleware.auth.userAuth, user
 
 //? Update
 export const putUser = app.put('/update', middleware.auth.userAuth, middleware.multer.userUploads, user.UserController.updateUser)
-export const putRole = app.post('/updateRole', middleware.auth.adminAuth, user.UserController.updateRole)
+export const putRole = app.put('/updateRole', middleware.auth.adminAuth, user.UserController.updateRole)
 
 //! Delete
 export const deleteUser = app.delete('/delete', middleware.auth.adminAuth, user.UserController.deleteUser)

@@ -251,7 +251,7 @@ export class UserDal implements UserRepository {
     async updateRoles(id: string, name: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = await neo4j()?.writeCypher(`match (u:user {id:'${id}'}) set u.name='${name}' return u`, {})
+                const user = await neo4j()?.writeCypher(`match (u:role {id:'${id}'}) set u.name='${name}' return u`, {})
                 const rUser = user?.records.map(uss => {
                     return uss.map(res => {
                         return res.properties
