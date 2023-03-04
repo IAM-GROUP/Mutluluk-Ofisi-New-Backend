@@ -462,17 +462,25 @@ export class UserDal implements UserRepository {
             try {
                 const user: any = await this.find(userId)
                 const user1: any = await this.find(otherUserId)
+                
                 let messageBoxName:any = user[0][1] + user[0][2] + user1[0][1] + user1[0][2] + "box"
                 const mess = await chat.MessageBox("empty",messageBoxName)
+                
                 const room = await chat.findRoom(userId, otherUserId)
+               
                 const roomName = await chat.findRoomName(userId, otherUserId)
+               
                 const me = await chat.findUserMessageBox(userId,room)
+                
                 let reRoomName = user1[0][1] + user1[0][2] + user[0][1] + user[0][2]
                 const isCreateRoom = await chat.createRoom(roomName, reRoomName)
+                
                 const isJoinRoom = await chat.joinRoom(userId, otherUserId, roomName)
+               
                 const messageRel = await chat.MessageSendRel(userId, room, messageBoxName)
                 io.on('connection', (socket) => {
                     socket.on(roomName, (data:any, cb:any) => {
+                        
                        chat.AddMessage(userId,room,data)
                     })
                 })
