@@ -289,9 +289,9 @@ export class UserController {
     }
     static deleteRoles: Handler = async (req, res) => {
         const userService = new UserService()
-        const { name } = req.body
-        if (name) {
-            const user = await userService.userDeleteRoles(name)
+        const { id } = req.body
+        if (id) {
+            const user = await userService.userDeleteRoles(id)
             res.status(200).json({
                 user: user.userRoles
             })

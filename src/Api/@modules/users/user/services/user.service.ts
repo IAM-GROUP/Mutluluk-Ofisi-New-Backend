@@ -229,15 +229,15 @@ export class UserService {
             }
         }
     }
-    async userDeleteRoles(name: string) {
-        if (name) {
+    async userDeleteRoles(id: string) {
+        if (id) {
             return {
-                userRoles: await this.userDataAcess.deleteRoles(name),
+                userRoles: await this.userDataAcess.deleteRoles(id),
             }
         }
         else {
             return {
-                message: "name prop empty"
+                message: "id prop empty"
             }
         }
     }
