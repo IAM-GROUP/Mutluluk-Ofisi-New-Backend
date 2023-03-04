@@ -25,6 +25,8 @@ import { AdminDal } from '../../admin/dal/admin.dal'
 
 //? Server
 import { server } from '../../../../../server'
+//? Chat
+import { chat } from '../chat/chat'
 
 const io = new Server(server, {
     cors: {
@@ -429,6 +431,54 @@ export class UserDal implements UserRepository {
                     }
                 });
 
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async chatJoinRoom(userId: any, otherUserId: any): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user: any = await this.find(userId)
+                const user1: any = await this.find(otherUserId)
+
+                let roomName = user[0][1] + user[0][2] + user1[0][1] + user1[0][2]
+                let reRoomName = user1[0][1] + user1[0][2] + user[0][1] + user[0][2]
+                const isCreateRoom = await chat.createRoom(roomName, reRoomName)
+                const isJoinRoom = await chat.joinRoom(userId, otherUserId, roomName)
+                resolve({
+                    message: isJoinRoom.message,
+                    createMessage: isCreateRoom.message
+                } as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async chatSendMessage(userId: any, otherUserId: any): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user: any = await this.find(userId)
+                const user1: any = await this.find(otherUserId)
+                let messageBoxName:any = user[0][1] + user[0][2] + user1[0][1] + user1[0][2] + "box"
+                const mess = await chat.MessageBox("empty",messageBoxName)
+                const room = await chat.findRoom(userId, otherUserId)
+                const roomName = await chat.findRoomName(userId, otherUserId)
+                const me = await chat.findUserMessageBox(userId,room)
+                let reRoomName = user1[0][1] + user1[0][2] + user[0][1] + user[0][2]
+                const isCreateRoom = await chat.createRoom(roomName, reRoomName)
+                const isJoinRoom = await chat.joinRoom(userId, otherUserId, roomName)
+                io.on('connection', (socket) => {
+                    socket.on(roomName, (data:any, cb:any) => {
+                       chat.AddMessage(userId,room,data)
+                    })
+                })
+                resolve({
+                    message: isJoinRoom.message,
+                    createMessage: isCreateRoom.message
+                } as any)
             }
             catch (err) {
                 reject({ message: "Error " + err })
