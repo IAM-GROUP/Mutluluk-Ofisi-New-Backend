@@ -5,4 +5,4 @@ const app = express.Router()
 
 import { categoryRoutes } from './category/routes'
 
-export const OpenEduRoute = app.use('/api/products', categoryRoutes)
+export const OpenEduRoute = app.use('/api/openEdu', categoryRoutes)
