@@ -1,4 +1,4 @@
-import { User } from "../models/user.models";
+import { institutional } from "../models/institutional.models";
 import { Chat } from "../models/chat.models";
 import { Message } from "../models/message.models";
 
@@ -9,10 +9,10 @@ import { security } from "../../../../security/security";
 
 
 export const createRoom = async (name:any, reName:any) => {
-    const isRoom:any = await neo4j()?.cypher("match(c:Chat {name:$name}) return c.name", {
+    const isRoom:any = await neo4j()?.cypher("match(c:ChatInstitutional {name:$name}) return c.name", {
         name
     }).catch(err=>console.log(err))
-    const isReRoom:any = await neo4j()?.cypher("match(c:Chat {name:$reName}) return c.name", {
+    const isReRoom:any = await neo4j()?.cypher("match(c:ChatInstitutional {name:$reName}) return c.name", {
         reName
     })
     const isRoom1 = isRoom.records.map((room1:any) => {
@@ -40,12 +40,12 @@ export const createRoom = async (name:any, reName:any) => {
 
 }
 export const findUser = async (id:any) => {
-    return  neo4j()?.cypher('match(p:user {id:$id}) return p.name', {
+    return  neo4j()?.cypher('match(p:institutional {id:$id}) return p.name', {
         id
     }).catch(err=>console.log(err))
 }
 export const findRoom = async (userId:any, otherUserId:any) => {
-    const chat:any = await neo4j()?.cypher(`match(p:user {id:$userId}) match(p1:user {id:$otherUserId}) match(c:Chat) match(p)-->(c)  match(p1)-->(c) return c`, {
+    const chat:any = await neo4j()?.cypher(`match(p:institutional {id:$userId}) match(p1:institutional {id:$otherUserId}) match(c:ChatInstitutional) match(p)-->(c)  match(p1)-->(c) return c`, {
         userId,
         otherUserId
     }).catch(err=>console.log(err))
@@ -57,7 +57,7 @@ export const findRoom = async (userId:any, otherUserId:any) => {
     return rChat[0][0].id
 }
 export const findRoomName = async (userId:any, otherUserId:any) => {
-    const chat:any = await neo4j()?.cypher(`match(p:user {id:$userId}) match(p1:user {id:$otherUserId}) match(c:Chat) match(p)-->(c)  match(p1)-->(c) return c`, {
+    const chat:any = await neo4j()?.cypher(`match(p:institutional {id:$userId}) match(p1:institutional {id:$otherUserId}) match(c:ChatInstitutional) match(p)-->(c)  match(p1)-->(c) return c`, {
         userId,
         otherUserId
     }).catch(err=>console.log(err))
@@ -70,9 +70,9 @@ export const findRoomName = async (userId:any, otherUserId:any) => {
 }
 export const findUserMessageBox = async (userId:any, chatId:any) => {
     
-    const chat:any = await neo4j()?.cypher(`match(p:user {id:$userId})
-    match(m:Message)
-    match(c:Chat {id:$chatId})
+    const chat:any = await neo4j()?.cypher(`match(p:institutional {id:$userId})
+    match(m:MessageInstitutional)
+    match(c:ChatInstitutional {id:$chatId})
     match (p)-->(c)
     match (c)<--(m)
     match (p)-->(m)
@@ -92,7 +92,7 @@ export const findUserMessageBox = async (userId:any, chatId:any) => {
 }
 export const joinRoom = async (userId:any, otherUserId:any, roomName:any) => {
 
-    const chat:any = await neo4j()?.cypher(`match(p:user {id:$userId}) match(p1:user {id:$otherUserId}) match(c:Chat) match(p)-->(c)  match(p1)-->(c) return c`, {
+    const chat:any = await neo4j()?.cypher(`match(p:institutional {id:$userId}) match(p1:institutional {id:$otherUserId}) match(c:ChatInstitutional) match(p)-->(c)  match(p1)-->(c) return c`, {
         userId,
         otherUserId
     }).catch(err=>console.log(err))
@@ -103,7 +103,7 @@ export const joinRoom = async (userId:any, otherUserId:any, roomName:any) => {
         })
     })
     if (rChat.length === 0) {
-        await neo4j()?.writeCypher(`match(p1:user {id:$id}) match(c:Chat {name:$name}) match(p2:user {id:$id1}) create (p1)-[chat:${roomName}]->(c) create (p2)-[chat1:${roomName}]->(c)`, {
+        await neo4j()?.writeCypher(`match(p1:institutional {id:$id}) match(c:ChatInstitutional {name:$name}) match(p2:institutional {id:$id1}) create (p1)-[chat:${roomName}]->(c) create (p2)-[chat1:${roomName}]->(c)`, {
             id: userId,
             name: roomName,
             id1: otherUserId
@@ -118,7 +118,7 @@ export const joinRoom = async (userId:any, otherUserId:any, roomName:any) => {
     }
 }
 export const MessageBox = async (messages:any, name:any) => {
-    const isMessageBox:any = await neo4j()?.cypher("match(m:Message {name:$name}) return m.name", {
+    const isMessageBox:any = await neo4j()?.cypher("match(m:MessageInstitutional {name:$name}) return m.name", {
         name
     }).catch(err=>console.log(err))
     const isRoom1:any = isMessageBox.records.map((room1:any) => {
@@ -141,7 +141,7 @@ export const MessageBox = async (messages:any, name:any) => {
     }
 }
 export const MessageSendRel = async (userId:any, roomId:any, messageBoxName:any) => {
-    const messageRel:any = await neo4j()?.cypher(`match(p:user {id:$userId}) match(m:Message {name:$messageBoxName})
+    const messageRel:any = await neo4j()?.cypher(`match(p:institutional {id:$userId}) match(m:MessageInstitutional {name:$messageBoxName})
     match(c:Chat {id:$roomId})
     match (p)-->(m)
     match (m)-->(c)
@@ -158,7 +158,7 @@ export const MessageSendRel = async (userId:any, roomId:any, messageBoxName:any)
     })
     if (rmessageRel.length === 0) {
         const message:any = neo4j()?.writeCypher(
-            `match(p:user {id:$userId}) match(c:Chat {id:$roomId}) match(m:Message {name:$messageBoxName}) create (p)-[mUR:${messageBoxName}]->(m) create (m)-[mRR:${messageBoxName+"rel"}]->(c)`, {
+            `match(p:institutional {id:$userId}) match(c:ChatInstitutional {id:$roomId}) match(m:MessageInstitutional {name:$messageBoxName}) create (p)-[mUR:${messageBoxName}]->(m) create (m)-[mRR:${messageBoxName+"rel"}]->(c)`, {
                 userId,
                 roomId,
                 messageBoxName
@@ -186,7 +186,7 @@ export const AddMessage = async (userId:any, chatId:any, message:any) => {
         messages.push(item)
     })
     const encData = security.crypto.cryen(messages)
-    const messageBox:any = await neo4j()?.writeCypher('match(m:Message {id:$id}) set m.message=$message return m', {
+    const messageBox:any = await neo4j()?.writeCypher('match(m:MessageInstitutional {id:$id}) set m.message=$message return m', {
         id: userMessageBox.id,
         message:encData
     }).catch(err=>console.log(err))
