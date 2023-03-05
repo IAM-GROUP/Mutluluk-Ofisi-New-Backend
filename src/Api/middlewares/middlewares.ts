@@ -1,4 +1,4 @@
-import {announcementUploads,aboutMainMultiUploads, aboutMultiUploads, productMultiUploads,projectConsultantUploads,userUploads } from './multer/multer.middleware'
+import {announcementUploads,aboutMainMultiUploads, aboutMultiUploads, productMultiUploads,projectConsultantUploads,userUploads,institutionalUploads } from './multer/multer.middleware'
 import { adminAuth } from './auth/admin.middleware'
 import { userAuth } from './auth/user.middleware'
 import { institutionalAuth } from './auth/Institutional.middleware'
@@ -10,7 +10,8 @@ export const middleware = {
         productMultiUploads,
         projectConsultantUploads,
         announcementUploads,
-        userUploads
+        userUploads,
+        institutionalUploads
     },
     auth: {
         adminAuth,
