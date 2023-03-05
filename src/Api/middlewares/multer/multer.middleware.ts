@@ -1,4 +1,4 @@
-import { announcementUpload, aboutUpload, OpenEduUpload,aboutMainUpload, productUpload, projectConsultantUpload, userUpload, institutionalUpload, solutionMainUpload, MainUpload, AcademyUpload } from './config/multer.upload'
+import { announcementUpload, BlogMainUpload,aboutUpload, OpenEduUpload,aboutMainUpload, productUpload, projectConsultantUpload, userUpload, institutionalUpload, solutionMainUpload, MainUpload, AcademyUpload } from './config/multer.upload'
 
 
 
@@ -13,3 +13,4 @@ export const solutionMainUploads = solutionMainUpload.fields([{ name: "image", m
 export const MainUploads = MainUpload.fields([{ name: "icon", maxCount: 4 }])
 export const AcademyUploads = AcademyUpload.fields([{ name: "icon", maxCount: 4 }])
 export const OpenEduUploads = OpenEduUpload.fields([{ name: "image", maxCount: 1 }])
+export const BlogMainUploads = BlogMainUpload.fields([{ name: "image", maxCount: 1 }, { name: "pageImage", maxCount: 1 }, { name: "icon", maxCount: 4 }])

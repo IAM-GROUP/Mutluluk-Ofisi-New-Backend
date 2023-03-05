@@ -1,10 +1,10 @@
 import multer from 'multer'
 
 //! Storage
-import { announcementStorage, aboutStorage, aboutMainStorage, productStorage, OpenEduStorage, projectConsultantStorage, userStorage, institutionalStorage, solutionMainStorage, MainStorage, AcademyStorage } from '../config/multer.storage'
+import { announcementStorage, aboutStorage,BlogMainStorage ,aboutMainStorage, productStorage, OpenEduStorage, projectConsultantStorage, userStorage, institutionalStorage, solutionMainStorage, MainStorage, AcademyStorage } from '../config/multer.storage'
 
 //! Filter
-import { announcementUploadFilter, aboutMainUploadFilter, aboutUploadFilter, OpenEduUploadFilter, AcademyUploadFilter, productUploadFilter, projectConsultantUploadFilter, userUploadFilter, institutionalUploadFilter, MainUploadFilter, solutionMainUploadFilter } from './multer.filter'
+import { announcementUploadFilter, aboutMainUploadFilter, BlogMainUploadFilter,aboutUploadFilter, OpenEduUploadFilter, AcademyUploadFilter, productUploadFilter, projectConsultantUploadFilter, userUploadFilter, institutionalUploadFilter, MainUploadFilter, solutionMainUploadFilter } from './multer.filter'
 
 export const aboutUpload = multer({
     storage: aboutStorage,
@@ -50,4 +50,8 @@ export const AcademyUpload = multer({
 export const OpenEduUpload = multer({
     storage: OpenEduStorage,
     fileFilter: (_, file, cb) => OpenEduUploadFilter({ _, file, cb })
+})
+export const BlogMainUpload = multer({
+    storage: BlogMainStorage,
+    fileFilter: (_, file, cb) => BlogMainUploadFilter({ _, file, cb })
 })
