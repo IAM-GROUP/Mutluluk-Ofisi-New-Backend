@@ -3041,7 +3041,1599 @@
         },
         "tags": ["User"]
       }
+    },
+    "/api/users/user/getBasket": {
+      "get": {
+        "summary": "",
+        "description": "Get Basket",
+        "parameters": [],
+        "operationId": "/api/users/user/getBasket",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/basket": {
+      "post": {
+        "summary": "",
+        "description": "Post Basket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "basket",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/basket",
+        "responses": {
+          "200": {
+            "description":""
+          } 
+        },
+        "tags": ["User"]
+      }
+    },
+    "/api/users/user/getFollow": {
+      "get": {
+        "summary": "",
+        "description": "Get Follow",
+        "parameters": [],
+        "operationId": "/api/users/user/getFollow",
+        "responses": {
+          "200": {
+            "description":"get follow"
+          }
+        },
+        "tags": ["User Follow"]
+      }
+    },
+    "/api/users/user/getFollowers": {
+      "get": {
+        "summary": "",
+        "description": "Get Followers",
+        "parameters": [],
+        "operationId": "/api/users/user/getFollowers",
+        "responses": {
+          "200": {
+            "description":"get Followers"
+          }
+        },
+        "tags": ["User Follow"]
+      }
+    },
+    "/api/users/user/follow": {
+      "post": {
+        "summary": "",
+        "description": "Post follow",
+        "parameters": [
+          {
+            "name": "follow",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "followers",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/follow",
+        "responses": {
+          "200": {
+            "description":"get Followers"
+          }
+        },
+        "tags": ["User Follow"]
+      }
+    },
+    "/api/users/user/unFollow": {
+      "post": {
+        "summary": "",
+        "description": "Post unfollow",
+        "parameters": [
+          {
+            "name": "follow",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "followers",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/follow",
+        "responses": {
+          "200": {
+            "description":"get Followers"
+          }
+        },
+        "tags": ["User Follow"]
+      }
+    },
+    "/api/users/user/getRoles": {
+      "get": {
+        "summary": "",
+        "description": "Get FindAll Roles",
+        "parameters": [],
+        "operationId": "/api/users/user/getRoles",
+        "responses": {
+          "200": {
+            "description":"get Roles"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/getRole": {
+      "get": {
+        "summary": "",
+        "description": "Get Find Role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/getRoles",
+        "responses": {
+          "200": {
+            "description":"get Roles"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/getUserRole": {
+      "get": {
+        "summary": "",
+        "description": "Get Find User Role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/getUserRole",
+        "responses": {
+          "200": {
+            "description":"get User Roles"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/getRoleUser": {
+      "get": {
+        "summary": "",
+        "description": "Get Find Role User",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/getRoleUser",
+        "responses": {
+          "200": {
+            "description":"get Role User"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/addRoles": {
+      "post": {
+        "summary": "",
+        "description": "add Role",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/addRoles",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/updateRole": {
+      "put": {
+        "summary": "",
+        "description": "update Role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/updateRole",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/deleteRole": {
+      "delete": {
+        "summary": "",
+        "description": "delete Role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/updateRole",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/deleteRelRole": {
+      "delete": {
+        "summary": "",
+        "description": "delete Rel Role",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roleId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/updateRole",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/addRelRoles": {
+      "post": {
+        "summary": "",
+        "description": "add Role",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roleId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/addRelRoles",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["User Role"]
+      }
+    },
+    "/api/users/user/payment": {
+      "post": {
+        "summary": "",
+        "description": "Payment",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/payment",
+        "responses": {
+          "200": {
+            "description":"Payment"
+          }
+        },
+        "tags": ["User Payment"]
+      }
+    },
+    "/api/users/user/getFindRoomId": {
+      "get": {
+        "summary": "",
+        "description": "get Chat Room Id ",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "otherUserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/getFindRoomId",
+        "responses": {
+          "200": {
+            "description":"getFindRoomId"
+          }
+        },
+        "tags": ["User Chat"]
+      }
+    },
+    "/api/users/user/getFindRoomName": {
+      "get": {
+        "summary": "",
+        "description": "get Chat Room Name ",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "otherUserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/getFindRoomName",
+        "responses": {
+          "200": {
+            "description":"getFindRoomId"
+          }
+        },
+        "tags": ["User Chat"]
+      }
+    },
+    "/api/users/user/sendMessage": {
+      "post": {
+        "summary": "",
+        "description": "post send Message",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "otherUserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/getFindRoomName",
+        "responses": {
+          "200": {
+            "description":"getFindRoomId"
+          }
+        },
+        "tags": ["User Chat"]
+      }
+    },
+    "/api/users/user/joinRoom": {
+      "post": {
+        "summary": "",
+        "description": "post join Room",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "otherUserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/user/getFindRoomName",
+        "responses": {
+          "200": {
+            "description":"getFindRoomId"
+          }
+        },
+        "tags": ["User Chat"]
+      }
+    },
+
+    "/api/users/institutional": {
+      "get": {
+        "summary": "",
+        "description": "Get All institutional",
+        "parameters": [],
+        "operationId": "/api/users/institutional",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/id": {
+      "get": {
+        "summary": "",
+        "description": "Get institutional",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/sign": {
+      "post": {
+        "summary": "",
+        "description": "institutional Sign",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/sign",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/logout": {
+      "post": {
+        "summary": "",
+        "description": "institutional Logout",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/logout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/create": {
+      "post": {
+        "summary": "",
+        "description": "institutional Create",
+        "parameters": [
+          {
+            "name": "surname",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "passwordRepeat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateOfBirth",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "basket",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardSurname",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardCvv",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "companyName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "position",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "activityField",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "businessType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "taxOffice",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "identity",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "companyAddress",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "district",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "service",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          }
+        ],
+        "operationId": "/api/users/institutional/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/update": {
+      "put": {
+        "summary": "",
+        "description": "institutional Update",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "surname",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "passwordRepeat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateOfBirth",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "basket",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardSurname",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "creditCardCvv",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "companyName",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "position",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "activityField",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "businessType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "taxOffice",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "identity",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "companyAddress",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "district",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          },
+          {
+            "name": "service",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description":"default empty is required"
+          }
+        ],
+        "operationId": "/api/users/institutional/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/delete": {
+      "delete": {
+        "summary": "",
+        "description": "institutional Delete",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/delete",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/googleAuth": {
+      "get": {
+        "summary": "",
+        "description": "Get Institutional",
+        "parameters": [],
+        "operationId": "/api/users/institutional/googleAuth",
+        "responses": {
+          "200": {
+            "description": "default password is combination of name and surname example arc warden = arcwarden If photo, google cdn will come, database will be registered, not multer, other fields will be written as 'empty'."
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/getBasket": {
+      "get": {
+        "summary": "",
+        "description": "Get Institutional",
+        "parameters": [],
+        "operationId": "/api/users/institutional/getBasket",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/basket": {
+      "post": {
+        "summary": "",
+        "description": "Post Basket",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "basket",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/basket",
+        "responses": {
+          "200": {
+            "description":""
+          } 
+        },
+        "tags": ["Institutional"]
+      }
+    },
+    "/api/users/institutional/getFollow": {
+      "get": {
+        "summary": "",
+        "description": "Get Follow",
+        "parameters": [],
+        "operationId": "/api/users/institutional/getFollow",
+        "responses": {
+          "200": {
+            "description":"get follow"
+          }
+        },
+        "tags": ["Institutional Follow"]
+      }
+    },
+    "/api/users/institutional/getFollowers": {
+      "get": {
+        "summary": "",
+        "description": "Get Followers",
+        "parameters": [],
+        "operationId": "/api/users/institutional/getFollowers",
+        "responses": {
+          "200": {
+            "description":"get Followers"
+          }
+        },
+        "tags": ["Institutional Follow"]
+      }
+    },
+    "/api/users/institutional/follow": {
+      "post": {
+        "summary": "",
+        "description": "Post follow",
+        "parameters": [
+          {
+            "name": "follow",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "followers",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/follow",
+        "responses": {
+          "200": {
+            "description":"get Followers"
+          }
+        },
+        "tags": ["Institutional Follow"]
+      }
+    },
+    "/api/users/institutional/unFollow": {
+      "post": {
+        "summary": "",
+        "description": "Post unfollow",
+        "parameters": [
+          {
+            "name": "follow",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "followers",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/unFollow",
+        "responses": {
+          "200": {
+            "description":"get Followers"
+          }
+        },
+        "tags": ["Institutional Follow"]
+      }
+    },
+    "/api/users/institutional/getRoles": {
+      "get": {
+        "summary": "",
+        "description": "Get FindAll Roles",
+        "parameters": [],
+        "operationId": "/api/users/institutional/getRoles",
+        "responses": {
+          "200": {
+            "description":"get Roles"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/getRole": {
+      "get": {
+        "summary": "",
+        "description": "Get Find Role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/getRole",
+        "responses": {
+          "200": {
+            "description":"get Roles"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/getUserRole": {
+      "get": {
+        "summary": "",
+        "description": "Get Find Institutional Role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/getUserRole",
+        "responses": {
+          "200": {
+            "description":"get Institutional Roles"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/getRoleUser": {
+      "get": {
+        "summary": "",
+        "description": "Get Find Role Institutional",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/getRoleUser",
+        "responses": {
+          "200": {
+            "description":"get Role Institutional"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/addRoles": {
+      "post": {
+        "summary": "",
+        "description": "add Role",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/addRoles",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/updateRole": {
+      "put": {
+        "summary": "",
+        "description": "update Role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/updateRole",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/deleteRole": {
+      "delete": {
+        "summary": "",
+        "description": "delete Role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/deleteRole",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/deleteRelRole": {
+      "delete": {
+        "summary": "",
+        "description": "delete Rel Role",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roleId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/deleteRelRole",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/addRelRoles": {
+      "post": {
+        "summary": "",
+        "description": "add Role",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roleId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/addRelRoles",
+        "responses": {
+          "200": {
+            "description":"add Role"
+          }
+        },
+        "tags": ["Institutional Role"]
+      }
+    },
+    "/api/users/institutional/payment": {
+      "post": {
+        "summary": "",
+        "description": "Payment",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/payment",
+        "responses": {
+          "200": {
+            "description":"Payment"
+          }
+        },
+        "tags": ["Institutional Payment"]
+      }
+    },
+    "/api/users/institutional/getFindRoomId": {
+      "get": {
+        "summary": "",
+        "description": "get Chat Room Id ",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "otherUserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/getFindRoomId",
+        "responses": {
+          "200": {
+            "description":"getFindRoomId"
+          }
+        },
+        "tags": ["Institutional Chat"]
+      }
+    },
+    "/api/users/institutional/getFindRoomName": {
+      "get": {
+        "summary": "",
+        "description": "get Chat Room Name ",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "otherUserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/getFindRoomName",
+        "responses": {
+          "200": {
+            "description":"getFindRoomId"
+          }
+        },
+        "tags": ["Institutional Chat"]
+      }
+    },
+    "/api/users/institutional/sendMessage": {
+      "post": {
+        "summary": "",
+        "description": "post send Message",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "otherUserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/sendMessage",
+        "responses": {
+          "200": {
+            "description":"getFindRoomId"
+          }
+        },
+        "tags": ["Institutional Chat"]
+      }
+    },
+    "/api/users/institutional/joinRoom": {
+      "post": {
+        "summary": "",
+        "description": "post join Room",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "otherUserId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/users/institutional/joinRoom",
+        "responses": {
+          "200": {
+            "description":"getFindRoomId"
+          }
+        },
+        "tags": ["Institutional Chat"]
+      }
     }
-    
   }
 }
