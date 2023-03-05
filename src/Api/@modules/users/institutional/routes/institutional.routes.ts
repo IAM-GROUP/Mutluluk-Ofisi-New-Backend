@@ -17,33 +17,33 @@ export const getInstitutionalGoogleAuth = app.get('/googleAuth', passport.authen
 export const getGoogleInstitutionalSign = app.get('/googleSign', institutional.InstitutionalController.signGoogleInstitutional)
 export const getFollowInstitutional = app.get('/getFollow', institutional.InstitutionalController.getFollowInstitutional)
 export const getFollowersInstitutional = app.get('/getFollowers', institutional.InstitutionalController.getFollowersInstitutional)
-export const getBasketInstitutional = app.get('/getBasket', middleware.auth.userAuth, institutional.InstitutionalController.getBasket)
-export const getOrderInstitutional = app.get('/getOrder', middleware.auth.userAuth, institutional.InstitutionalController.getOrder)
+export const getBasketInstitutional = app.get('/getBasket', middleware.auth.institutionalAuth, institutional.InstitutionalController.getBasket)
+export const getOrderInstitutional = app.get('/getOrder', middleware.auth.institutionalAuth, institutional.InstitutionalController.getOrder)
 export const getRoles = app.get('/getRoles', middleware.auth.adminAuth, institutional.InstitutionalController.getRoles)
 export const getRole = app.get('/getRole', middleware.auth.adminAuth, institutional.InstitutionalController.getRoles)
 export const getInstitutionalRole = app.get('/getUserRole', middleware.auth.adminAuth, institutional.InstitutionalController.getInstitutionalRole)
 export const getRoleInstitutional = app.get('/getRoleUser', middleware.auth.adminAuth, institutional.InstitutionalController.getRoleInstitutional)
-export const getFindRoomId = app.get('/getFindRoomId', middleware.auth.userAuth, institutional.InstitutionalController.getChatFindRoom)
-export const getFindRoomName = app.get('/getFindRoomName', middleware.auth.userAuth, institutional.InstitutionalController.getChatFindRoomName)
+export const getFindRoomId = app.get('/getFindRoomId', middleware.auth.institutionalAuth, institutional.InstitutionalController.getChatFindRoom)
+export const getFindRoomName = app.get('/getFindRoomName', middleware.auth.institutionalAuth, institutional.InstitutionalController.getChatFindRoomName)
 
 //* Post
 export const postInstitutional = app.post('/create', middleware.multer.userUploads, institutional.InstitutionalController.createInstitutional)
 export const signInstitutional = app.post('/sign', institutional.InstitutionalController.signInstitutional)
 export const logoutInstitutional = app.post('/logout', institutional.InstitutionalController.logoutInstitutional)
-export const followInstitutional = app.post('/follow', middleware.auth.userAuth, institutional.InstitutionalController.followInstitutional)
-export const unFollowInstitutional = app.post('/unFollow', middleware.auth.userAuth, institutional.InstitutionalController.unFollowInstitutional)
-export const postBasket = app.post('/basket', middleware.auth.userAuth, institutional.InstitutionalController.postBasket)
-export const postOrder = app.post('/order', middleware.auth.userAuth, institutional.InstitutionalController.postOrder)
+export const followInstitutional = app.post('/follow', middleware.auth.institutionalAuth, institutional.InstitutionalController.followInstitutional)
+export const unFollowInstitutional = app.post('/unFollow', middleware.auth.institutionalAuth, institutional.InstitutionalController.unFollowInstitutional)
+export const postBasket = app.post('/basket', middleware.auth.institutionalAuth, institutional.InstitutionalController.postBasket)
+export const postOrder = app.post('/order', middleware.auth.institutionalAuth, institutional.InstitutionalController.postOrder)
 export const postAddRoles = app.post('/addRoles', middleware.auth.adminAuth, institutional.InstitutionalController.addRoles)
 export const postRelAddRoles = app.post('/addRelRoles', middleware.auth.adminAuth, institutional.InstitutionalController.relAddRoles)
-export const postPayment = app.post('/payment', middleware.auth.userAuth, institutional.InstitutionalController.postPayment)
-export const postSendMessage = app.post('/sendMessage', middleware.auth.userAuth, institutional.InstitutionalController.postChatSendMessage)
-export const postJoinRoom = app.post('/joinRoom', middleware.auth.userAuth, institutional.InstitutionalController.postChatJoinRoom)
+export const postPayment = app.post('/payment', middleware.auth.institutionalAuth, institutional.InstitutionalController.postPayment)
+export const postSendMessage = app.post('/sendMessage', middleware.auth.institutionalAuth, institutional.InstitutionalController.postChatSendMessage)
+export const postJoinRoom = app.post('/joinRoom', middleware.auth.institutionalAuth, institutional.InstitutionalController.postChatJoinRoom)
 
 
 
 //? Update
-export const putUser = app.put('/update', middleware.auth.userAuth, middleware.multer.userUploads, institutional.InstitutionalController.updateInstitutional)
+export const putUser = app.put('/update', middleware.auth.institutionalAuth, middleware.multer.userUploads, institutional.InstitutionalController.updateInstitutional)
 export const putRole = app.put('/updateRole', middleware.auth.adminAuth, institutional.InstitutionalController.updateRole)
 
 //! Delete
