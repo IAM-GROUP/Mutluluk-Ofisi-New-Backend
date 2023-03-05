@@ -30,6 +30,7 @@ import { seoRoutes } from './Api/@modules/seo/routes'
 import { concatUsRoutes } from './Api/@modules/contactUs/routes'
 import { solutionMainRoutes } from './Api/@modules/solutionMain/routes'
 import { MainRoutes } from './Api/@modules/openEdu/main/routes'
+import { AcademyRoutes } from './Api/@modules/openEdu/academy/routes'
 
 
 app.use(session({
@@ -58,7 +59,8 @@ menuRoutes,
 seoRoutes, 
 concatUsRoutes,
 solutionMainRoutes,
-MainRoutes
+MainRoutes,
+AcademyRoutes
 )
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
