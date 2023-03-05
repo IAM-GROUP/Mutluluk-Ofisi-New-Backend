@@ -1,10 +1,10 @@
 import multer from 'multer'
 
 //! Storage
-import { announcementStorage, aboutStorage, aboutMainStorage, productStorage, projectConsultantStorage,userStorage,institutionalStorage } from '../config/multer.storage'
+import { announcementStorage, aboutStorage, aboutMainStorage, productStorage, projectConsultantStorage,userStorage,institutionalStorage,solutionMainStorage,MainStorage } from '../config/multer.storage'
 
 //! Filter
-import { announcementUploadFilter, aboutMainUploadFilter, aboutUploadFilter, productUploadFilter, projectConsultantUploadFilter,userUploadFilter,institutionalUploadFilter } from './multer.filter'
+import { announcementUploadFilter, aboutMainUploadFilter, aboutUploadFilter, productUploadFilter, projectConsultantUploadFilter,userUploadFilter,institutionalUploadFilter,MainUploadFilter,solutionMainUploadFilter } from './multer.filter'
 
 export const aboutUpload = multer({
     storage: aboutStorage,
@@ -36,6 +36,11 @@ export const institutionalUpload = multer({
     fileFilter: (_, file, cb) => institutionalUploadFilter({ _, file, cb })
 })
 export const solutionMainUpload = multer({
-    storage: institutionalStorage,
-    fileFilter: (_, file, cb) => institutionalUploadFilter({ _, file, cb })
+    storage: solutionMainStorage,
+    fileFilter: (_, file, cb) => solutionMainUploadFilter({ _, file, cb })
 })
+export const MainUpload = multer({
+    storage: MainStorage,
+    fileFilter: (_, file, cb) => MainUploadFilter({ _, file, cb })
+})
+
