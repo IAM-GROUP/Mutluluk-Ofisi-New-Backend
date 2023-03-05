@@ -19,7 +19,7 @@ export class SolutionDal implements SolutionMainRepository {
             }
         })
     }
-    async create(image: string, pageImage: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ question: string; context: string; }], questions: [{ src: string; context: string; }]): Promise<{ message: string }> {
+    async create(image: string, pageImage: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }], questions: [{ question: string; context: string; }]): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
 
@@ -52,7 +52,7 @@ export class SolutionDal implements SolutionMainRepository {
             }
         })
     }
-    async update(id: string, image: string, pageImage: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }], questions: [{ src: string; context: string; }]): Promise<{ message: string }> {
+    async update(id: string, image: string, pageImage: string, title: string, text: string, description: string, html: [{ title: string; context: string; }], icon: [{ src: string; context: string; }], questions: [{ question: string; context: string; }]): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
                 const solutionMain = await SolutionMain.findByIdAndUpdate(id, { image, title, text, description, html, icon, pageImage, questions })

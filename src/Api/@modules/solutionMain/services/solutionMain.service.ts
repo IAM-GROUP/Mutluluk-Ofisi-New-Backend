@@ -6,7 +6,7 @@ import { validation } from '../../../validations/validations'
 
 //* Security
 import { security } from '../../../security/security'
-export class AboutService {
+export class SolutionMainService {
     private solutionMainDataAcess: SolutionDal = new SolutionDal()
     solutionMainFindAll() {
         return this.solutionMainDataAcess.findAll()
@@ -39,7 +39,7 @@ export class AboutService {
             }
         }
     }
-    solutionMainUpdate(id:string,image: string,pageImage:string, title: string, text: string, description: string,html:[{ title: string; context: string; }], icon: [{ src: string; context: string; }],questions: [{ src: string; context: string; }]) {
+    solutionMainUpdate(id:string,image: string,pageImage:string, title: string, text: string, description: string,html:[{ title: string; context: string; }], icon: [{ src: string; context: string; }],questions: [{ question: string; context: string; }]) {
         const isValidId = validation.isIdValidation(id)
         if (isValidId.isValid === true) {
             const decryptHtml = security.crypto.cryde(html)
@@ -61,7 +61,7 @@ export class AboutService {
             }
         }
     }
-    async solutionMainCreate(image: string,pageImage:string, title: string, text: string, description: string,html:[{ title: string; context: string; }], icon: [{ src: string; context: string; }],questions: [{ src: string; context: string; }]) {
+    async solutionMainCreate(image: string,pageImage:string, title: string, text: string, description: string,html:[{ title: string; context: string; }], icon: [{ src: string; context: string; }],questions: [{ question: string; context: string; }]) {
         const decryptHtml = security.crypto.cryde(html)
         const decryptQuestion = security.crypto.cryde(questions)
         if (decryptHtml) {
