@@ -9,7 +9,6 @@ export interface Iinstitutional extends IUser {
     taxOffice: string
     identity: number
     companyAddress: string
-    city: string,
     district: string
     service: string
 }
