@@ -64,6 +64,8 @@ export class SolutionMainService {
     async solutionMainCreate(image: string,pageImage:string, title: string, text: string, description: string,html:[{ title: string; context: string; }], icon: [{ src: string; context: string; }],questions: [{ question: string; context: string; }]) {
         const decryptHtml = security.crypto.cryde(html)
         const decryptQuestion = security.crypto.cryde(questions)
+        console.log(decryptQuestion);
+        console.log(decryptHtml);
         if (decryptHtml) {
             return {
                 create: this.solutionMainDataAcess.create(image,pageImage,title,text,description,decryptHtml,icon,decryptQuestion),
