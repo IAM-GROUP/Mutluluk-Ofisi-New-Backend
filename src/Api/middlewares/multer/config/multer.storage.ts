@@ -74,3 +74,11 @@ export const MainStorage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
+export const AcademyStorage = multer.diskStorage({
+    destination: (_, _file, cb) => {
+        cb(null, process.cwd() + '/src/Api/public/openEdu/main')
+    },
+    filename: (_, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
+    }
+})
