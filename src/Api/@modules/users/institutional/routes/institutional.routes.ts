@@ -27,7 +27,7 @@ export const getFindRoomId = app.get('/getFindRoomId', middleware.auth.instituti
 export const getFindRoomName = app.get('/getFindRoomName', middleware.auth.institutionalAuth, institutional.InstitutionalController.getChatFindRoomName)
 
 //* Post
-export const postInstitutional = app.post('/create', middleware.multer.userUploads, institutional.InstitutionalController.createInstitutional)
+export const postInstitutional = app.post('/create', middleware.multer.institutionalUploads, institutional.InstitutionalController.createInstitutional)
 export const signInstitutional = app.post('/sign', institutional.InstitutionalController.signInstitutional)
 export const logoutInstitutional = app.post('/logout', institutional.InstitutionalController.logoutInstitutional)
 export const followInstitutional = app.post('/follow', middleware.auth.institutionalAuth, institutional.InstitutionalController.followInstitutional)
@@ -43,7 +43,7 @@ export const postJoinRoom = app.post('/joinRoom', middleware.auth.institutionalA
 
 
 //? Update
-export const putUser = app.put('/update', middleware.auth.institutionalAuth, middleware.multer.userUploads, institutional.InstitutionalController.updateInstitutional)
+export const putUser = app.put('/update', middleware.auth.institutionalAuth, middleware.multer.institutionalUploads, institutional.InstitutionalController.updateInstitutional)
 export const putRole = app.put('/updateRole', middleware.auth.adminAuth, institutional.InstitutionalController.updateRole)
 
 //! Delete

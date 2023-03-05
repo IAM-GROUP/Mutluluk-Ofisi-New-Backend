@@ -80,8 +80,8 @@ export class institutionalDal implements institutionalRepository {
                     taxOffice,
                     companyAddress,
                     district,
-                    service
-                })
+                    service,
+                }).catch(err=>console.log(err))
                 resolve({ message: "Success created" })
             } catch (err) {
                 reject({ message: "Error " + err })
