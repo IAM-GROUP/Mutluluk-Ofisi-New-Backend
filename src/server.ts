@@ -28,7 +28,7 @@ import { announcementRoutes } from './Api/@modules/announcement/routes'
 import { menuRoutes } from './Api/@modules/menu/routes'
 import { seoRoutes } from './Api/@modules/seo/routes'
 import { concatUsRoutes } from './Api/@modules/contactUs/routes'
-
+import { solutionMainRoutes } from './Api/@modules/solutionMain/routes'
 
 
 app.use(session({
@@ -47,7 +47,17 @@ passportConfig(passport)
 //! Swagger
 import swaggerJson from './swagger.json'
 
-app.use('/', aboutRoutes, aboutMainRoutes, userRoute, productsRoute, projectConsultantRoute, announcementRoutes, menuRoutes, seoRoutes, concatUsRoutes)
+app.use('/', aboutRoutes, 
+aboutMainRoutes, 
+userRoute, 
+productsRoute, 
+projectConsultantRoute, 
+announcementRoutes, 
+menuRoutes, 
+seoRoutes, 
+concatUsRoutes,
+solutionMainRoutes
+)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
 mongoConnection()

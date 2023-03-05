@@ -58,3 +58,11 @@ export const institutionalStorage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
+export const solutionMainStorage = multer.diskStorage({
+    destination: (_, _file, cb) => {
+        cb(null, process.cwd() + '/src/Api/public/solutionMain')
+    },
+    filename: (_, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
+    }
+})

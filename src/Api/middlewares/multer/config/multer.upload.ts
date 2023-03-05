@@ -35,3 +35,7 @@ export const institutionalUpload = multer({
     storage: institutionalStorage,
     fileFilter: (_, file, cb) => institutionalUploadFilter({ _, file, cb })
 })
+export const solutionMainUpload = multer({
+    storage: institutionalStorage,
+    fileFilter: (_, file, cb) => institutionalUploadFilter({ _, file, cb })
+})
