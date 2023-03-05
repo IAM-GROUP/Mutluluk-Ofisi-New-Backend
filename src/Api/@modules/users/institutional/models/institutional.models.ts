@@ -2,7 +2,7 @@ import { neo4j } from '../../../../../core/data-source/neo4j/connection'
 import { Iinstitutional } from '../entity/Iinstitutional'
 
 
-export const User = neo4j()?.model<Iinstitutional>("user", {
+export const institutional = neo4j()?.model<Iinstitutional>("institutional", {
     id: {
         primary: true,
         type: "uuid"
