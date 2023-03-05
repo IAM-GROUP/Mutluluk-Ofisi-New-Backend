@@ -54,7 +54,6 @@ export const findRoom = async (userId:any, otherUserId:any) => {
             return chat.properties
         })
     })
-    console.log(rChat[0][0].id);
     return rChat[0][0].id
 }
 export const findRoomName = async (userId:any, otherUserId:any) => {

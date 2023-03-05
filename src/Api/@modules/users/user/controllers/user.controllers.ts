@@ -14,7 +14,7 @@ export class UserController {
     }
     static createUser: Handler = async (req, res) => {
         const userService = new UserService()
-        const { name, surname, email, phone, password, passwordRepeat, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode,expireMonth,expireYear,identityNumber } = req.body
+        const { name, surname, email, phone, password, passwordRepeat, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode, expireMonth, expireYear, identityNumber } = req.body
         const { image } = req.files as any
         if (password !== passwordRepeat) {
             res.json({
@@ -22,7 +22,7 @@ export class UserController {
             })
         }
         else {
-            const user = await userService.userCreate(name, surname, email, image[0].path, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode,expireMonth,expireYear,identityNumber)
+            const user = await userService.userCreate(name, surname, email, image[0].path, phone, password, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode, expireMonth, expireYear, identityNumber)
             if (user.message) {
                 res.json({
                     message: user.message
@@ -38,7 +38,7 @@ export class UserController {
     }
     static updateUser: Handler = async (req, res) => {
         const userService = new UserService()
-        const { id, name, surname, email, phone, hash, oldPassword, newPassword, passwordRepeat, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode,expireMonth,expireYear,identityNumber } = req.body
+        const { id, name, surname, email, phone, hash, oldPassword, newPassword, passwordRepeat, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode, expireMonth, expireYear, identityNumber } = req.body
         const { image } = req.files as any
         if (!newPassword) {
             res.json({
@@ -46,7 +46,7 @@ export class UserController {
             })
         }
         else {
-            const user = userService.userUpdate(id, name, surname, email, image[0].path, phone, hash, oldPassword, newPassword, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode,expireMonth,expireYear,identityNumber)
+            const user = userService.userUpdate(id, name, surname, email, image[0].path, phone, hash, oldPassword, newPassword, dateOfBirth, gender, basket, order, creditCardName, creditCardSurname, creditCardNumber, creditCardCvv, city, country, address, zipCode, expireMonth, expireYear, identityNumber)
             if (user.message) {
                 res.json({
                     message: user.message
@@ -89,7 +89,7 @@ export class UserController {
     static signGoogleUser: Handler = async (req, res) => {
         const user: any = req.user
         const userService = new UserService()
-        const users = await userService.userCreate(user.name.givenName, user.name.familyName, user.emails[0].value, user.photos[0].value, "empty", user.name.givenName + user.name.familyName, "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty","empty","empty","empty")
+        const users = await userService.userCreate(user.name.givenName, user.name.familyName, user.emails[0].value, user.photos[0].value, "empty", user.name.givenName + user.name.familyName, "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty")
         if (users.create) {
             const userSign = await userService.userSign(user.emails[0].value, user.name.givenName + user.name.familyName)
             if (userSign.token) {
@@ -379,9 +379,9 @@ export class UserController {
     }
     static postChatSendMessage: Handler = async (req, res) => {
         const userService = new UserService()
-        const { userId,otherUserId } = req.body
-        if (userId && otherUserId ) {
-            const user = await userService.userChatSendMessage(userId,otherUserId)
+        const { userId, otherUserId } = req.body
+        if (userId && otherUserId) {
+            const user = await userService.userChatSendMessage(userId, otherUserId)
             res.status(200).json({
                 user: user.chat
             })
@@ -394,9 +394,39 @@ export class UserController {
     }
     static postChatJoinRoom: Handler = async (req, res) => {
         const userService = new UserService()
-        const { userId,otherUserId } = req.body
-        if (userId && otherUserId ) {
-            const user = await userService.userChatJoinRoom(userId,otherUserId)
+        const { userId, otherUserId } = req.body
+        if (userId && otherUserId) {
+            const user = await userService.userChatJoinRoom(userId, otherUserId)
+            res.status(200).json({
+                user: user.chat
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
+    static getChatFindRoom: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { userId, otherUserId } = req.body
+        if (userId && otherUserId) {
+            const user = await userService.userFindRoomId(userId, otherUserId)
+            res.status(200).json({
+                user: user.chat
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not found token"
+            })
+        }
+    }
+    static getChatFindRoomName: Handler = async (req, res) => {
+        const userService = new UserService()
+        const { userId, otherUserId } = req.body
+        if (userId && otherUserId) {
+            const user = await userService.userFindRoomName(userId, otherUserId)
             res.status(200).json({
                 user: user.chat
             })

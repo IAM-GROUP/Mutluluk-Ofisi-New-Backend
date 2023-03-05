@@ -4,7 +4,7 @@ import { Server } from 'socket.io'
 import date from 'date-and-time'
 //? Repository
 import { UserRepository } from '../repository/user.repo'
-import {v4 as uuid} from 'uuid'
+import { v4 as uuid } from 'uuid'
 //? Entity
 import { IUser } from '../../dtos/IUsers'
 
@@ -224,7 +224,7 @@ export class UserDal implements UserRepository {
     async addRoles(name: string): Promise<{ message: string }> {
         return new Promise(async (resolve, reject) => {
             try {
-                await neo4j()?.writeCypher("create (r:role {id:$id,name:$name})", { id:uuid(),name })
+                await neo4j()?.writeCypher("create (r:role {id:$id,name:$name})", { id: uuid(), name })
                 resolve({ message: "Success role" })
             }
             catch (err) {
@@ -462,31 +462,57 @@ export class UserDal implements UserRepository {
             try {
                 const user: any = await this.find(userId)
                 const user1: any = await this.find(otherUserId)
-                
-                let messageBoxName:any = user[0][1] + user[0][2] + user1[0][1] + user1[0][2] + "box"
-                const mess = await chat.MessageBox("empty",messageBoxName)
-                
+
+                let messageBoxName: any = user[0][1] + user[0][2] + user1[0][1] + user1[0][2] + "box"
+                const mess = await chat.MessageBox("empty", messageBoxName)
+
                 const room = await chat.findRoom(userId, otherUserId)
-               
+
                 const roomName = await chat.findRoomName(userId, otherUserId)
-               
-                const me = await chat.findUserMessageBox(userId,room)
-                
+
+                const me = await chat.findUserMessageBox(userId, room)
+
                 let reRoomName = user1[0][1] + user1[0][2] + user[0][1] + user[0][2]
                 const isCreateRoom = await chat.createRoom(roomName, reRoomName)
-                
+
                 const isJoinRoom = await chat.joinRoom(userId, otherUserId, roomName)
-               
+
                 const messageRel = await chat.MessageSendRel(userId, room, messageBoxName)
                 io.on('connection', (socket) => {
-                    socket.on(roomName, (data:any, cb:any) => {
-                        
-                       chat.AddMessage(userId,room,data)
+                    socket.on(roomName, (data: any, cb: any) => {
+
+                        chat.AddMessage(userId, room, data)
                     })
                 })
                 resolve({
                     message: mess.message,
-                    messageRel:messageRel.message
+                    messageRel: messageRel.message
+                } as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async chatFindRoom(userId: any, otherUserId: any): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const findRoom = await chat.findRoom(userId, otherUserId)
+                resolve({
+                    room: findRoom
+                } as any)
+            }
+            catch (err) {
+                reject({ message: "Error " + err })
+            }
+        })
+    }
+    async chatFindRoomName(userId: any, otherUserId: any): Promise<{ message: string }> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const findRoom = await chat.findRoomName(userId, otherUserId)
+                resolve({
+                    room: findRoom
                 } as any)
             }
             catch (err) {

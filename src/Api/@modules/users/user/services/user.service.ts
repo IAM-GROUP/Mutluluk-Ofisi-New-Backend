@@ -397,4 +397,28 @@ export class UserService {
             }
         }
     }
+    async userFindRoomId(userId:any,otherUserId:any) {
+        if (userId && otherUserId) {
+            return {
+                chat: await this.userDataAcess.chatFindRoom(userId,otherUserId),
+            }
+        }
+        else {
+            return {
+                message: "userId otherUserId prop empty"
+            }
+        }
+    }
+    async userFindRoomName(userId:any,otherUserId:any) {
+        if (userId && otherUserId) {
+            return {
+                chat: await this.userDataAcess.chatFindRoomName(userId,otherUserId),
+            }
+        }
+        else {
+            return {
+                message: "userId otherUserId prop empty"
+            }
+        }
+    }
 }
