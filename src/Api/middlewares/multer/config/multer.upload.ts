@@ -1,10 +1,10 @@
 import multer from 'multer'
 
 //! Storage
-import { announcementStorage, OurCollabrotionStorage ,BlogStorage,aboutStorage,BlogMainStorage ,aboutMainStorage, productStorage, OpenEduStorage, projectConsultantStorage, userStorage, institutionalStorage, solutionMainStorage, MainStorage, AcademyStorage } from '../config/multer.storage'
+import { announcementStorage, SlideStorage ,OurCollabrotionStorage ,BlogStorage,aboutStorage,BlogMainStorage ,aboutMainStorage, productStorage, OpenEduStorage, projectConsultantStorage, userStorage, institutionalStorage, solutionMainStorage, MainStorage, AcademyStorage } from '../config/multer.storage'
 
 //! Filter
-import { announcementUploadFilter,OurCollabrotionUploadFilter,BlogUploadFilter, aboutMainUploadFilter, BlogMainUploadFilter,aboutUploadFilter, OpenEduUploadFilter, AcademyUploadFilter, productUploadFilter, projectConsultantUploadFilter, userUploadFilter, institutionalUploadFilter, MainUploadFilter, solutionMainUploadFilter } from './multer.filter'
+import { announcementUploadFilter, SlideUploadFilter,OurCollabrotionUploadFilter,BlogUploadFilter, aboutMainUploadFilter, BlogMainUploadFilter,aboutUploadFilter, OpenEduUploadFilter, AcademyUploadFilter, productUploadFilter, projectConsultantUploadFilter, userUploadFilter, institutionalUploadFilter, MainUploadFilter, solutionMainUploadFilter } from './multer.filter'
 
 export const aboutUpload = multer({
     storage: aboutStorage,
@@ -62,4 +62,8 @@ export const BlogUpload = multer({
 export const OurCollabrotionUpload = multer({
     storage: OurCollabrotionStorage,
     fileFilter: (_, file, cb) => OurCollabrotionUploadFilter({ _, file, cb })
+})
+export const SlideUpload = multer({
+    storage: SlideStorage,
+    fileFilter: (_, file, cb) => SlideUploadFilter({ _, file, cb })
 })
