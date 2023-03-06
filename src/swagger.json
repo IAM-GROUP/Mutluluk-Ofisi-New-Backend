@@ -6275,5 +6275,158 @@
         "tags": ["Discovered Us"]
       }
     },
+    "/api/notification/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Find ID Notification  Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/notification/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Notification"]
+      }
+    },
+    "/api/notification": {
+      "get": {
+        "summary": "",
+        "description": "Get All Notification",
+        "parameters": [],
+        "operationId": "/api/notification",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Notification"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create Notification",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/notification",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Notification"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update Notification",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/notification",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Notification"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete Notification",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/discoveredUs",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Discovered Us"]
+      }
+    }
   }
 }
