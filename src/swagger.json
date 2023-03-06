@@ -6428,22 +6428,70 @@
         "tags": ["Discovered Us"]
       }
     },
-    "/api/ourCollabrotion": {
+    "/api/ourCollabrotion/id": {
       "get": {
         "summary": "",
-        "description": "Get All Our Collabrotion",
-        "parameters": [],
-        "operationId": "/api/ourCollabrotion",
+        "description": "Get Find ID Our Collabrotion  Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/ourCollabrotion/id",
         "responses": {
           "200": {
             "description": "OK"
           }
         },
         "tags": ["Our Collabrotion"]
+      }
+    },
+    "/api/ourService/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Find ID Our Service  Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/ourService/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Our Service"]
+      }
+    },
+    "/api/ourService": {
+      "get": {
+        "summary": "",
+        "description": "Get All Our Service",
+        "parameters": [],
+        "operationId": "/api/ourService",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Our Service"]
       },
       "post": {
         "summary": "",
-        "description": "Create Our Collabrotion",
+        "description": "Create Our Service",
         "parameters": [
           {
             "name": "x-access-token",
@@ -6456,14 +6504,6 @@
           },
           {
             "name": "link",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "image",
             "in": "query",
             "required": true,
             "schema": {
@@ -6487,17 +6527,17 @@
             }
           }
         ],
-        "operationId": "/api/ourCollabrotion",
+        "operationId": "/api/ourService",
         "responses": {
           "default": {
             "description": "Default response"
           }
         },
-        "tags": ["Our Collabrotion"]
+        "tags": ["Our Service"]
       },
       "put": {
         "summary": "",
-        "description": "Update Our Collabrotion",
+        "description": "Update Our Service",
         "parameters": [
           {
             "name": "x-access-token",
@@ -6525,14 +6565,6 @@
             }
           },
           {
-            "name": "image",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "text",
             "in": "query",
             "required": true,
@@ -6549,17 +6581,17 @@
             }
           }
         ],
-        "operationId": "/api/ourCollabrotion",
+        "operationId": "/api/ourService",
         "responses": {
           "default": {
             "description": "Default response"
           }
         },
-        "tags": ["Our Collabrotion"]
+        "tags": ["Our Service"]
       },
       "delete": {
         "summary": "",
-        "description": "Delete Our Collabrotion",
+        "description": "Delete Our Service",
         "parameters": [
           {
             "name": "x-access-token",
@@ -6580,13 +6612,13 @@
             "description": "id must be JSON sent"
           }
         ],
-        "operationId": "/api/ourCollabrotion",
+        "operationId": "/api/ourService",
         "responses": {
           "default": {
             "description": "Default response"
           }
         },
-        "tags": ["Our Collabrotion"]
+        "tags": ["Our Service"]
       }
     },
   }
