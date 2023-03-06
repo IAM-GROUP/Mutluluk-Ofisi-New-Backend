@@ -6773,6 +6773,175 @@
         },
         "tags": ["Privacy"]
       }
+    },
+    "/api/slide/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Find ID Slide Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/slide/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Slide"]
+      }
+    },
+    "/api/slide": {
+      "get": {
+        "summary": "",
+        "description": "Get All Slide",
+        "parameters": [],
+        "operationId": "/api/slide",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Slide"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create Slide",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "header",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/slide",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Slide"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update Slide",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "header",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/privacy",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Privacy"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete Slide",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/slide",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Slide"]
+      }
     }
   }
 }
