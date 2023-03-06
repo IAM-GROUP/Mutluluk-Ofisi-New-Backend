@@ -4788,5 +4788,158 @@
         "tags": ["OpenEdu Main"]
       }
     },
+    "/api/academy": {
+      "get": {
+        "summary": "",
+        "description": "Get All OpenEdu Academy",
+        "parameters": [],
+        "operationId": "/api/academy",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Academy"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create OpenEdu Academy",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/academy",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["OpenEdu Academy"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update OpenEdu Academy",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/academy",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["OpenEdu Academy"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete OpenEdu Academy",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/academy",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["OpenEdu Academy"]
+      }
+    },
+    "/api/academyid": {
+      "get": {
+        "summary": "",
+        "description": "Get Find ID OpenEdu Academy Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/academy/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Academy"]
+      }
+    },
   }
 }
