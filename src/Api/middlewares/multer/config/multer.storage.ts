@@ -106,3 +106,12 @@ export const BlogStorage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
+export const OurCollabrotionStorage = multer.diskStorage({
+    destination: (_, _file, cb) => {
+        cb(null, process.cwd() + '/src/Api/public/ourCollabrotion')
+    },
+    filename: (_, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
+    }
+})
+

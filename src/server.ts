@@ -37,6 +37,7 @@ import { blogRoutes } from './Api/@modules/blog/routes'
 import { ContactFormRoutes } from './Api/@modules/contactForm/routes'
 import { DiscoveredUsRoutes } from './Api/@modules/discoveredUs/routes'
 import { notificationRoutes } from './Api/@modules/notification/routes'
+import { ourCollabrotionRoutes } from './Api/@modules/ourCollabrotion/routes'
 
 
 app.use(session({
@@ -72,7 +73,9 @@ blogMainRoutes,
 blogRoutes,
 ContactFormRoutes,
 DiscoveredUsRoutes,
-notificationRoutes
+notificationRoutes,
+ourCollabrotionRoutes
+
 )
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
