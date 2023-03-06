@@ -4941,5 +4941,155 @@
         "tags": ["OpenEdu Academy"]
       }
     },
+    "/api/openEdu/category": {
+      "get": {
+        "summary": "",
+        "description": "Get All OpenEdu Category",
+        "parameters": [],
+        "operationId": "/api/openEdu/category",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Category"]
+      }
+    },
+    "/api/openEdu/category/id": {
+      "get": {
+        "summary": "",
+        "description": "Get OpenEdu Category",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/openEdu/category",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Category"]
+      }
+    },
+    "/api/openEdu/category/create": {
+      "post": {
+        "summary": "",
+        "description": "Post OpenEdu Category",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/openEdu/category/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Category"]
+      }
+    },
+    "/api/openEdu/category/update": {
+      "put": {
+        "summary": "",
+        "description": "Put OpenEdu Category",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/openEdu/category/update",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Category"]
+      }
+    },
+    "/api/openEdu/category/delete": {
+      "delete": {
+        "summary": "",
+        "description": "Delete OpenEdu Category",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/openEdu/category/delete",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Category"]
+      }
+    }
   }
 }
