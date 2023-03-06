@@ -6427,6 +6427,167 @@
         },
         "tags": ["Discovered Us"]
       }
-    }
+    },
+    "/api/ourCollabrotion": {
+      "get": {
+        "summary": "",
+        "description": "Get All Our Collabrotion",
+        "parameters": [],
+        "operationId": "/api/ourCollabrotion",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["Our Collabrotion"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create Our Collabrotion",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "link",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/ourCollabrotion",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Our Collabrotion"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update Our Collabrotion",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "link",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/ourCollabrotion",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Our Collabrotion"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete Our Collabrotion",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/ourCollabrotion",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["Our Collabrotion"]
+      }
+    },
   }
 }
