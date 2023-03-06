@@ -8,14 +8,14 @@ import { middleware } from '../../../middlewares/middlewares'
 import { notification } from '../controllers/controllers'
 
 //? Get
-export const getNotification = app.get('/', notification.NotificationController.getNotification)
-export const getNotificationId = app.get('/id', notification.NotificationController.getNotificationId)
+export const getNotification = app.get('/notification', notification.NotificationController.getNotification)
+export const getNotificationId = app.get('/notification/id', notification.NotificationController.getNotificationId)
 
 //* Post
-export const postNotification = app.post('/create', middleware.auth.adminAuth, notification.NotificationController.createNotification)
+export const postNotification = app.post('/notification', middleware.auth.adminAuth, notification.NotificationController.createNotification)
 
 //? Update
-export const putNotification = app.put('/update', middleware.auth.adminAuth, notification.NotificationController.updateNotification)
+export const putNotification = app.put('/notification', middleware.auth.adminAuth, notification.NotificationController.updateNotification)
 
 //! Delete
-export const deleteNotification = app.delete('/delete', middleware.auth.adminAuth, notification.NotificationController.deleteNotification)
+export const deleteNotification = app.delete('/notification', middleware.auth.adminAuth, notification.NotificationController.deleteNotification)
