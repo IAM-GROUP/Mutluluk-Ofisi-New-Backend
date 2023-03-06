@@ -5090,6 +5090,234 @@
         },
         "tags": ["OpenEdu Category"]
       }
+    },
+    "/api/openEdu/openEdu/": {
+      "get": {
+        "summary": "",
+        "description": "Get All OpenEdu",
+        "parameters": [],
+        "operationId": "/api/openEdu/openEdu",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu"]
+      }
+    },
+    "/api/openEdu/openEdu/id": {
+      "get": {
+        "summary": "",
+        "description": "Get  OpenEdu",
+        "parameters": [],
+        "operationId": "/api/openEdu/openEdu/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu"]
+      }
+    },
+    "/api/openEdu/openEdu/create": {
+      "post": {
+        "summary": "",
+        "description": "Post OpenEdu",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "html",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/openEdu/openEdu/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu"]
+      }
+    },
+    "/api/openEdu/openEdu/update": {
+      "put": {
+        "summary": "",
+        "description": "put OpenEdu",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "html",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/openEdu/openEdu/create",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu"]
+      }
+    },
+    "/api/openEdu/openEdu/delete": {
+      "delete": {
+        "summary": "",
+        "description": "put OpenEdu",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/openEdu/openEdu/delete",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu"]
+      }
     }
   }
 }
