@@ -98,3 +98,11 @@ export const BlogMainStorage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
     }
 })
+export const BlogStorage = multer.diskStorage({
+    destination: (_, _file, cb) => {
+        cb(null, process.cwd() + '/src/Api/public/blog')
+    },
+    filename: (_, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + extname(file.originalname))
+    }
+})
