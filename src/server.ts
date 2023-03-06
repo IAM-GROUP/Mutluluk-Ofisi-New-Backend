@@ -4,7 +4,7 @@ import swaggerUI from 'swagger-ui-express'
 import bodyParser from 'body-parser'
 import passport from 'passport'
 import session from 'express-session'
-
+import cors from 'cors'
 
 
 const app = express()
@@ -47,6 +47,11 @@ app.use(session({
     secret: 'radeonares',
     resave: false,
     saveUninitialized: true
+}))
+
+app.use(cors({
+    origin:"*",
+    allowedHeaders:"*"
 }))
 
 app.use(express.json())
