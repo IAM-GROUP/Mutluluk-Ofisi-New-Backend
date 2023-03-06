@@ -1,1 +1,0 @@
-export * as solutionMain from './solutionMain.controller'

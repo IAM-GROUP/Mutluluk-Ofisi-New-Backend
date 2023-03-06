@@ -1,1 +1,0 @@
-export * as ourCollabrotion from './ourCollabrotion.controller'

@@ -1,1 +1,0 @@
-export * as academy from './academy.controller'

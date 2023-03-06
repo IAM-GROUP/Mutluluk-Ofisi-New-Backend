@@ -1,1 +1,0 @@
-export * as ourService from './ourService.controller'

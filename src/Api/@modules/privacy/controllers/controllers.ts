@@ -1,1 +1,0 @@
-export * as privacy from './privacy.controller'

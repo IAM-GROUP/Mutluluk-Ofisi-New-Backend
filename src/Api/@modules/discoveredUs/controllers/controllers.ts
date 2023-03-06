@@ -1,1 +1,0 @@
-export * as discoveredUs from './discoveredUs.controller'
