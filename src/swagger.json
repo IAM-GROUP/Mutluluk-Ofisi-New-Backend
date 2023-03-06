@@ -4634,6 +4634,159 @@
         },
         "tags": ["Institutional Chat"]
       }
-    }
+    },
+    "/api/main": {
+      "get": {
+        "summary": "",
+        "description": "Get All OpenEdu Main",
+        "parameters": [],
+        "operationId": "/api/main",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Main"]
+      },
+      "post": {
+        "summary": "",
+        "description": "Create OpenEdu Main",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/main",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["OpenEdu Main"]
+      },
+      "put": {
+        "summary": "",
+        "description": "Update OpenEdu Main",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "context",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "/api/main",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["OpenEdu Main"]
+      },
+      "delete": {
+        "summary": "",
+        "description": "Delete OpenEdu Main",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Admin Token"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/main",
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "tags": ["OpenEdu Main"]
+      }
+    },
+    "/api/main/id": {
+      "get": {
+        "summary": "",
+        "description": "Get Find ID OpenEdu Main Context",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "id must be JSON sent"
+          }
+        ],
+        "operationId": "/api/main/id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": ["OpenEdu Main"]
+      }
+    },
   }
 }
