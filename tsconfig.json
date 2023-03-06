@@ -26,5 +26,5 @@
     ],
     "include": [
         "src/**/*"
-, "src/Api/@modules/ourCollabrotion/entity/ourCollabrotion.ts"    ]
+    ]
 }
