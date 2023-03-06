@@ -35,6 +35,7 @@ import { OpenEduRoute } from './Api/@modules/openEdu/routes'
 import { blogMainRoutes } from './Api/@modules/blogMain/routes'
 import { blogRoutes } from './Api/@modules/blog/routes'
 import { ContactFormRoutes } from './Api/@modules/contactForm/routes'
+import { DiscoveredUsRoutes } from './Api/@modules/discoveredUs/routes'
 
 
 app.use(session({
@@ -68,7 +69,8 @@ AcademyRoutes,
 OpenEduRoute,
 blogMainRoutes,
 blogRoutes,
-ContactFormRoutes
+ContactFormRoutes,
+DiscoveredUsRoutes
 )
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJson))
 
